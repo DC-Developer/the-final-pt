@@ -12,11 +12,10 @@ mongoose.Promise = global.Promise;
 // Connect to the Mongo DB
 mongoose.connect(
   process.env.MONGODB_URI || "mongodb://localhost/personaltrainer_app",
-  (err, database) => {
+  (err) => {
     if (err) throw (err)
     
     if(process.env.MONGODB_URI){
-        mlabDB = database;
         const userSeed = [
             {
               firstName: "Dion",
@@ -34,9 +33,9 @@ mongoose.connect(
             }
           ];
         //insert the userSeed array on start up
-          mlabDB.User
+            db
             .remove({})
-            .then(() => mlabDB.User.collection.insertMany(userSeed))
+            .then(() => db.collection.insertMany(userSeed))
             .then(data => {
                 console.log(data.insertedIds.length + " records inserted!")
             })
