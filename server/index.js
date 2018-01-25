@@ -4,7 +4,7 @@ const path = require('path');
 const PORT = process.env.PORT || 5000;
 const mongoose = require('mongoose');
 const router = require('../routes/router'); 
-
+const db = require("../models");
 var MONGODB_URI = process.env.MONGODB_URI || "mongodb://root:root@ds111478.mlab.com:11478/pt_applicationes";
 
 // Set up promises with mongoose
@@ -12,7 +12,42 @@ mongoose.Promise = global.Promise;
 // Connect to the Mongo DB
 mongoose.connect(
   process.env.MONGODB_URI || "mongodb://localhost/personaltrainer_app",
-  () => {
+  (err, database) => {
+    if (err) throw (err)
+    
+    if(process.env.MONGODB_URI){
+        mlabDB = database;
+        const userSeed = [
+            {
+              firstName: "Dion",
+              lastName: "Cavanaugh",
+              email:'dcdeveloper26@gmail.com',
+              type: 'admin',
+              date: new Date(Date.now())
+            },
+            {
+              firstName: "Troy",
+              lastName: "Slaten",
+              email:'dcavanaugh2525@gmail.com',
+              type: 'admin',
+              date: new Date(Date.now())
+            }
+          ];
+        //insert the userSeed array on start up
+          mlabDB.User
+            .remove({})
+            .then(() => mlabDB.User.collection.insertMany(userSeed))
+            .then(data => {
+                console.log(data.insertedIds.length + " records inserted!")
+            })
+            .catch(err => {
+                console.log(err);
+            });
+
+    }
+
+
+
       console.log('connected to db');
   }
 );
