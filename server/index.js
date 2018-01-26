@@ -13,33 +13,7 @@ mongoose.Promise = global.Promise;
 // Connect to the Mongo DB
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/pt_applicationes", (err, database) => {
     if (err) throw (err)
-    if(process.env.MONGODB_URI){
-        mlabDB = database;
-        const userSeed = [
-            {
-              firstName: "Dion",
-              lastName: "Cavanaugh",
-              email:'dcdeveloper26@gmail.com',
-              password: 'admin',
-            },
-            {
-              firstName: "Troy",
-              lastName: "Slaten",
-              email:'dcavanaugh2525@gmail.com',
-              password: 'admin',
-            }
-          ];
-        //insert the userSeed array on start up
-          mlabDB.User
-            .then(() => mlabDB.User.collection.insertMany(userSeed))
-            .then(data => {
-                console.log(data.insertedIds.length + " records inserted!")
-            })
-            .catch(err => {
-                console.log(err);
-            });
-
-    }
+  
     console.log("Connected to db");
 });
 
