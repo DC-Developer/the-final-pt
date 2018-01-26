@@ -18,7 +18,7 @@ router.get("/all", (req, res) => {
         });
 });
 
-router.get("/seed", (req, res) => {
+router.post("/seed", (req, res) => {
     
     db.User
         .create({
