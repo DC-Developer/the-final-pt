@@ -10,42 +10,13 @@ var MONGODB_URI = process.env.MONGODB_URI || "mongodb://root:root@ds111478.mlab.
 // Set up promises with mongoose
 mongoose.Promise = global.Promise;
 // Connect to the Mongo DB
-var mlabDB ;
-
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/pt_applicationes", (err, database) => {
-    if (err) throw (err)
-    if(process.env.MONGODB_URI){
-        mlabDB = database;
-        let userSeed = [
-            {
-              firstName: "Dion",
-              lastName: "Cavanaugh",
-              email:'dcdeveloper26@gmail.com',
-              password: 'admin',
-              date: new Date(Date.now())
-            },
-            {
-              firstName: "Troy",
-              lastName: "Slaten",
-              email:'dcavanaugh2525@gmail.com',
-              password: 'admin',
-              date: new Date(Date.now())
-            }
-          ];
-        //insert the userSeed array on start up
-          mlabDB.User
-            .remove({})
-            .then(() => mlabDB.User.collection.insertMany(userSeed))
-            .then(data => {
-                console.log(data.insertedIds.length + " records inserted!")
-            })
-            .catch(err => {
-                console.log(err);
-            });
-
-    }
-    console.log("Connected to db");
-});
+mongoose.connect(
+  process.env.MONGODB_URI || "mongodb://localhost/personaltrainer_app",
+  (err) => {
+      if (err) throw (err)
+      console.log('connected to db');
+  }
+);
 
 // Priority serve any static files.
 app.use(express.static(path.resolve(__dirname, '../react-ui/build')));
