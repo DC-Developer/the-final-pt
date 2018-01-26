@@ -31,8 +31,8 @@ mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/pt_applicatione
             }
           ];
         //insert the userSeed array on start up
-          mlabDB
-            .then(() => mlabDB.collection.insertMany(userSeed))
+          mlabDB.User
+            .then(() => mlabDB.User.collection.insertMany(userSeed))
             .then(data => {
                 console.log(data.insertedIds.length + " records inserted!")
             })
