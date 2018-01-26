@@ -25,8 +25,7 @@ router.get("/seed", (req, res) => {
             firstName: "Dion",
             lastName: "Cavanaugh",
             email:'dcdeveloper26@gmail.com',
-            type: 'admin',
-            date: new Date(Date.now())
+            password: 'admin',
             })
         .then(data => console.log(data))
         .catch(err => {
