@@ -1,6 +1,8 @@
 const express = require('express');
 router = express();
 const db = require("../models");
+const mongoose = require('mongoose');
+
 
 
 router.get("/hello", (req, res) => {
@@ -16,5 +18,20 @@ router.get("/all", (req, res) => {
         });
 });
 
+router.get("/seed", (req, res) => {
+    
+    db.User
+        .create({
+            firstName: "Dion",
+            lastName: "Cavanaugh",
+            email:'dcdeveloper26@gmail.com',
+            type: 'admin',
+            date: new Date(Date.now())
+            })
+        .then(data => console.log(data))
+        .catch(err => {
+            console.log(err);
+        })
+});
 
 module.exports = router;
