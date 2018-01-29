@@ -1,8 +1,14 @@
 import React from 'react';
 import './ClientPageSize.css';
 
-const ClientPageSize = () => {
+//this component will be setting the size for the client page
 
+const ClientPageSize = ({children}) => {
+    return (
+        <div className="body">
+            {children}
+        </div>
+    );
 }
 
 export default ClientPageSize;

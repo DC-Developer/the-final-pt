@@ -1,1 +1,1 @@
-export { Login } from "./pages/Login/Login.js";
+export { Default } from "./pages/Register/Register.js";

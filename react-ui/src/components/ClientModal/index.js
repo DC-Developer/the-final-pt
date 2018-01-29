@@ -1,0 +1,1 @@
+export { ClientModal } from "./components/ClientModal/ClientModal.js";
