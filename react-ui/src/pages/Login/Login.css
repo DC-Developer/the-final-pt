@@ -100,9 +100,11 @@
     border: solid 1px #e5e5e9;
     margin-left: 130px;
     margin-top: 10px;
-    font-weight: 500;
-    color: #ffffff;
+    font-weight: bolder;
+
+    color: #242323;
     font-family: 'Lato', sans-serif;
+    
   }
   .Rectangle-Copy {
     width: 304px;
@@ -168,4 +170,6 @@
     vertical-align: middle;
     font-weight: 600;
   }
-  
+  input {
+
+  }

@@ -35,7 +35,7 @@ class Login extends React.Component {
 
                         <form action ="" className="regLog" method="post">
                             <input type="text" placeholder="    Email" className="Rectangle-login" /><br />
-                            <input type="text" placeholder="    Password" className="Rectangle-login" /><br />
+                            <input type="password" placeholder="    Password" className="Rectangle-login" /><br />
                             <input type="submit" value="Login" className="Rectangle-Copy-3" />
                         </form>
                     </div>
@@ -47,15 +47,3 @@ class Login extends React.Component {
 }
 
 export default Login; 
-
-//the bootstrap grid system just in case css grid system doesn't work
-         {/* <div className="container-fluid">
-                    <div className="row">
-                        <div className="col-lg-6">
-                            <p>It's me</p>
-                        </div>
-                        <div className="col-lg-6">
-                            <p>You fucks!</p>
-                        </div>
-                    </div>
-                </div> */}
