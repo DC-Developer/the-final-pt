@@ -1,6 +1,9 @@
 import React from 'react';
 import {BrowserRouter as Router, Route, Link} from 'react-router-dom';
 import './Client.css';
+import Overview from '../../components/Overview/Overview.js';
+import Clients from '../../components/Clients/Clients.js';
+import MacroB from '../../components/MacroB/MacroB.js';
 
 const clientPageImgs = [
     {
@@ -29,17 +32,19 @@ class Client extends React.Component {
                             Jane Doe
                         </div>
                     </div>
-                    <div>
-                        {/* <Link><li>Overview</li></Link>
-                        <Link><li>Clients</li></Link>
-                        <Link><li>Macro Breakdown</li></Link> */}
-                        <p>Overview</p>
+                    <div className="sidebar">
+                        <Link to="/client/overview"><p>Overview</p></Link>
+                        <Link to="/client/clients"><p>Clients</p></Link>
+                        <Link to="/client/macrobreakdown"><p>Macro Breakdown</p></Link>
+                        {/* <p>Overview</p>
                         <p>Clients</p>
-                        <p>Macro Breakdown</p>
+                        <p>Macro Breakdown</p> */}
                     </div>
 
                     <div className="childElement">
-                        
+                        <Route path="/client/overview" component={Overview} />
+                        <Route path="/client/clients" component={Clients} />
+                        <Route path="/client/macrobreakdown" component={MacroB} />
                     </div>
                     
                 </div>
