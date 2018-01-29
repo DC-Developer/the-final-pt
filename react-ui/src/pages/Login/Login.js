@@ -3,10 +3,10 @@ import './Login.css';
 
 const loginImgs = [
     {
-        src: "../../imgs/login-hero.png"
+        src: "https://raw.githubusercontent.com/DC-Developer/the-final-pt/master/react-ui/src/imgs/login-hero.png"
     },
     {
-        src: "../../imgs/logo.png"
+        src: "https://raw.githubusercontent.com/DC-Developer/the-final-pt/master/react-ui/src/imgs/logo.png"
     }
 ];
 
@@ -19,6 +19,12 @@ class Login extends React.Component {
         return (
             <div className="Login-Alt">
                 <img src={mainImg.src} />
+
+                <div className="col-nested-grid">
+                    <div className="logoDiv">
+                        <img src={icon.src} className="logo"/>FIT CLIENT
+                    </div>
+                </div>
             </div>
         );
     }

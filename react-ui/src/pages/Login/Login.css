@@ -11,6 +11,13 @@
     background-color: #fbfbfc;
     display: grid;
     grid-template-columns: 1fr 1fr;
+    grid-template-rows: none;
+  }
+  .col-nested-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+    
   }
   .imgDiv {
       display: inline-block;
