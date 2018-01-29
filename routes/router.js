@@ -6,7 +6,7 @@ const mongoose = require('mongoose');
 
 
 router.get("/hello", (req, res) => {
-    res.send({ message: "Start Coding You Lazy Piece of Shit!" });
+    res.send({ message: "This is the data pipe, you Lazy Piece of Shit!" });
 });
 
 router.get("/all", (req, res) => {
