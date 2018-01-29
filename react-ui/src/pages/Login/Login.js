@@ -1,6 +1,7 @@
 import React from 'react';
 import './Login.css';
 
+//dry up the code by making a seperate file to store our img files in an array of objects
 const loginImgs = [
     {
         src: "https://raw.githubusercontent.com/DC-Developer/the-final-pt/master/react-ui/src/imgs/login-hero.png"
