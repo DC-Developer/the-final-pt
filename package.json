@@ -14,8 +14,10 @@
     "react-ui/node_modules"
   ],
   "dependencies": {
+    "bootstrap": "4.0.0",
     "express": "^4.14.1",
-    "mongoose": "5.0.1"
+    "mongoose": "5.0.1",
+    "react-bootstrap": "0.32.1"
   },
   "repository": {
     "type": "git",
