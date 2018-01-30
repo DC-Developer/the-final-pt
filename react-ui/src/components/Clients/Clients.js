@@ -16,7 +16,7 @@ const Clients = (props) => {
                 base and default to display all clients and render them below. When a user starts
                 entering in letters, change the client grid field to filter out anything that doesn't
                 have that letter*/}
-                <input type="text" value="  Search" className="clientSearch" />
+                <input type="text" placeholder="  Search" className="clientSearch" />
             </div>
             <div className="cRow">
             {/* need to add drop down */}
