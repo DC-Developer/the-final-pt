@@ -36,9 +36,6 @@ class Client extends React.Component {
                         <Link to="/client/overview"><p>Overview</p></Link>
                         <Link to="/client/clients"><p>Clients</p></Link>
                         <Link to="/client/macrobreakdown"><p>Macro Breakdown</p></Link>
-                        {/* <p>Overview</p>
-                        <p>Clients</p>
-                        <p>Macro Breakdown</p> */}
                     </div>
 
                     <div className="childElement">
