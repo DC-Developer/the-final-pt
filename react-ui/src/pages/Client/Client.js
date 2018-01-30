@@ -28,8 +28,13 @@ class Client extends React.Component {
                         <div className="logoDiv">
                             <img src={logo.src} className="logo"/>FIT CLIENT
                         </div>
-                        <div className="userPic">
-                            Jane Doe
+                        <div className="userDiv">
+                        {/* The user name will be dry coded by passing in the props from the parent 
+                        container's state */}
+                            <h4>Jane Doe</h4>
+                            <div className="userPic">
+
+                            </div>
                         </div>
                     </div>
                     <div className="grid">
@@ -45,19 +50,7 @@ class Client extends React.Component {
                             <Route path="/client/macrobreakdown" component={MacroB} />
                         </div>
                     </div>
-
-                    {/* <div className="sidebar">
-                        <Link to="/client/overview"><p>Overview</p></Link>
-                        <Link to="/client/clients"><p>Clients</p></Link>
-                        <Link to="/client/macrobreakdown"><p>Macro Breakdown</p></Link>
-                    </div>
-
-                    <div className="childElement">
-                        <Route path="/client/overview" component={Overview} />
-                        <Route path="/client/clients" component={Clients} />
-                        <Route path="/client/macrobreakdown" component={MacroB} />
-                    </div> */}
-                    
+                  
                 </div>
             </Router>
         );
