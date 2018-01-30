@@ -64,7 +64,7 @@ h4 {
 .sidebar {
     margin-top: 30px;
 }
-p {
+.sidebar p {
     color: #444444;
     font-family: Lato;
     font-size: 14px;
@@ -76,10 +76,10 @@ p {
     margin-left: 83px;
     margin-bottom: 50px;
 }
-p:hover {
+.sidebar p:hover {
     color: #50e2c1;
     
 }
-a:link {
+.sidebar a:link {
     text-decoration: none;
 }
