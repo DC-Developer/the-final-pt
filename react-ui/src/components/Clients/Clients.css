@@ -27,6 +27,13 @@
     border-radius: 6px;
     box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.2);
     border: #50e2c1;
+    font-family: Lato;
+    font-size: 12px;
+    font-weight: 900;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: 0px;
 }
 .clientSearch {
     width: 304px;
