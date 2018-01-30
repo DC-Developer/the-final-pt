@@ -11,6 +11,12 @@ const Clients = (props) => {
                     ADD CLIENT
                 </button>
             </div>
+            <div>
+                <input type="text" value="  Search" className="clientSearch" />
+            </div>
+            <div className="cRow">
+                <div className="c1" >Name</div> <div className="c2" >Date Added</div> <div className="c3" >Actions</div>
+            </div>
         </div>
     );
 }
