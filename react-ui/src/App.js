@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import {BrowserRouter as Router, Route, Link} from 'react-router-dom';
-import logo from './logo.svg';
 import './App.css';
 import Login from './pages/Login/Login.js';
 import Client from './pages/Client/Client.js';

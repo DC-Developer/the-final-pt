@@ -22,8 +22,8 @@ class Login extends React.Component {
                 <img src={mainImg.src} />
 
                 <div className="col-nested-grid">
-                    <div className="logoDiv">
-                        <img src={icon.src} className="logo"/>FIT CLIENT
+                    <div className="loginLogoDiv">
+                        <img src={icon.src} className="loginLogo"/>FIT CLIENT
                     </div>
                     <div className="oauth2">
                         <h1>Login</h1>
@@ -34,7 +34,7 @@ class Login extends React.Component {
                             <hr /><p className="hrText">or</p><hr />
                         </div>
 
-                        <form action ="" className="regLog" method="post">
+                        <form action="" className="regLog" method="post">
                             <input type="text" placeholder="    Email" className="Rectangle-login" /><br />
                             <input type="password" placeholder="    Password" className="Rectangle-login" /><br />
                             <input type="submit" value="Login" className="Rectangle-Copy-3" />
