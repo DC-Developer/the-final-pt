@@ -17,6 +17,14 @@ const Clients = (props) => {
             <div className="cRow">
                 <div className="c1" >Name</div> <div className="c2" >Date Added</div> <div className="c3" >Actions</div>
             </div>
+            <div className="clientList">
+                <div className="client">
+                    <div className="clientName">John Doe</div> <div className="clientDate">11-14-2017</div> <a>Edit</a>
+                </div>
+                <div className="client">
+                
+                </div>
+            </div>
         </div>
     );
 }

@@ -40,6 +40,7 @@
 }
 .cRow {
     margin-top: 30px;
+    margin-bottom: 20px;
     font-size: 12px;
     color: #bbbbbb;
 }
@@ -56,4 +57,51 @@
 }
 .c3 {
     display: inline-block;
+}
+.client {
+    width: 727px;
+    height: 57px;
+    border-radius: 6px;
+    border: solid 1px #e5e5e9;
+    margin-left: 50px;
+    margin-top: 10px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: none;
+}
+.clientName {
+    margin-left: 18px;
+    margin-top: 18px;  
+    color: #444444;
+    font-family: Lato;
+    font-size: 16px;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: 0.1px;
+}
+.clientDate {
+    margin-top: 18px;  
+    margin-left: 50px;
+    font-family: Lato;
+    font-size: 12px;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: 0px;
+    color: #bbbbbb;
+}
+.client a {
+    margin-top: 18px; 
+    margin-left: 180px; 
+    font-family: Lato;
+    font-size: 12px;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: 0px;
+    color: #50e2c1;
 }
