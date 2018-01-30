@@ -11,6 +11,9 @@
     display: inline-block;
     
 }
+.logo {
+    margin-right: 10px;
+}
 .parentElement{
     width: 1140px;
     height: 1024px;

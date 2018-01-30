@@ -1,0 +1,30 @@
+.h1 {
+    display: inline-block;
+    margin-top: 40px;
+    margin-left: 50px;
+    width: 146px;
+    height: 57px;
+    font-family: Lato;
+    font-size: 48px;
+    font-weight: 300;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: 0.1px;
+    text-align: left;
+    color: #444444;
+    
+}
+.addClient {
+    display: inline-block;
+    float: right;
+    margin-top: 50px;
+    margin-right: 50px;
+    background-color: #50e2c1;
+    width: 140px;
+    height: 40px;
+    color: white;
+    border-radius: 6px;
+    box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.2);
+    border: #50e2c1;
+}

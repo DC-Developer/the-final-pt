@@ -5,7 +5,12 @@ import './Clients.css';
 const Clients = (props) => {
     return (
         <div>
-            I am the clients
+            <div>
+                <div className="h1">Clients</div>
+                <button className="addClient">
+                    ADD CLIENT
+                </button>
+            </div>
         </div>
     );
 }
