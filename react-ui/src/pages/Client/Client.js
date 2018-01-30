@@ -32,7 +32,21 @@ class Client extends React.Component {
                             Jane Doe
                         </div>
                     </div>
-                    <div className="sidebar">
+                    <div className="grid">
+                        <div className="sidebar">
+                            <Link to="/client/overview"><p>Overview</p></Link>
+                            <Link to="/client/clients"><p>Clients</p></Link>
+                            <Link to="/client/macrobreakdown"><p>Macro Breakdown</p></Link>
+                        </div>
+
+                        <div className="childElement">
+                            <Route path="/client/overview" component={Overview} />
+                            <Route path="/client/clients" component={Clients} />
+                            <Route path="/client/macrobreakdown" component={MacroB} />
+                        </div>
+                    </div>
+
+                    {/* <div className="sidebar">
                         <Link to="/client/overview"><p>Overview</p></Link>
                         <Link to="/client/clients"><p>Clients</p></Link>
                         <Link to="/client/macrobreakdown"><p>Macro Breakdown</p></Link>
@@ -42,7 +56,7 @@ class Client extends React.Component {
                         <Route path="/client/overview" component={Overview} />
                         <Route path="/client/clients" component={Clients} />
                         <Route path="/client/macrobreakdown" component={MacroB} />
-                    </div>
+                    </div> */}
                     
                 </div>
             </Router>

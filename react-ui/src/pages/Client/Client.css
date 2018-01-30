@@ -7,9 +7,9 @@
     font-style: normal;
     font-stretch: normal;
     letter-spacing: 3.1px;
-    padding-top: 50px;
+    padding-top: 30px;
     display: inline-block;
-    
+    margin-left: 83px;
 }
 .logo {
     margin-right: 10px;
@@ -19,22 +19,47 @@
     height: 1024px;
     background-color: #fbfbfc;
 }
+.header {
+    padding-bottom: 30px;
+}
 .childElement{
     width: 827px;
     height: 833px;
     border-radius: 6px;
     background-color: #ffffff;
     box-shadow: 0 10px 20px 0 rgba(0, 0, 0, 0.15);
-    position: relative;
+    /* position: relative;
     top: -76.5px;
-    left: 270px;
+    left: 270px; */
 }
 .userPic{
     display: inline-block;
     float: right;
-    padding-top: 50px;
+    padding-top: 30px;
 }
-.sidebar{
-   
+.grid {
+    display: grid;
+    grid-template-columns: 270px 1fr;
 }
-
+.sidebar {
+    margin-top: 30px;
+}
+p {
+    color: #444444;
+    font-family: Lato;
+    font-size: 14px;
+    font-weight: bold;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: 0px;
+    margin-left: 83px;
+    margin-bottom: 50px;
+}
+p:hover {
+    color: #50e2c1;
+    
+}
+a:link {
+    text-decoration: none;
+}
