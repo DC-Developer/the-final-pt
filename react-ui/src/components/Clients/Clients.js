@@ -12,6 +12,7 @@ const Clients = (props) => {
                 </button>
             </div>
             <div>
+                {/* need to add magnifying glass */}
                 <input type="text" value="  Search" className="clientSearch" />
             </div>
             <div className="cRow">
@@ -22,7 +23,7 @@ const Clients = (props) => {
                     <div className="clientName">John Doe</div> <div className="clientDate">11-14-2017</div> <a>Edit</a>
                 </div>
                 <div className="client">
-                
+                    <div className="clientName">Bilbo Baggins</div> <div className="clientDate">11-14-2017</div> <a>Edit</a>
                 </div>
             </div>
         </div>
