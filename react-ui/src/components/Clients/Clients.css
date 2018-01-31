@@ -58,6 +58,13 @@
     letter-spacing: 0px;
     
 }
+.btn-primary:focus {
+    box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.2);
+}
+.btn:focus {
+    box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.2);
+   
+}
 .btn:hover {
     background-color: #2da085;
 }
