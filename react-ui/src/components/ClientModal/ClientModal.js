@@ -45,18 +45,34 @@ class ClientModal extends React.Component {
                 <div className="modal-dialog" role="document">
                     <div className="modal-content">
                         <div className="modal-header">
-                            <h5 className="modal-title" id="exampleModalLabel">Modal title</h5>
+                            <h5 className="modal-title" id="exampleModalLabel">Add a new client</h5>
                                 <button type="button" className="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                 </button>
                         </div>
 
                         <div className="modal-body">
-                            ...
+                            <div className="container-fluid">
+                                <div className="row">
+                                    <div className="col-sm-6">
+                                        Profile Picture
+                                    </div>
+                                    <div className="col-sm-6">
+                                        <div>Personal Info</div>
+                                        <div>Full Name</div>
+                                        <div>Email</div>
+                                        <div>Phone</div>
+                                        <div>Height</div>
+                                        <div>Weight</div>
+                                        <div>Body Fat</div>
+                                    </div>
+                                </div>
+
+                            </div>
                         </div>
 
                         <div className="modal-footer">
-                            <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="button" className="btn btn-secondary" data-dismiss="modal">Cancel</button>
                             <button type="button" className="btn btn-primary">Save changes</button>
                         </div>
                     </div>
