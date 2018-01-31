@@ -1,1 +1,1 @@
-export { ClientModal } from "./components/ClientModal/ClientModal.js";
+export { default } from "./ClientModal";

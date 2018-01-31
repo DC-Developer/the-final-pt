@@ -4,6 +4,7 @@ import './App.css';
 import Login from './pages/Login/Login.js';
 import Client from './pages/Client/Client.js';
 import Register from './pages/Register/Register.js';
+import ClientModal from './components/ClientModal';
 
 class App extends Component {
   constructor(props) {

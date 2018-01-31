@@ -1,5 +1,6 @@
 import React from 'react';
 import './Clients.css';
+import ClientModal from '../ClientModal';
 //this component will be setting the size for the client page
 
 const Clients = (props) => {
@@ -7,9 +8,10 @@ const Clients = (props) => {
         <div>
             <div>
                 <div className="h1">Clients</div>
-                <button className="addClient">
+                {/* <button className="addClient">
                     ADD CLIENT
-                </button>
+                </button> */}
+                <ClientModal />
             </div>
             <div>
                 {/* need to add magnifying glass, add in eventhandler that will query the data
@@ -32,6 +34,7 @@ const Clients = (props) => {
                     <div className="clientName">Bilbo Baggins</div> <div className="clientDate">11-14-2017</div> <a>Edit</a>
                 </div>
             </div>
+            
         </div>
     );
 }
