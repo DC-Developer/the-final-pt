@@ -1,11 +1,10 @@
-
 .Rectangle-Copy-3 {
     width: 304px;
     height: 45px;
     border-radius: 6px;
     background-color: #50e2c1;
   }
-  .Login-Alt {
+  .Register-Alt {
     width: 1140px;
     height: 687px;
     background-color: #fbfbfc;
@@ -97,7 +96,7 @@
       letter-spacing: 0.1px;
       font-family: 'Lato', sans-serif;
   }
-  .Rectangle-login {
+  .Rectangle-register {
     width: 304px;
     height: 45px;
     border-radius: 6px;
@@ -155,7 +154,7 @@
       /* margin-top: 60px; */
       color: #444444;
   }
-  .regLog {
+  .regForm {
     padding-bottom: 100px;
   }
   .hrDiv{
