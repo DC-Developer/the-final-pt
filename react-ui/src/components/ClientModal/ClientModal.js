@@ -61,16 +61,16 @@ class ClientModal extends React.Component {
                                         <div className="pInfo">Personal Info</div>
                                         
                                         <div>Full Name</div>
-                                        <input className="Rectangle-Copy">
+                                        <input className="Rectangle-Copy-Modal">
 
                                         </input>
                                         
                                         <div>Email</div>
-                                        <input className="Rectangle-Copy">
+                                        <input className="Rectangle-Copy-Modal">
 
                                         </input>
                                         <div>Phone</div>
-                                        <input className="Rectangle-Copy">
+                                        <input className="Rectangle-Copy-Modal">
 
                                         </input>
 
