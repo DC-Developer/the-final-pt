@@ -43,3 +43,9 @@ const MacroB = (props) => {
 }
 
 export default MacroB;
+
+
+// ---!!IMPORTANT NOTE!!---
+
+//potentially going to have to render the body to be a different size in here, and then import the
+//browser router, route and link from react-router-dom and implement it in this component.
