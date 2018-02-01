@@ -54,17 +54,46 @@ class ClientModal extends React.Component {
                         <div className="modal-body">
                             <div className="container-fluid">
                                 <div className="row">
-                                    <div className="col-sm-6">
-                                        Profile Picture
+                                    <div className="col-sm-5">
+                                        Profile Picture <div className="profileImg"><img/></div>
                                     </div>
-                                    <div className="col-sm-6">
-                                        <div>Personal Info</div>
+                                    <div className="col-sm-7">
+                                        <div className="pInfo">Personal Info</div>
+                                        
                                         <div>Full Name</div>
+                                        <input className="Rectangle-Copy">
+
+                                        </input>
+                                        
                                         <div>Email</div>
+                                        <input className="Rectangle-Copy">
+
+                                        </input>
                                         <div>Phone</div>
-                                        <div>Height</div>
-                                        <div>Weight</div>
-                                        <div>Body Fat</div>
+                                        <input className="Rectangle-Copy">
+
+                                        </input>
+
+                                        <div className="heightDiv">
+                                            <div className="botHeaders">Height</div>
+                                            <input className="Rectangle-Copy-Height">
+                                        
+                                            </input>
+                                        </div>
+
+                                        <div className="weightDiv">
+                                            <div className="botHeaders">Weight</div>
+                                            <input className="Rectangle-Copy-Weight">
+                                        
+                                            </input>
+                                        </div>
+
+                                        <div className ="bfatDiv">
+                                            <div className="botHeaders">Body Fat</div>
+                                            <input className="Rectangle-Copy-Bodyfat">
+                                        
+                                            </input>
+                                        </div>  
                                     </div>
                                 </div>
 
@@ -72,8 +101,8 @@ class ClientModal extends React.Component {
                         </div>
 
                         <div className="modal-footer">
-                            <button type="button" className="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                            <button type="button" className="btn btn-primary">Save changes</button>
+                            <button type="button" className="btn btn-secondary" data-dismiss="modal">CANCEL</button>
+                            <button type="button" className="btn btn-primary">ADD CLIENT</button>
                         </div>
                     </div>
                 </div>

@@ -85,6 +85,21 @@
 }
 .modal-header {
     border: none;
+    margin-bottom: 50px;
+}
+.modal-title {
+    padding-left: 35px;
+   
+    height: 57px;
+    font-family: Lato;
+    font-size: 48px;
+    font-weight: 300;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: 0.1px;
+    text-align: left;
+    color: #444444;
 }
 .modal-body {
     padding: 0 0 0 0;
@@ -99,12 +114,96 @@
 .container-fluid {
    
 }
-.col-sm-6 {
-    padding-left: 0;
-    padding-right: 0;
+.col-sm-7 {
+    font-family: Lato;
+    font-size: 14px;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: 0.1px;
+    color: #444444;
 }
+.col-sm-7 {
+    font-family: Lato;
+    font-size: 14px;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: 0.1px;
+    color: #444444;
+}
+.col-sm-5 {
+    padding-left: 50px;
+    font-family: Lato;
+    font-size: 14px;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: 1.1px;
+}
+.profileImg {
+    width: 204px;
+    height: 214px;
+    border-radius: 6px;
+    border: solid 1px #e5e5e9;
+    margin-top: 20px;
+}
+.Rectangle-Copy {
+    width: 334px;
+    height: 45px;
+    border-radius: 6px;
+    border: solid 1px #e5e5e9;
+    margin: 0 auto;
+    background-color: #ffffff;
+    margin-top: 5px;
+    margin-bottom: 15px;
+  }
+.Rectangle-Copy-Height {
+    width: 132px;
+    height: 45px;
+    border-radius: 6px;
+    border: solid 1px #e5e5e9;
 
-
+}
+.Rectangle-Copy-Weight {
+    width: 90px;
+    height: 45px;
+    border-radius: 6px;
+    border: solid 1px #e5e5e9;
+}
+.Rectangle-Copy-Bodyfat {
+    width: 90px;
+    height: 45px;
+    border-radius: 6px;
+    border: solid 1px #e5e5e9;
+}
+.heightDiv {
+    display: inline-block;
+    padding-right: 10px;
+}
+.weightDiv {
+    display: inline-block;
+    padding-right: 10px;
+}
+.bfatDiv {
+    display: inline-block;
+}
+.pInfo {
+    color: #c7c7c7;
+    margin-bottom: 22px;
+    font-size: 14px;
+    font-weight: 900;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: 1.1px;
+}
+.botHeaders {
+    margin-top: 22px;
+}
 
 .clientSearch {
     width: 304px;
