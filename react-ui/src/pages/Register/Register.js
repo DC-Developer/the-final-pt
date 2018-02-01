@@ -24,7 +24,7 @@ class Register extends React.Component {
                     <div className="loginLogoDiv">
                         <img src={icon.src} className="loginLogo"/>FIT CLIENT
                     </div>
-                    <div className="oauth2">
+                    <div className="oauth2Reg">
                         <h1>Register</h1>
                         <button className="Rectangle-Copy">Facebook</button>
                         <button className="Rectangle-Copy-2">Google</button>
