@@ -2,6 +2,7 @@ const express = require('express');
 const app = express();
 const path = require('path');
 const PORT = process.env.PORT || 5000;
+const bodyParser = require('body-parser');
 
 const mongoose = require('mongoose');
 const router = require('../routes/router'); 
@@ -21,6 +22,8 @@ mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/pt_applicatione
 // Priority serve any static files.
 app.use(express.static(path.resolve(__dirname, '../react-ui/build')));
 app.use("/api", router);
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
 // Answer API requests.
 // app.get('/api', function (req, res) {
 //   res.set('Content-Type', 'application/json');

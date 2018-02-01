@@ -1,4 +1,6 @@
-
+body {
+    background-color: #fbfbfc;
+}
 .logoDiv {
     text-align: left;
     font-size: 14px;

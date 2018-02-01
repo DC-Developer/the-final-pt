@@ -18,6 +18,18 @@ router.get("/all", (req, res) => {
         });
 });
 
+router.post("/client", (req, res) => {
+    const client = req.body;
+
+    console.log(client);
+});
+router.post("/register", (req, res) => {
+    const newUser = req.body;
+
+    console.log(newUser);
+});
+
+
 router.post("/seed", (req, res) => {
     
     db.User

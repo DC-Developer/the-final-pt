@@ -58,42 +58,34 @@ class ClientModal extends React.Component {
                                         Profile Picture <input type="file" />
                                         {/* <input className="profileImg"><img/></input> */}
                                 </form>
-                                    <form action="" method="post" className="col-sm-7">
+                                    <form action="/api/client" method="post" className="col-sm-7">
                                         <div className="pInfo">Personal Info</div>
                                         
                                         <div>Full Name</div>
-                                        <input className="Rectangle-Copy-Modal">
-
-                                        </input>
-                                        
+                                        <input className="Rectangle-Copy-Modal" name="fullname" type="text" />
+  
                                         <div>Email</div>
-                                        <input className="Rectangle-Copy-Modal">
+                                        <input className="Rectangle-Copy-Modal" name="email" type="text" />
 
-                                        </input>
                                         <div>Phone</div>
-                                        <input className="Rectangle-Copy-Modal">
-
-                                        </input>
+                                        <input className="Rectangle-Copy-Modal" name="phone" type="text" />
 
                                         <div className="heightDiv">
                                             <div className="botHeaders">Height</div>
-                                            <input className="Rectangle-Copy-Height">
+                                            <input className="Rectangle-Copy-Height" name="height" type="text" />
                                         
-                                            </input>
                                         </div>
 
                                         <div className="weightDiv">
                                             <div className="botHeaders">Weight</div>
-                                            <input className="Rectangle-Copy-Weight">
+                                            <input className="Rectangle-Copy-Weight" name="weight" type="text" />
                                         
-                                            </input>
                                         </div>
 
                                         <div className ="bfatDiv">
                                             <div className="botHeaders">Body Fat</div>
-                                            <input className="Rectangle-Copy-Bodyfat">
+                                            <input className="Rectangle-Copy-Bodyfat" name="bodyfat" type="text" />
                                         
-                                            </input>
                                         </div>  
 
                                         <div className="modal-footer">

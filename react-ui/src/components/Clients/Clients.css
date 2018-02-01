@@ -144,13 +144,12 @@
     line-height: normal;
     letter-spacing: 1.1px;
 }
-.col-sm-5 input {
+.profileImg {
     width: 204px;
     height: 214px;
     border-radius: 6px;
     border: solid 1px #e5e5e9;
     margin-top: 20px;
-   
 }
 .Rectangle-Copy-Modal {
     width: 334px;
