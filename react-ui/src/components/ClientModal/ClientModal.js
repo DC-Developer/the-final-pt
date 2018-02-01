@@ -54,10 +54,11 @@ class ClientModal extends React.Component {
                         <div className="modal-body">
                             <div className="container-fluid">
                                 <div className="row">
-                                    <div className="col-sm-5">
-                                        Profile Picture <div className="profileImg"><img/></div>
-                                    </div>
-                                    <div className="col-sm-7">
+                                <form action="" method="post" className="col-sm-5">
+                                        Profile Picture <input type="file" />
+                                        {/* <input className="profileImg"><img/></input> */}
+                                </form>
+                                    <form className="col-sm-7">
                                         <div className="pInfo">Personal Info</div>
                                         
                                         <div>Full Name</div>
@@ -94,15 +95,14 @@ class ClientModal extends React.Component {
                                         
                                             </input>
                                         </div>  
-                                    </div>
+
+                                        <div className="modal-footer">
+                                            <button type="button" className="btn btn-secondary" data-dismiss="modal">CANCEL</button>
+                                            <button type="submit" value="submit" className="btn btn-primary">ADD CLIENT</button>
+                                        </div>
+                                    </form>  
                                 </div>
-
                             </div>
-                        </div>
-
-                        <div className="modal-footer">
-                            <button type="button" className="btn btn-secondary" data-dismiss="modal">CANCEL</button>
-                            <button type="button" className="btn btn-primary">ADD CLIENT</button>
                         </div>
                     </div>
                 </div>
