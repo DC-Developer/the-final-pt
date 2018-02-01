@@ -58,3 +58,7 @@ class Client extends React.Component {
 }
 
 export default Client; 
+
+//if user logins, they will see this page. Therefore the links above should disappear.
+//the right picture on the type will render the client user, and have a dropdown menu
+//allowing the client to edit their profile and logout of the application
