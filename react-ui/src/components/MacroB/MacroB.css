@@ -1,20 +1,93 @@
 .macroTitle {
     margin-left: 48px;
+    font-family: Lato;
+    font-size: 48px;
+    font-weight: 300;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: 0.1px;
+    color: #444444;
+    margin-bottom: 38px;
+    margin-top: 37px;
 }
 
 .macroForm {
     margin-left: 48px;
 }
 
-.macroForm input {
-    display: block;
-}
 .clientSearchBar {
 
 }
 .clientSearchBar input{
+    width: 304px;
+    height: 45px;
+    border-radius: 6px;
+    border: solid 1px #e4e4e8;
+}
+.clientSearchBar select {
+
+}
+.clientSearchBar input, select{
     display: inline-block;
 }
-.clientSearchBar select{
+
+.genDiv{
+    margin-top: 35px;
+}
+.genDiv section,input, button{
     display: inline-block;
+}
+.genDiv input {
+    margin-right: 10px;
+    margin-top: 6px;
+}
+.macroHeaders {
+    font-family: Lato;
+    font-size: 14px;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: 0.1px;
+    color: #444444;
+}
+.macroHeight {
+    width: 132px;
+    height: 45px;
+    border-radius: 6px;
+    border: solid 1px #e4e4e8;
+}
+.macroWeight {
+    width: 90px;
+    height: 45px;
+    border-radius: 6px;
+    border: solid 1px #e4e4e8;
+}
+.macroBfat {
+    width: 90px;
+    height: 45px;
+    border-radius: 6px;
+    border: solid 1px #e4e4e8;
+}
+.generateB {
+    width: 181px;
+    height: 45px;
+    border-radius: 6px;
+    background-color: #50e2c1;
+    box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.2);
+    color: white;
+    font-family: Lato;
+    font-size: 12px;
+    font-weight: 900;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: 0px;
+    color: #ffffff;
+    border: none;
+}
+.generateB:hover {
+    cursor: pointer;
+    background-color: #2da085;
 }

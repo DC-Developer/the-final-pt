@@ -15,21 +15,27 @@ const MacroB = (props) => {
             <div className="macroForm" > 
 
                 <div className="clientSearchBar">
-                    <input /> <select></select>
+                                                    {/* add designs for the select drop down later */}
+                    <input placeholder="Search for a client"/> <select></select>
                 </div>   
-
-                <div>Height</div>
-                <input className="macroHeight" />
-
-                <div>Weight</div>
-                <input className="macroWeight" />
-
-                <div>Body Fat</div>
-                <input className="macroBfat" />
-
-                <button className="generateB">
-                    GENERATE BREAKDOWN
-                </button>
+                
+                <div className="genDiv">
+                    <section>
+                        <div className="macroHeaders">Height</div>
+                        <input className="macroHeight" />
+                    </section>
+                    <section>
+                        <div className="macroHeaders">Weight</div>
+                        <input className="macroWeight" />
+                    </section>
+                    <section>
+                        <div className="macroHeaders">Body Fat</div>
+                        <input className="macroBfat" />
+                    </section>
+                    <button className="generateB">
+                        GENERATE BREAKDOWN
+                    </button>
+                </div>
             </div>
 
         </div>
