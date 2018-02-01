@@ -1,0 +1,20 @@
+.macroTitle {
+    margin-left: 48px;
+}
+
+.macroForm {
+    margin-left: 48px;
+}
+
+.macroForm input {
+    display: block;
+}
+.clientSearchBar {
+
+}
+.clientSearchBar input{
+    display: inline-block;
+}
+.clientSearchBar select{
+    display: inline-block;
+}

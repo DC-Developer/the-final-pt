@@ -58,7 +58,7 @@ class ClientModal extends React.Component {
                                         Profile Picture <input type="file" />
                                         {/* <input className="profileImg"><img/></input> */}
                                 </form>
-                                    <form className="col-sm-7">
+                                    <form action="" method="post" className="col-sm-7">
                                         <div className="pInfo">Personal Info</div>
                                         
                                         <div>Full Name</div>
