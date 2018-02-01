@@ -35,8 +35,8 @@ class Login extends React.Component {
                         </div>
 
                         <form action="" className="regLog" method="post">
-                            <input type="text" placeholder="    Email" className="Rectangle-login" /><br />
-                            <input type="password" placeholder="    Password" className="Rectangle-login" /><br />
+                            <input type="text" placeholder="    Email" name="email" className="Rectangle-login" /><br />
+                            <input type="password" placeholder="    Password" name="password" className="Rectangle-login" /><br />
                             <input type="submit" value="Login" className="Rectangle-Copy-3" />
                         </form>
                     </div>

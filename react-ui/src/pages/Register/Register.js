@@ -34,8 +34,10 @@ class Register extends React.Component {
                         </div>
 
                         <form action="" className="regForm" method="post">
-                            <input type="text" placeholder="    Email" className="Rectangle-register" /><br />
-                            <input type="password" placeholder="    Password" className="Rectangle-register" /><br />
+                            <input type="text" placeholder="    First Name" name="firstname" className="Rectangle-register" /><br />
+                            <input type="text" placeholder="    Last Name" name="lastname" className="Rectangle-register" /><br />
+                            <input type="text" placeholder="    Email" name="email" className="Rectangle-register" /><br />
+                            <input type="password" placeholder="    Password" name="password" className="Rectangle-register" /><br />
                             <input type="submit" value="Register" className="Rectangle-Copy-3" />
                         </form>
                     </div>
