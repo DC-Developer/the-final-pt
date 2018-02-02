@@ -20,7 +20,7 @@ router.get("/all", (req, res) => {
 
 router.post("/client", (req, res) => {
     const client = req.body;
-
+    res.send(client);
     console.log("express server: ", client);
 });
 router.post("/register", (req, res) => {
