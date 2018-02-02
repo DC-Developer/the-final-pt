@@ -33,6 +33,40 @@ import './ClientModal.css';
 // })
 
 class ClientModal extends React.Component {
+    constructor(props) {
+        super(props)
+        this.state = {
+            formValues: {}
+        };
+
+        this.onChange = this.onChange.bind(this);
+        this.onSubmit = this.onSubmit.bind(this);
+    }
+    
+    onChange (e) { 
+        console.log(e.target.value);
+        let formValues = this.state.formValues;
+        let name = e.target.name;
+        let value = e.target.value;
+
+        formValues[name] = value;
+
+        this.setState({ formValues });
+    }
+
+    onSubmit (e) {
+        e.preventDefault();
+        // alert("Fullname: "+ this.state.fullname);
+        fetch('/api/client', {
+            method: 'POST',
+            headers: {"Content-Type": "application/json"},
+            body: JSON.stringify(this.state.formValues)
+        })
+        .then(res => res.json())
+        .then(data => console.log(data))
+        .catch(err => console.log(err))
+    }
+    
     render() {
         return (
             <div className="wrapper">
@@ -58,39 +92,39 @@ class ClientModal extends React.Component {
                                         Profile Picture <input type="file" />
                                         {/* <input className="profileImg"><img/></input> */}
                                 </form>
-                                    <form action="/api/client" method="post" className="col-sm-7">
+                                    <form className="col-sm-7" onSubmit={this.onSubmit}>
                                         <div className="pInfo">Personal Info</div>
                                         
                                         <div>Full Name</div>
-                                        <input className="Rectangle-Copy-Modal" name="fullname" type="text" />
+                                        <input className="Rectangle-Copy-Modal" name="fullname" type="text" value={this.state.fullname} onChange={this.onChange}/>
   
                                         <div>Email</div>
-                                        <input className="Rectangle-Copy-Modal" name="email" type="text" />
+                                        <input className="Rectangle-Copy-Modal" name="email" type="text" value={this.state.email} onChange={this.onChange}/>
 
                                         <div>Phone</div>
-                                        <input className="Rectangle-Copy-Modal" name="phone" type="text" />
+                                        <input className="Rectangle-Copy-Modal" name="phone" type="text" value={this.state.phone} onChange={this.onChange}/>
 
                                         <div className="heightDiv">
                                             <div className="botHeaders">Height</div>
-                                            <input className="Rectangle-Copy-Height" name="height" type="text" />
+                                            <input className="Rectangle-Copy-Height" name="height" type="text" value={this.state.height} onChange={this.onChange}/>
                                         
                                         </div>
 
                                         <div className="weightDiv">
                                             <div className="botHeaders">Weight</div>
-                                            <input className="Rectangle-Copy-Weight" name="weight" type="text" />
+                                            <input className="Rectangle-Copy-Weight" name="weight" type="text" value={this.state.weight} onChange={this.onChange}/>
                                         
                                         </div>
 
                                         <div className ="bfatDiv">
                                             <div className="botHeaders">Body Fat</div>
-                                            <input className="Rectangle-Copy-Bodyfat" name="bodyfat" type="text" />
+                                            <input className="Rectangle-Copy-Bodyfat" name="bodyfat" type="text" value={this.state.bodyfat} onChange={this.onChange}/>
                                         
                                         </div>  
 
                                         <div className="modal-footer">
                                             <button type="button" className="btn btn-secondary" data-dismiss="modal">CANCEL</button>
-                                            <button type="submit" value="submit" className="btn btn-primary">ADD CLIENT</button>
+                                            <button type="submit" value="Submit" className="btn btn-primary">ADD CLIENT</button>
                                         </div>
                                     </form>  
                                 </div>

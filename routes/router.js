@@ -21,7 +21,7 @@ router.get("/all", (req, res) => {
 router.post("/client", (req, res) => {
     const client = req.body;
 
-    console.log(client);
+    console.log("express server: ", client);
 });
 router.post("/register", (req, res) => {
     const newUser = req.body;
