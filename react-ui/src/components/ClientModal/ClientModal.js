@@ -24,8 +24,9 @@ class ClientModal extends React.Component {
     }
 
     onSubmit (e) {
+        // alert(JSON.stringify(this.state.formValues));
         e.preventDefault();
-        alert("Client: ", JSON.stringify(this.state.formValues));
+        
         fetch('/api/client', {
             method: 'POST',
             headers: {"Content-Type": "application/json"},
@@ -44,7 +45,7 @@ class ClientModal extends React.Component {
                 </button>
 
 
-            <div className="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div className="modal fade" id="exampleModal" tabIndex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div className="modal-dialog" role="document">
                     <div className="modal-content">
                         <div className="modal-header">

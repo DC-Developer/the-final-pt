@@ -2,7 +2,11 @@ const express = require('express');
 router = express();
 const db = require("../models");
 const mongoose = require('mongoose');
-
+const bodyParser= require('body-parser');
+//need to install body-parser and use it in all
+//routing files
+router.use(bodyParser.json());
+router.use(bodyParser.urlencoded({ extended: false }));
 
 
 router.get("/hello", (req, res) => {
