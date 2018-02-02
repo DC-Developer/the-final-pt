@@ -8,9 +8,6 @@ const Clients = (props) => {
         <div>
             <div>
                 <div className="h1">Clients</div>
-                {/* <button className="addClient">
-                    ADD CLIENT
-                </button> */}
                 <ClientModal />
             </div>
             <div>

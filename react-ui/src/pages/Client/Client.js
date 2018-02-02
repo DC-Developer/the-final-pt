@@ -11,12 +11,12 @@ const clientPageImgs = [
     }
 ];
 class Client extends React.Component {
-    // constructor(props){
-    //     super(props)
-    //     this.state = {
-            
-    //     }
-    // }
+    constructor(props){
+        super(props)
+        this.state = {
+            state: {}
+        }
+    }
     
     render() {
         var logo = clientPageImgs[0];

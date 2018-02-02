@@ -1,36 +1,5 @@
 import React from 'react';
 import './ClientModal.css';
-// import { observable, action } from 'mobx';
-// import { observer } from 'mobx-react';
-
-
-
-// const ClientModal = observer(class ClientModal extends React.PureComponent {
-//     @observable isOpen = false;
-
-//     @action open = (e) => {
-//         if (e) { e.preventDefault(); }
-
-//         this.isOpen = true;
-//     }
-
-//     @action close = (e) => {
-//         if (e) { e.preventDefault(); }
-
-//         this.isOpen = false;
-//     }
-
-//     render() {
-//         const overlayClasses = classNames({ open: this.isOpen });
-//         return (
-//             <div id="modal" className={overlayClasses}>
-
-//             </div>
-//         );
-//     }
-
-
-// })
 
 class ClientModal extends React.Component {
     constructor(props) {
@@ -44,7 +13,7 @@ class ClientModal extends React.Component {
     }
     
     onChange (e) { 
-        console.log(e.target.value);
+        console.log(this.state.formValues);
         let formValues = this.state.formValues;
         let name = e.target.name;
         let value = e.target.value;
@@ -56,15 +25,15 @@ class ClientModal extends React.Component {
 
     onSubmit (e) {
         e.preventDefault();
-        // alert("Fullname: "+ this.state.fullname);
+        alert("Client: ", JSON.stringify(this.state.formValues));
         fetch('/api/client', {
             method: 'POST',
             headers: {"Content-Type": "application/json"},
             body: JSON.stringify(this.state.formValues)
         })
         .then(res => res.json())
-        .then(data => console.log(data))
-        .catch(err => console.log(err))
+        .then(data => console.log("react server: ", data))
+        .catch(err => console.log(err));
     }
     
     render() {
@@ -88,7 +57,7 @@ class ClientModal extends React.Component {
                         <div className="modal-body">
                             <div className="container-fluid">
                                 <div className="row">
-                                <form action="" method="post" className="col-sm-5">
+                                <form className="col-sm-5">
                                         Profile Picture <input type="file" />
                                         {/* <input className="profileImg"><img/></input> */}
                                 </form>
@@ -96,29 +65,29 @@ class ClientModal extends React.Component {
                                         <div className="pInfo">Personal Info</div>
                                         
                                         <div>Full Name</div>
-                                        <input className="Rectangle-Copy-Modal" name="fullname" type="text" value={this.state.fullname} onChange={this.onChange}/>
+                                        <input className="Rectangle-Copy-Modal" name="fullname" type="text" value={this.state.fullname} onChange={this.onChange} />
   
                                         <div>Email</div>
-                                        <input className="Rectangle-Copy-Modal" name="email" type="text" value={this.state.email} onChange={this.onChange}/>
+                                        <input className="Rectangle-Copy-Modal" name="email" type="text" value={this.state.email} onChange={this.onChange} />
 
                                         <div>Phone</div>
-                                        <input className="Rectangle-Copy-Modal" name="phone" type="text" value={this.state.phone} onChange={this.onChange}/>
+                                        <input className="Rectangle-Copy-Modal" name="phone" type="text" value={this.state.phone} onChange={this.onChange} />
 
                                         <div className="heightDiv">
                                             <div className="botHeaders">Height</div>
-                                            <input className="Rectangle-Copy-Height" name="height" type="text" value={this.state.height} onChange={this.onChange}/>
+                                            <input className="Rectangle-Copy-Height" name="height" type="text" value={this.state.height} onChange={this.onChange} />
                                         
                                         </div>
 
                                         <div className="weightDiv">
                                             <div className="botHeaders">Weight</div>
-                                            <input className="Rectangle-Copy-Weight" name="weight" type="text" value={this.state.weight} onChange={this.onChange}/>
+                                            <input className="Rectangle-Copy-Weight" name="weight" type="text" value={this.state.weight} onChange={this.onChange} />
                                         
                                         </div>
 
-                                        <div className ="bfatDiv">
+                                        <div className="bfatDiv">
                                             <div className="botHeaders">Body Fat</div>
-                                            <input className="Rectangle-Copy-Bodyfat" name="bodyfat" type="text" value={this.state.bodyfat} onChange={this.onChange}/>
+                                            <input className="Rectangle-Copy-Bodyfat" name="bodyfat" type="text" value={this.state.bodyfat} onChange={this.onChange} />
                                         
                                         </div>  
 
