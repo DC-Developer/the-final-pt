@@ -36,7 +36,7 @@ class App extends Component {
     //     });
     //   })
     this.callApi()
-    .then(res => this.setState({message: res.message, fetching: false}))
+    .then(res => this.setState({ message: res.message, fetching: false }))
     .catch(err => console.log(err));
 
   }
@@ -46,6 +46,8 @@ class App extends Component {
     const body = await response.json();
 
     if (response.status !== 200) throw Error(body.message);
+
+    console.log("react server: ", body);
 
     return body;
   }
@@ -65,7 +67,7 @@ class App extends Component {
               <Link to="/client">Client Page</Link>
             </li>
           </ul>
-  
+          
           {/* {this.state.message} */}
 
           <Route path="/login" component={Login} />

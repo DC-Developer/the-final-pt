@@ -11,6 +11,7 @@ router.use(bodyParser.urlencoded({ extended: false }));
 
 router.get("/hello", (req, res) => {
     res.send({ message: "This is the data pipe, you Lazy Piece of Shit!" });
+    
 });
 
 router.get("/all", (req, res) => {
@@ -26,6 +27,13 @@ router.post("/client", (req, res) => {
     const client = req.body;
     res.send(client);
     console.log("express server: ", client);
+});
+router.get('/clients', (req, res) => {
+    const dbClients = ['Josh', 'Bilbo', 'Baggins'];
+    console.log(dbClients);
+    res.send({ clients: dbClients });
+    //^ it's really important that you send the response as an object
+
 });
 router.post("/register", (req, res) => {
     const newUser = req.body;
