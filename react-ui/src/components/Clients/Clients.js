@@ -3,7 +3,35 @@ import './Clients.css';
 import ClientModal from '../ClientModal';
 //this component will be setting the size for the client page
 
-const Clients = (props) => {
+//this component will need to store data from the api into its state and then call the state and loop through
+//the array and dynamically create client divs with client information. --figure out how to automatically 
+//make new pages upon reaching the max limit of viewable clients on the page. 
+
+class Clients extends React.Component {
+    constructor(props) {
+        super(props)
+        this.state = {
+            clients: []
+        }
+    }
+
+    componentDidMount() {
+        //make the api call inside here and set the state within the api call promise
+        callApi()
+            .then()
+            .catch()
+
+            //once this is all done, the state will contain all the clients as an array. now you can use the map
+            //method and dynamically add the client divs unto the page
+    }
+    //make the api call to the server to get clients
+    callApi = async () => {
+
+
+    }
+   
+   
+    render(){ 
     return (
         <div>
             <div>
@@ -31,9 +59,11 @@ const Clients = (props) => {
                     <div className="clientName">Bilbo Baggins</div> <div className="clientDate">11-14-2017</div> <a>Edit</a>
                 </div>
             </div>
-            
+            {/* potentially feature:
+                display modal showing client details upon clicking the client's name  */}
         </div>
     );
+ }
 }
 
 export default Clients;
