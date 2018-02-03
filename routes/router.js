@@ -25,30 +25,23 @@ router.get("/all", (req, res) => {
 
 router.post("/client", (req, res) => {
     const client = req.body;
-
+//save the client to the database
     db.Client
         .create(client)
         .then(savedClient => console.log("database: ", savedClient))
         .catch(err => res.status(422).json(err));
 
-
-
-    // res.send(client);
-    console.log("express server: ", client);
-
-
 });
 router.get('/clients', (req, res) => {
-    const dbClients = ['Josh', 'Bilbo', 'Baggins'];
-    // const dbCLients = '' ;
+    // const dbClients ;
     //query the database
 
+    db.Client
+        .find({})
+        .then(clients => res.send(clients))
+        .catch(err => res.status(502).json(err));
 
-
-
-
-    console.log(dbClients);
-    res.send({ clients: dbClients });
+    // res.send({ clients: dbClients });
     //^ it's really important that you send the response as an object
 
 });

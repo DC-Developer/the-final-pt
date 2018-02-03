@@ -19,7 +19,7 @@ class Clients extends React.Component {
     componentDidMount() {
         //make the api call inside here and set the state within the api call promise
         this.callApi()
-            .then(res => this.setState({ clients: res.clients, fetching: false }))
+            .then(res => this.setState({ clients: res, fetching: false }))
             .catch(err => console.log(err));
             //once this is all done, the state will contain all the clients as an array. now you can use the map
             //method and dynamically add the client divs unto the page
@@ -28,15 +28,16 @@ class Clients extends React.Component {
     }
     //make the api call to the server to get clients
     callApi = async () => {
-        const response = await fetch('/api/clients',{ method: 'GET' });
-
+        const response = await fetch('/api/clients', { method: 'GET' } );
         const body = await response.json();
+        
+        const client_arr = body.map(client => client);
 
         if (response.status !== 200) throw Error(body.message);
 
         console.log("react server: ", body);
 
-        return body;
+        return client_arr;
     }
    
    
