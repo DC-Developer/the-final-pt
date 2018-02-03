@@ -1,3 +1,4 @@
 module.exports = {
-    User: require("./Users")
+    User: require("./Users"),
+    Client: require('./Clients')
   };

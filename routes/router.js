@@ -29,9 +29,11 @@ router.post("/client", (req, res) => {
     console.log("express server: ", client);
 });
 router.get('/clients', (req, res) => {
-    const dbClients = ['Josh', 'Bilbo', 'Baggins'];
+    // const dbClients = ['Josh', 'Bilbo', 'Baggins'];
+    const dbCLients = '' ;
+
     console.log(dbClients);
-    res.send({ clients: dbClients });
+    res.send({ clients: dbCLients });
     //^ it's really important that you send the response as an object
 
 });
