@@ -17,7 +17,7 @@ class Clients extends React.Component {
 
     componentDidMount() {
         //make the api call inside here and set the state within the api call promise
-        callApi()
+        this.callApi()
             .then()
             .catch()
 
