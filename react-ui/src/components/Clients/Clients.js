@@ -27,6 +27,7 @@ class Clients extends React.Component {
 
         console.log('state: ', this.state.clients);
     }
+
     //make the api call to the server to get clients
     callApi = async () => {
         const response = await fetch('/api/clients', { method: 'GET' } );
@@ -41,8 +42,12 @@ class Clients extends React.Component {
         return clients;
     }
 
+    shouldComponentUpdate(nextState){
+ 
+    }
 
     render(){ 
+        console.log('state from render: ', this.state.clients);
     return (
         <div>
             <div>
@@ -60,15 +65,9 @@ class Clients extends React.Component {
             {/* need to add drop down */}
                 <div className="c1" >Name</div> <div className="c2" >Date Added</div> <div className="c3" >Actions</div>
             </div>
-            <div className="clientList">
+            <div className="clientList" id="clientDiv">
             {/* dynamically render the client divs with the map function, this is activate based
             off the search bar using jquery */}
-                <div className="client">
-                    <div className="clientName">John Doe</div> <div className="clientDate">11-14-2017</div> <a>Edit</a>
-                </div>
-                <div className="client">
-                    <div className="clientName">Bilbo Baggins</div> <div className="clientDate">11-14-2017</div> <a>Edit</a>
-                </div>
                 {this.state.clients.map(client => (<ClientDiv fullname={client.fullname} key={client._id}/>))}
             </div>
             {/* potentially feature:
@@ -77,5 +76,6 @@ class Clients extends React.Component {
     );
  }
 }
+
 
 export default Clients;
