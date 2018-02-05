@@ -1,8 +1,9 @@
 import React from 'react';
 import './Clients.css';
 import ClientModal from '../ClientModal';
+import ClientDiv from '../ClientDiv';
 
-const clients = [];
+var clients = [];
 //this component will need to store data from the api into its state and then call the state and loop through
 //the array and dynamically create client divs with client information. --figure out how to automatically 
 //make new pages upon reaching the max limit of viewable clients on the page. 
@@ -68,7 +69,7 @@ class Clients extends React.Component {
                 <div className="client">
                     <div className="clientName">Bilbo Baggins</div> <div className="clientDate">11-14-2017</div> <a>Edit</a>
                 </div>
-                {this.state.clients.map(client => <p>{client.fullname}</p>)}
+                {this.state.clients.map(client => (<ClientDiv fullname={client.fullname} key={client._id}/>))}
             </div>
             {/* potentially feature:
                 display modal showing client details upon clicking the client's name  */}
