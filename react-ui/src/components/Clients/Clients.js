@@ -1,34 +1,25 @@
 import React from 'react';
 import './Clients.css';
 import ClientModal from '../ClientModal';
-//this component will be setting the size for the client page
 
+const clients = [];
 //this component will need to store data from the api into its state and then call the state and loop through
 //the array and dynamically create client divs with client information. --figure out how to automatically 
 //make new pages upon reaching the max limit of viewable clients on the page. 
-const client_arr = [];
-
-function iterate(obj) {
-    for(var key in obj){
-        client_arr[key] = obj[key];
-        console.log("clients: ", client_arr);
-    }
-}
 
 class Clients extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            clients: [],
-            fetching: true
+            clients
         }
-        // this.iterate = this.iterate.bind(this);
+       
     }
 
     componentDidMount() {
         //make the api call inside here and set the state within the api call promise
         this.callApi()
-            .then(res => this.setState({ clients: res[0].fullname, fetching: false }))
+            .then(clients => this.setState({ clients }))
             .catch(err => console.log(err));
             //once this is all done, the state will contain all the clients as an array. now you can use the map
             //method and dynamically add the client divs unto the page
@@ -40,17 +31,13 @@ class Clients extends React.Component {
         const response = await fetch('/api/clients', { method: 'GET' } );
         const body = await response.json();
 
-        //here we call the iterate function and pass it the body and client_arr
-        //iterate will loop through the json object and store in all it's data into
-        //the client_arr array.
-
-        iterate(body);
-        console.log('iterated object: ', client_arr);
         if (response.status !== 200) throw Error(body.message);
 
         console.log("react server: ", body);
 
-        return client_arr;
+        clients = body;
+
+        return clients;
     }
 
 
@@ -81,7 +68,7 @@ class Clients extends React.Component {
                 <div className="client">
                     <div className="clientName">Bilbo Baggins</div> <div className="clientDate">11-14-2017</div> <a>Edit</a>
                 </div>
-                {this.state.clients}
+                {this.state.clients.map(client => <p>{client.fullname}</p>)}
             </div>
             {/* potentially feature:
                 display modal showing client details upon clicking the client's name  */}
