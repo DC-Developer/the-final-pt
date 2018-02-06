@@ -24,15 +24,14 @@ class ClientModal extends React.Component {
     }
 
     onSubmit (e) {
-        e.preventDefault();
-        
+        // e.preventDefault();
+        //find the potential fix here.
         fetch('/api/client', {
             method: 'POST',
             headers: {"Content-Type": "application/json"},
             body: JSON.stringify(this.state.formValues)
         })
         .then(res => res.json())
-        .then(data => console.log("react server: ", data))
         .catch(err => console.log(err));
     }
     
@@ -94,6 +93,7 @@ class ClientModal extends React.Component {
                                         <div className="modal-footer">
                                             <button type="button" className="btn btn-secondary" data-dismiss="modal">CANCEL</button>
                                             <button type="submit" value="Submit" className="btn btn-primary" onClick={this.props.onClick}>ADD CLIENT</button>
+                                            {/* <button type="submit" value="Submit" className="btn btn-primary" onClick={this.props.onClick}>ADD CLIENT</button> */}
                                         </div>
                                     </form>  
                                 </div>

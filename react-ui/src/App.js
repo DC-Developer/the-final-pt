@@ -29,7 +29,7 @@ class App extends Component {
 
     if (response.status !== 200) throw Error(body.message);
 
-    console.log("react server: ", body);
+    console.log("app.js callApi: ", body);
 
     return body;
   }

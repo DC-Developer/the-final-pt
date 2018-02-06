@@ -14,7 +14,8 @@ class Clients extends React.Component {
         this.state = {
             clients
         }
-       this.addedClient = this.addedClient.bind(this);
+        this.callApi = this.callApi.bind(this);
+        this.addedClient = this.addedClient.bind(this);
     }
 
     componentDidMount() {
@@ -25,8 +26,15 @@ class Clients extends React.Component {
             //once this is all done, the state will contain all the clients as an array. now you can use the map
             //method and dynamically add the client divs unto the page
 
-        console.log('state: ', this.state.clients);
+        console.log('component did mount Clients.js state: ', this.state.clients);
     }
+    // shouldComponentUpdate(nextState) {
+    //     if(nextState !== this.state){
+    //         return true;
+    //     }else{
+    //         return false;
+    //     }
+    // }
 
     addedClient() {
         //making another api call after the modal is submitted, this will update this page to show the newly
@@ -46,7 +54,7 @@ class Clients extends React.Component {
 
         if (response.status !== 200) throw Error(body.message);
 
-        console.log("react server: ", body);
+        console.log("async callApi from Clients.js: ", body);
 
         clients = body;
 
@@ -54,12 +62,13 @@ class Clients extends React.Component {
     }
 
     render(){ 
-        console.log('state from render: ', this.state.clients);
+        console.log('state from Clients.js render: ', this.state.clients);
     return (
         <div>
             <div>
                 <div className="h1">Clients</div>
                 <ClientModal onClick={this.addedClient}/>
+                {/* <ClientModal onClick={this.addedClient}/> */}
             </div>
             <div>
                 {/* need to add magnifying glass, add in eventhandler that will query the data
