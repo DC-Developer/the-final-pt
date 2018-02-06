@@ -4,14 +4,14 @@ import './App.css';
 import Login from './pages/Login/Login.js';
 import Client from './pages/Client/Client.js';
 import Register from './pages/Register/Register.js';
-import ClientModal from './components/ClientModal';
 
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
       message: null,
-      fetching: true
+      fetching: true,
+      didChildUpdate: false
     };
   }
 
@@ -33,9 +33,7 @@ class App extends Component {
 
     return body;
   }
-  shouldComponentUpdate() {
-    return true;
-}
+
 
   render() {
     return (
@@ -52,8 +50,6 @@ class App extends Component {
               <Link to="/client">Client Page</Link>
             </li>
           </ul>
-          
-          {/* {this.state.message} */}
 
           <Route path="/login" component={Login} />
           <Route path="/register" component={Register} />

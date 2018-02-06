@@ -24,7 +24,6 @@ class ClientModal extends React.Component {
     }
 
     onSubmit (e) {
-        // alert(JSON.stringify(this.state.formValues));
         e.preventDefault();
         
         fetch('/api/client', {
@@ -94,7 +93,7 @@ class ClientModal extends React.Component {
 
                                         <div className="modal-footer">
                                             <button type="button" className="btn btn-secondary" data-dismiss="modal">CANCEL</button>
-                                            <button type="submit" value="Submit" className="btn btn-primary">ADD CLIENT</button>
+                                            <button type="submit" value="Submit" className="btn btn-primary" onClick={this.props.onClick}>ADD CLIENT</button>
                                         </div>
                                     </form>  
                                 </div>

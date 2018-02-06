@@ -1,4 +1,4 @@
-import React from 'react';
+import React from 'react';  
 import './Clients.css';
 import ClientModal from '../ClientModal';
 import ClientDiv from '../ClientDiv';
@@ -14,7 +14,7 @@ class Clients extends React.Component {
         this.state = {
             clients
         }
-       
+       this.addedClient = this.addedClient.bind(this);
     }
 
     componentDidMount() {
@@ -26,6 +26,17 @@ class Clients extends React.Component {
             //method and dynamically add the client divs unto the page
 
         console.log('state: ', this.state.clients);
+    }
+
+    addedClient() {
+        //making another api call after the modal is submitted, this will update this page to show the newly
+        //added divs in realtime. 
+        this.callApi()
+        .then(clients => this.setState({ clients }))
+        .catch(err => console.log(err));
+        
+        console.log('addedClient state: ', this.state.clients);
+
     }
 
     //make the api call to the server to get clients
@@ -42,17 +53,13 @@ class Clients extends React.Component {
         return clients;
     }
 
-    shouldComponentUpdate(nextState){
- 
-    }
-
     render(){ 
         console.log('state from render: ', this.state.clients);
     return (
         <div>
             <div>
                 <div className="h1">Clients</div>
-                <ClientModal />
+                <ClientModal onClick={this.addedClient}/>
             </div>
             <div>
                 {/* need to add magnifying glass, add in eventhandler that will query the data
