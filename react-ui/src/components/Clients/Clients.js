@@ -15,7 +15,7 @@ class Clients extends React.Component {
             clients
         }
         this.callApi = this.callApi.bind(this);
-        this.addedClient = this.addedClient.bind(this);
+        // this.addedClient = this.addedClient.bind(this);
     }
 
     componentDidMount() {
@@ -36,16 +36,16 @@ class Clients extends React.Component {
     //     }
     // }
 
-    addedClient() {
-        //making another api call after the modal is submitted, this will update this page to show the newly
-        //added divs in realtime. 
-        this.callApi()
-        .then(clients => this.setState({ clients }))
-        .catch(err => console.log(err));
+    // addedClient() {
+    //     //making another api call after the modal is submitted, this will update this page to show the newly
+    //     //added divs in realtime. 
+    //     this.callApi()
+    //     .then(clients => this.setState({ clients }))
+    //     .catch(err => console.log(err));
         
-        console.log('addedClient state: ', this.state.clients);
+    //     console.log('addedClient state: ', this.state.clients);
 
-    }
+    // }
 
     //make the api call to the server to get clients
     callApi = async () => {
