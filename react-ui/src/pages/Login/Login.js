@@ -22,6 +22,7 @@ class Login extends React.Component {
             redirect: false
         }
         this.signup = this.signup.bind(this);
+        this.callApi = this.callApi.bind(this);
     }
     //type has to be specified here, since we're taking the response
     //from google or facebook, we will have to put conditionals with 
@@ -31,19 +32,23 @@ class Login extends React.Component {
         let postData;
         if(type === 'facebook' && res.email) {
             postData = {name: res.name, provider: type, email: res.email, provider_id: res.id, token: res.accessToken, provider_pic: res.provider_pic};
+            this.callApi(type, postData);
         }
         if(type === 'google' && res.w3.U3) {
             postData = {name: res.w3.ig, provider: type, email: res.w3.U3, provider_id: res.El, token: res.Zi.access_token, provider_pic: res.w3.Paa};
             //^this is what will be posted to the database
+            this.callApi(type, postData);
         }
 
-        //put callApi function here, and then send the postData to the api to store into db
-        //probably only need to callapi in the register page, not here. the responses from
-        //google and facebook should be sufficient.
+        this.setState({ redirect: true });
+
     }
 
-    callApi = async (data) => {
-        const response = await fetch("/oauth");
+    callApi = async (type, client_data) => {
+        const response = await fetch("/oauth"+type, {
+            method: 'POST',
+            body: JSON.stringify(client_data)
+        })
         const body = await response.json();
 
         if (response.status !== 200) throw Error(body.message);
@@ -51,7 +56,7 @@ class Login extends React.Component {
         console.log("login.js callApi: ", body);
     
         return body;
-
+        //maybe use custom promise to resolve and reject
     }
 
     
@@ -65,11 +70,11 @@ class Login extends React.Component {
 
         const responseGoogle = (response) => {
             console.log(response);
-            // this.signup(response, 'google');
+             this.signup(response, 'google');
         }
         const responseFacebook = (response) => {
             console.log(response);
-            // this.signup(response, 'facebook');
+             this.signup(response, 'facebook');
         }
         //after the response, we need to trigger our api to authenthicate
         //the credentials

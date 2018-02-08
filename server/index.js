@@ -6,7 +6,8 @@ const PORT = process.env.PORT || 5000;
 const bodyParser = require('body-parser');
 
 const mongoose = require('mongoose');
-const router = require('../routes/router'); 
+const router = require('../routes/router');
+const oauth = require('../routes/oauth');  
 const db = require("../models");
 
 var MONGODB_URI = process.env.MONGODB_URI || "mongodb://root:root@ds111478.mlab.com:11478/pt_applicationes";
@@ -23,6 +24,7 @@ mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/pt_applicatione
 // Priority serve any static files.
 app.use(express.static(path.resolve(__dirname, '../react-ui/build')));
 app.use("/api", router);
+app.use("/oauth", oauth);
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 

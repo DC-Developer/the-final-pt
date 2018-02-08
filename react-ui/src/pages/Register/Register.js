@@ -1,5 +1,7 @@
 import React from 'react';
 import './Register.css';
+import GoogleLogin from 'react-google-login';
+import FacebookLogin from 'react-facebook-login';
 
 const loginImgs = [
     {
@@ -11,10 +13,65 @@ const loginImgs = [
 ];
 
 class Register extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            redirect: false
+        }
+        this.signup = this.signup.bind(this);
+        this.callApi = this.callApi.bind(this);
+    }
+    signup(res, type) {
+
+        let postData;
+        if(type === 'facebook' && res.email) {
+            postData = {name: res.name, provider: type, email: res.email, provider_id: res.id, token: res.accessToken, provider_pic: res.provider_pic};
+            this.callApi(type, postData);
+        }
+        if(type === 'google' && res.w3.U3) {
+            postData = {name: res.w3.ig, provider: type, email: res.w3.U3, provider_id: res.El, token: res.Zi.access_token, provider_pic: res.w3.Paa};
+            //^this is what will be posted to the database
+            this.callApi(type, postData);
+        }
+
+        this.setState({ redirect: true });
+
+    }
+
+    callApi = async (type, client_data) => {
+        const response = await fetch("/oauth"+type, {
+            method: 'POST',
+            body: JSON.stringify(client_data)
+        })
+        const body = await response.json();
+
+        if (response.status !== 200) throw Error(body.message);
+
+        console.log("login.js callApi: ", body);
+    
+        return body;
+        //maybe use custom promise to resolve and reject
+    }
+    
+    
+    
+    
+    
+    
+    
     render() {
 
         var mainImg = loginImgs[0];
         var icon = loginImgs[1];
+
+        const responseGoogle = (response) => {
+            console.log(response);
+             this.signup(response, 'google');
+        }
+        const responseFacebook = (response) => {
+            console.log(response);
+             this.signup(response, 'facebook');
+        }
 
         return (
             <div className="Register-Alt">
@@ -26,8 +83,21 @@ class Register extends React.Component {
                     </div>
                     <div className="oauth2Reg">
                         <h1>Register</h1>
-                        <button className="Rectangle-Copy">Facebook</button>
-                        <button className="Rectangle-Copy-2">Google</button>
+                        <FacebookLogin
+                            appId="175418049620583"
+                            autoLoad={true}
+                            fields="name,email,picture"
+                            callback={responseFacebook}
+                            icon="fa-facebook"
+                            cssClass="Rectangle-Copy"
+                        />      
+                        <GoogleLogin
+                            clientId="559169765800-3o3ge3ehthqa344cb0feq38a5occr13d.apps.googleusercontent.com"
+                            buttonText="Login with Google"
+                            onSuccess={responseGoogle}
+                            onFailure={responseGoogle}
+                            className="Rectangle-Copy-2"
+                        />            
                         
                         <div className="hrDiv">
                             <hr /><p className="hrText">or</p><hr />
