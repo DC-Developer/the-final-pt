@@ -33,7 +33,9 @@ app.use(cors());
 //   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
 //   next();
 // });
-
+app.get("/googlebc4fa242f94a6101.html", (req, res) => {
+  res.sendFile(path.resolve(__dirname, '../react-ui/public', 'googlebc4fa242f94a6101.html'));
+});
 
 // Answer API requests.
 // app.get('/api', function (req, res) {
