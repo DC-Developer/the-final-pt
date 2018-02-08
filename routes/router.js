@@ -3,8 +3,9 @@ router = express();
 const db = require("../models");
 const mongoose = require('mongoose');
 const bodyParser= require('body-parser');
-//need to install body-parser and use it in all
-//routing files
+const jwt = require('jsonwebtoken');
+const bcrypt = require('bcryptjs');
+
 router.use(bodyParser.json());
 router.use(bodyParser.urlencoded({ extended: false }));
 
@@ -47,6 +48,16 @@ router.get('/clients', (req, res) => {
 });
 router.post("/register", (req, res) => {
     const newUser = req.body;
+
+
+    var hashedPassword = bcrypt.hashSync(req.body.password, 8);
+
+
+    var token = jwt.sign({id:user._id}, config.secret, {
+        expiresIn: 86400//expires in 24 hours
+    });
+    res.status(200).send({auth: true, token: token});
+
 
     console.log(newUser);
 });
