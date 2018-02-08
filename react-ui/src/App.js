@@ -25,6 +25,7 @@ class App extends Component {
 //I should make callApi() a seperate file and import it, since it is
 //going to be used multiple times in this application
   callApi = async () => {
+    // , { method: 'GET' }
     const response = await fetch("/api/hello");
     const body = await response.json();
 

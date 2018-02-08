@@ -28,8 +28,31 @@ class Login extends React.Component {
     //logic specific to fb or google since they send different responses
     signup(res, type) {
 
+        let postData;
+        if(type === 'facebook' && res.email) {
+            postData = {name: res.name, provider: type, email: res.email, provider_id: res.id, token: res.accessToken, provider_pic: res.provider_pic};
+        }
+        if(type === 'google' && res.w3.U3) {
+            postData = {name: res.w3.ig, provider: type, email: res.w3.U3, provider_id: res.El, token: res.Zi.access_token, provider_pic: res.w3.Paa};
+            //^this is what will be posted to the database
+        }
+
+        //put callApi function here, and then send the postData to the api to store into db
+        //probably only need to callapi in the register page, not here. the responses from
+        //google and facebook should be sufficient.
     }
 
+    callApi = async (data) => {
+        const response = await fetch("/oauth");
+        const body = await response.json();
+
+        if (response.status !== 200) throw Error(body.message);
+
+        console.log("login.js callApi: ", body);
+    
+        return body;
+
+    }
 
     
     render() {
@@ -37,13 +60,16 @@ class Login extends React.Component {
         var mainImg = loginImgs[0];
         var icon = loginImgs[1];
 
+        //have a conditional that redirects user to home page if 
+        //this.state.redirect is true
+
         const responseGoogle = (response) => {
             console.log(response);
-            this.signup(response, 'google');
+            // this.signup(response, 'google');
         }
         const responseFacebook = (response) => {
             console.log(response);
-            this.signup(response, 'facebook');
+            // this.signup(response, 'facebook');
         }
         //after the response, we need to trigger our api to authenthicate
         //the credentials
