@@ -121,6 +121,10 @@
     font-family: 'Lato', sans-serif;
     background-color: #4468b0;
   }
+  .Rectangle-Copy:hover {
+    cursor: pointer;
+    background-color: #32559b;
+  }
   
   .Rectangle-Copy-2{
     width: 304px;
@@ -133,7 +137,13 @@
     color: #ffffff;
     font-family: 'Lato', sans-serif;
     background-color:#dd4b39;
+    
   }
+  .Rectangle-Copy-2:hover {
+    cursor: pointer;
+    background-color:#be3c2b;
+  }
+
   .Rectangle-Copy-3 {
     width: 304px;
     height: 45px;
