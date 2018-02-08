@@ -22,7 +22,8 @@ class App extends Component {
     .catch(err => console.log(err));
 
   }
-
+//I should make callApi() a seperate file and import it, since it is
+//going to be used multiple times in this application
   callApi = async () => {
     const response = await fetch("/api/hello");
     const body = await response.json();

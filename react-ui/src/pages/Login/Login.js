@@ -13,17 +13,40 @@ const loginImgs = [
         src: "https://raw.githubusercontent.com/DC-Developer/the-final-pt/master/react-ui/src/imgs/logo.png"
     }
 ];
-const responseGoogle = (response) => {
-    console.log(response);
-}
-const responseFacebook = (response) => {
-    console.log(response);
-}
+
 
 class Login extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            redirect: false
+        }
+        this.signup = this.signup.bind(this);
+    }
+    //type has to be specified here, since we're taking the response
+    //from google or facebook, we will have to put conditionals with 
+    //logic specific to fb or google since they send different responses
+    signup(res, type) {
+
+    }
+
+
+    
     render() {
+
         var mainImg = loginImgs[0];
         var icon = loginImgs[1];
+
+        const responseGoogle = (response) => {
+            console.log(response);
+            this.signup(response, 'google');
+        }
+        const responseFacebook = (response) => {
+            console.log(response);
+            this.signup(response, 'facebook');
+        }
+        //after the response, we need to trigger our api to authenthicate
+        //the credentials
 
         return (
             <div className="Login-Alt">
@@ -46,7 +69,7 @@ class Login extends React.Component {
 
                         <GoogleLogin
                             clientId="559169765800-3o3ge3ehthqa344cb0feq38a5occr13d.apps.googleusercontent.com"
-                            buttonText="Login"
+                            buttonText="Login with Google"
                             onSuccess={responseGoogle}
                             onFailure={responseGoogle}
                             className="Rectangle-Copy-2"
