@@ -52,6 +52,7 @@ class Register extends React.Component {
             fetch("/oauth/"+type, {
                 method: 'POST',
                 headers: {"Content-Type": "application/json"},
+                mode: 'cors',
                 body: JSON.stringify(client_data)
             })
             .then(response => response.json())
