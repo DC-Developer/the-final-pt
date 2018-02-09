@@ -56,8 +56,8 @@ class Register extends React.Component {
                 body: JSON.stringify(client_data)
             })
             .then(response => response.json())
-            .then(res => {
-                resolve(res);
+            .then(response => {
+                resolve(response);
                 console.log("register.js: ", res);    
             })
 
