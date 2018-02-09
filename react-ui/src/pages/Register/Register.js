@@ -51,7 +51,9 @@ class Register extends React.Component {
         return new Promise((resolve, reject) => {
             fetch("/oauth/"+type, {
                 method: 'POST',
-                headers: {"Content-Type": "application/json"},
+                headers: {
+                    "Content-Type": "application/json",
+                    'Accept': 'application/json'},
                 mode: 'cors',
                 body: JSON.stringify(client_data)
             })
