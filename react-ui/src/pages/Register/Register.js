@@ -24,12 +24,21 @@ class Register extends React.Component {
     signup(res, type) {
 
         let postData;
-        if(type === 'facebook' && res.email) {
-            postData = {name: res.name, provider: type, email: res.email, provider_id: res.id, token: res.accessToken, provider_pic: res.provider_pic};
+        // if(type === 'facebook' && res.email) {
+        //     postData = {name: res.name, provider: type, email: res.email, provider_id: res.id, token: res.accessToken, provider_pic: res.provider_pic};
+        //     this.callApi(type, postData);
+        // }
+        // if(type === 'google' && res.w3.U3) {
+        //     postData = {name: res.w3.ig, provider: type, email: res.w3.U3, provider_id: res.El, token: res.Zi.access_token, provider_pic: res.w3.Paa};
+        //     //^this is what will be posted to the database
+        //     this.callApi(type, postData);
+        // }
+        if(type === 'facebook') {
+            postData = {response: res};
             this.callApi(type, postData);
         }
-        if(type === 'google' && res.w3.U3) {
-            postData = {name: res.w3.ig, provider: type, email: res.w3.U3, provider_id: res.El, token: res.Zi.access_token, provider_pic: res.w3.Paa};
+        if(type === 'google') {
+            postData = {response: res};
             //^this is what will be posted to the database
             this.callApi(type, postData);
         }
@@ -39,8 +48,9 @@ class Register extends React.Component {
     }
 
     callApi = async (type, client_data) => {
-        const response = await fetch("/oauth"+type, {
+        const response = await fetch("/oauth/"+type, {
             method: 'POST',
+            headers: {"Content-Type": "application/json"},  
             body: JSON.stringify(client_data)
         })
         const body = await response.json();
@@ -52,11 +62,6 @@ class Register extends React.Component {
         return body;
         //maybe use custom promise to resolve and reject
     }
-    
-    
-    
-    
-    
     
     
     render() {
@@ -93,7 +98,7 @@ class Register extends React.Component {
                         />      
                         <GoogleLogin
                             clientId="559169765800-3o3ge3ehthqa344cb0feq38a5occr13d.apps.googleusercontent.com"
-                            buttonText="Login with Google"
+                            buttonText="Register with Google"
                             onSuccess={responseGoogle}
                             onFailure={responseGoogle}
                             className="Rectangle-Copy-2"

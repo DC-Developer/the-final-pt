@@ -45,6 +45,23 @@ class Login extends React.Component {
     }
 
     callApi = async (type, client_data) => {
+        
+        // return new Promise((resolve, reject) => {
+        //     fetch("/oauth"+type, {
+        //         method: 'POST',
+        //         body: JSON.stringify(client_data)
+        //     })
+        //     .then(response => response.json())
+        //     .then(res => {
+        //         resolve(res)    
+        //     })
+
+        //     .catch(err => {
+        //         reject(err);
+        //     })
+
+
+        // })
         const response = await fetch("/oauth"+type, {
             method: 'POST',
             body: JSON.stringify(client_data)
@@ -55,6 +72,7 @@ class Login extends React.Component {
 
         console.log("login.js callApi: ", body);
     
+
         return body;
         //maybe use custom promise to resolve and reject
     }
