@@ -53,7 +53,7 @@ class Register extends React.Component {
                 method: 'POST',
                 headers: {
                     "Content-Type": "application/json",
-                    'Accept': 'application/json'},
+                    "Accept": "application/json"},
                 mode: 'cors',
                 body: JSON.stringify(client_data)
             })
