@@ -48,18 +48,38 @@ class Register extends React.Component {
     }
 
     callApi = async (type, client_data) => {
-        const response = await fetch("/oauth/"+type, {
-            method: 'POST',
-            headers: {"Content-Type": "application/json"},  
-            body: JSON.stringify(client_data)
-        })
-        const body = await response.json();
+        return new Promise((resolve, reject) => {
+            fetch("/oauth/"+type, {
+                method: 'POST',
+                body: JSON.stringify(client_data)
+            })
+            .then(response => response.json())
+            .then(res => {
+                resolve(res);
+                console.log("register.js: ", res);    
+            })
 
-        if (response.status !== 200) throw Error(body.message);
+            .catch(err => {
+                reject(err);
+            })
+        })    
 
-        console.log("login.js callApi: ", body);
+
+
+
+
+        // const response = await fetch("/oauth/"+type, {
+        //     method: 'POST',
+        //     headers: {"Content-Type": "application/json"},  
+        //     body: JSON.stringify(client_data)
+        // })
+        // const body = await response.json();
+
+        // if (response.status !== 200) throw Error(body.message);
+
+        // console.log("res.js callApi: ", body);
     
-        return body;
+        // return body;
         //maybe use custom promise to resolve and reject
     }
     
