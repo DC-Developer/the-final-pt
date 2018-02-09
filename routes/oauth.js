@@ -11,7 +11,7 @@ router.use(bodyParser.urlencoded({ extended: false }));
 
 oauth.post("/facebook", (req, res) => {
     console.log(req.body);
-    res.send(req.body);
+    
 });
 
 oauth.post("/google", (req, res) => {
