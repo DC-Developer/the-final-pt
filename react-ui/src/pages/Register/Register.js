@@ -70,7 +70,7 @@ class Register extends React.Component {
         var icon = loginImgs[1];
 
         const responseGoogle = (response) => {
-            console.log(response);
+            console.log("reponseGoogle: ",response);
              this.signup(response, 'google');
         }
         const responseFacebook = (response) => {
