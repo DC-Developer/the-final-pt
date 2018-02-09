@@ -6,8 +6,8 @@ const bodyParser= require('body-parser');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
 
-router.use(bodyParser.json());
-router.use(bodyParser.urlencoded({ extended: false }));
+oauth.use(bodyParser.json());
+oauth.use(bodyParser.urlencoded({ extended: false }));
 
 oauth.post("/facebook", (req, res) => {
     console.log(req.body);
