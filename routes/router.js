@@ -46,21 +46,20 @@ router.get('/clients', (req, res) => {
     //^ it's really important that you send the response as an object
 
 });
-// router.post("/register", (req, res) => {
-//     const newUser = req.body;
+router.post("/facebook", (req, res) => {
+    console.log("facebook from router: ", req.body);
+    res.send(req.body);
 
+    //remember to save the res from fb to db
+});
 
-//     var hashedPassword = bcrypt.hashSync(req.body.password, 8);
+router.post("/google", (req, res) => {
+    console.log("google from router", req.body);
+    res.send(req.body);
 
+    //remember to save response from google to db
+});
 
-//     var token = jwt.sign({id:user._id}, config.secret, {
-//         expiresIn: 86400//expires in 24 hours
-//     });
-//     res.status(200).send({auth: true, token: token});
-
-
-//     console.log(newUser);
-// });
 
 
 

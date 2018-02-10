@@ -2,7 +2,7 @@ import React from 'react';
 import './Login.css';
 import {GoogleLogin, GoogleLogout} from 'react-google-login';
 import FacebookLogin from 'react-facebook-login';
-
+import { Redirect } from 'react-router';
 
 //dry up the code by making a seperate file to store our img files in an array of objects
 const loginImgs = [
@@ -19,10 +19,14 @@ class Login extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
+            form_values: {},
+            token: null,
             redirect: false
         }
         this.signup = this.signup.bind(this);
         this.callApi = this.callApi.bind(this);
+        this.onSubmit = this.onSubmit.bind(this);
+        this.onChange = this.onChange.bind(this);
     }
     //type has to be specified here, since we're taking the response
     //from google or facebook, we will have to put conditionals with 
@@ -47,7 +51,7 @@ class Login extends React.Component {
     callApi = async (type, client_data) => {
         
         return new Promise((resolve, reject) => {
-            fetch("/oauth/"+type, {
+            fetch("/api/"+type, {
                 method: 'POST',
                 body: JSON.stringify(client_data)
             })
@@ -73,6 +77,31 @@ class Login extends React.Component {
 
         // return body;
         //maybe use custom promise to resolve and reject
+    }
+    onChange (e) {
+        let form_values = this.state.form_values;
+        let name = e.target.name; 
+        let value = e.target.value;
+
+        form_values[name] = value;
+
+        this.setState({ form_values })
+        console.log("login-form_values: ", this.state.form_values);
+    }
+   //this will be used in a different page 
+    onSubmit (e) {
+        e.preventDefault();
+
+        fetch('/oauth/login', {
+            method: 'POST',
+            headers: { 
+                'Content-Type' : 'application/x-www-form-urlencoded', 
+                'Accept' : 'application/json' 
+            },
+            body: JSON.stringify()
+        })
+        .then(res => res.json())
+        .catch(err => console.log(err));
     }
 
     render() {
@@ -123,10 +152,12 @@ class Login extends React.Component {
                         <div className="hrDiv">
                             <hr /><p className="hrText">or</p><hr />
                         </div>
-
-                        <form action="/oauth/login" className="regLog" method="post">
-                            <input type="text" placeholder="    Email" name="email" className="Rectangle-login" /><br />
-                            <input type="password" placeholder="    Password" name="password" className="Rectangle-login" /><br />
+{/* for refactoring: make the form into a component */}
+{/* perhaps make functions to recieve the response, aka the jwt, and store it in the state */}
+                       {/* <form action="/oauth/login" className="regLog" method="post"> */}
+                       <form className="regLog" onSubmit={this.onSubmit}>
+                            <input type="text" placeholder="    Email" name="email" className="Rectangle-login" onChange={this.onChange} /><br />
+                            <input type="password" placeholder="    Password" name="password" className="Rectangle-login"onChange={this.onChange} /><br />
                             <button type="submit" className="Rectangle-Copy-3" >Login</button>
                         </form>
                     </div>

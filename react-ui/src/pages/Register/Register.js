@@ -131,7 +131,7 @@ class Register extends React.Component {
                         <div className="hrDiv">
                             <hr /><p className="hrText">or</p><hr />
                         </div>
-
+{/* for refactoring: make this form into a component */}
                         <form action="/oauth/register" className="regForm" method="post">
                             <input type="text" placeholder="    First Name" name="firstName" className="Rectangle-register" /><br />
                             <input type="text" placeholder="    Last Name" name="lastName" className="Rectangle-register" /><br />

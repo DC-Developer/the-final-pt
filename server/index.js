@@ -9,6 +9,7 @@ const mongoose = require('mongoose');
 const router = require('../routes/router');
 const oauth = require('../routes/oauth');  
 const db = require("../models");
+const verifyToken = require('../routes/verifyToken');
 
 var MONGODB_URI = process.env.MONGODB_URI || "mongodb://root:root@ds111478.mlab.com:11478/pt_applicationes";
 var mlabDB ;
@@ -41,6 +42,23 @@ app.use(function(req, res, next) {
 //   res.set('Content-Type', 'application/json');
 //   res.send('{"message":"Hello from the custom server!"}');
 // });
+app.get('/verify',verifyToken, (req, res) => {
+
+  db.User
+    .findById( req.userId, {password: 0})
+    .then(user => {
+      if(!user) return res.status(404).send("No user found.");
+
+      res.status(200).send(user);
+    })
+    .catch(err => {
+      res.status(500).send("There was a problem finding the user.");
+    })
+
+});
+
+
+
 
 // All remaining requests return the React app, so it can handle routing.
 app.get('*', function(request, response) {

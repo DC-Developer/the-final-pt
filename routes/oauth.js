@@ -7,19 +7,20 @@ const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
 //require the config here
 const config = require('../config/config');
+const verifyToken = require('./verifyToken');
 
 oauth.use(bodyParser.json());
 oauth.use(bodyParser.urlencoded({ extended: false }));
 
 oauth.post("/facebook", (req, res) => {
-    console.log("facebook from server: ", req.body);
+    console.log("facebook from oauth: ", req.body);
     res.send(req.body);
 
     //remember to save the res from fb to db
 });
 
 oauth.post("/google", (req, res) => {
-    console.log("req.body from the server", req.body);
+    console.log("google from oauth", req.body);
     res.send(req.body);
 
     //remember to save response from google to db
@@ -41,7 +42,7 @@ oauth.post("/register", (req, res) => {
                 expiresIn: 86400//expires in 24 hours
             });
 
-            res.status(200).send({auth: true, token: token});
+            res.status(200).json({auth: true, token: token});
         })
         .catch(err => console.log(err));//add a server status response number later on
 });
@@ -58,7 +59,7 @@ oauth.post("/login", (req, res) => {
             var token = jwt.sign({ id: user._id }, config.secret, {
                 expiresIn: 86400//24 hours
             })
-             res.status(200).send({auth: true, token: token});
+             res.status(200).json({auth: true, token: token});
         })
         .catch(err => {
             return res.status(500).send('Error on the server');
