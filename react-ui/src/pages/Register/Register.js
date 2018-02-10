@@ -132,12 +132,12 @@ class Register extends React.Component {
                             <hr /><p className="hrText">or</p><hr />
                         </div>
 
-                        <form action="/api/register" className="regForm" method="post">
-                            <input type="text" placeholder="    First Name" name="firstname" className="Rectangle-register" /><br />
-                            <input type="text" placeholder="    Last Name" name="lastname" className="Rectangle-register" /><br />
+                        <form action="/oauth/register" className="regForm" method="post">
+                            <input type="text" placeholder="    First Name" name="firstName" className="Rectangle-register" /><br />
+                            <input type="text" placeholder="    Last Name" name="lastName" className="Rectangle-register" /><br />
                             <input type="text" placeholder="    Email" name="email" className="Rectangle-register" /><br />
                             <input type="password" placeholder="    Password" name="password" className="Rectangle-register" /><br />
-                            <input type="submit" value="Register" className="Rectangle-Copy-3" />
+                            <button type="submit" className="Rectangle-Copy-3" >Register</button>
                         </form>
                     </div>
   
