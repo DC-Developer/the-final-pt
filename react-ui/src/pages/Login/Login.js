@@ -94,13 +94,22 @@ class Login extends React.Component {
 
         fetch('/oauth/login', {
             method: 'POST',
-            headers: { 
-                'Content-Type' : 'application/x-www-form-urlencoded', 
-                'Accept' : 'application/json' 
-            },
-            body: JSON.stringify()
+            headers: {"Content-Type": "application/json"},
+            body: JSON.stringify(this.state.form_values)
         })
         .then(res => res.json())
+        .then(data => {
+            //now save the res into the state
+            var stringData = JSON.stringify(data.token);
+            var cachedToken = sessionStorage.setItem('myToken', stringData);
+            //definitely change this in the future
+            var readToken = sessionStorage.getItem('myToken');
+
+            this.setState({ token: JSON.parse(readToken) });
+            console.log('login token: ', this.state.token);
+
+
+        })
         .catch(err => console.log(err));
     }
 
