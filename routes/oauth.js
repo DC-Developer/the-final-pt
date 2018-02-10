@@ -19,6 +19,26 @@ oauth.post("/google", (req, res) => {
     res.send(req.body);
 });
 
+oauth("/register", (req, res) => {
+    var hashed_password = bcrypt.hashSync(req.body.password, 8);
+
+    db.User
+        .create({
+            firstName: req.body.firstName,
+            lastName: req.body.lastName,
+            email: req.body.email,
+            password: hashed_password
+        })
+        .then(user => {
+
+        })
+        .catch(err => console.log(err));//add a server status response number later on
+
+});
+
+oauth("/login", (res, res) => {
+    
+});
 
 
 
