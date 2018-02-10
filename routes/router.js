@@ -46,21 +46,21 @@ router.get('/clients', (req, res) => {
     //^ it's really important that you send the response as an object
 
 });
-router.post("/register", (req, res) => {
-    const newUser = req.body;
+// router.post("/register", (req, res) => {
+//     const newUser = req.body;
 
 
-    var hashedPassword = bcrypt.hashSync(req.body.password, 8);
+//     var hashedPassword = bcrypt.hashSync(req.body.password, 8);
 
 
-    var token = jwt.sign({id:user._id}, config.secret, {
-        expiresIn: 86400//expires in 24 hours
-    });
-    res.status(200).send({auth: true, token: token});
+//     var token = jwt.sign({id:user._id}, config.secret, {
+//         expiresIn: 86400//expires in 24 hours
+//     });
+//     res.status(200).send({auth: true, token: token});
 
 
-    console.log(newUser);
-});
+//     console.log(newUser);
+// });
 
 
 
