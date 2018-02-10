@@ -41,7 +41,7 @@ oauth.post("/register", (req, res) => {
         .catch(err => console.log(err));//add a server status response number later on
 });
 
-oauth("/login", (req, res) => {
+oauth.post("/login", (req, res) => {
     
 });
 
