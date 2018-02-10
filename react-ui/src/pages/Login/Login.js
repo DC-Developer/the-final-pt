@@ -1,6 +1,6 @@
 import React from 'react';
 import './Login.css';
-import GoogleLogin from 'react-google-login';
+import {GoogleLogin, GoogleLogout} from 'react-google-login';
 import FacebookLogin from 'react-facebook-login';
 
 
@@ -59,8 +59,6 @@ class Login extends React.Component {
         //     .catch(err => {
         //         reject(err);
         //     })
-
-
         // })
         const response = await fetch("/oauth"+type, {
             method: 'POST',
@@ -77,9 +75,7 @@ class Login extends React.Component {
         //maybe use custom promise to resolve and reject
     }
 
-    
     render() {
-
         var mainImg = loginImgs[0];
         var icon = loginImgs[1];
 
@@ -123,7 +119,7 @@ class Login extends React.Component {
                             onFailure={responseGoogle}
                             className="Rectangle-Copy-2"
                         />
-                        
+
                         <div className="hrDiv">
                             <hr /><p className="hrText">or</p><hr />
                         </div>
