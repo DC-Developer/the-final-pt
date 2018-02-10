@@ -12,13 +12,17 @@ oauth.use(bodyParser.json());
 oauth.use(bodyParser.urlencoded({ extended: false }));
 
 oauth.post("/facebook", (req, res) => {
-    console.log(req.body);
+    console.log("facebook from server: ", req.body);
     res.send(req.body);
+
+    //remember to save the res from fb to db
 });
 
 oauth.post("/google", (req, res) => {
     console.log("req.body from the server", req.body);
     res.send(req.body);
+
+    //remember to save response from google to db
 });
 
 oauth.post("/register", (req, res) => {
