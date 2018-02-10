@@ -124,10 +124,10 @@ class Login extends React.Component {
                             <hr /><p className="hrText">or</p><hr />
                         </div>
 
-                        <form action="" className="regLog" method="post">
+                        <form action="/oauth/login" className="regLog" method="post">
                             <input type="text" placeholder="    Email" name="email" className="Rectangle-login" /><br />
                             <input type="password" placeholder="    Password" name="password" className="Rectangle-login" /><br />
-                            <input type="submit" value="Login" className="Rectangle-Copy-3" />
+                            <button type="submit" className="Rectangle-Copy-3" >Login</button>
                         </form>
                     </div>
   

@@ -36,6 +36,7 @@ oauth.post("/register", (req, res) => {
             var token = jwt.sign({id:user._id}, config.secret, {
                 expiresIn: 86400//expires in 24 hours
             });
+
             res.status(200).send({auth: true, token: token});
         })
         .catch(err => console.log(err));//add a server status response number later on
@@ -43,6 +44,23 @@ oauth.post("/register", (req, res) => {
 
 oauth.post("/login", (req, res) => {
     
+    db.User
+        .findOne({ email: req.body.email })
+        .then(user => {
+            var check_password = bcrypt.compareSync(req.body.password, user.password);
+            //change the res.status...send() later
+            if (!check_password) return res.status(401).send({auth: false, token: null});
+           
+            var token = jwt.sign({ id: user._id }, config.secret, {
+                expiresIn: 86400//24 hours
+            })
+             res.status(200).send({auth: true, token: token});
+        })
+        .catch(err => {
+            return res.status(500).send('Error on the server');
+        })
+
+
 });
 
 
