@@ -5,6 +5,8 @@ const mongoose = require('mongoose');
 const bodyParser= require('body-parser');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
+//require the config here
+const config = require('../config');
 
 oauth.use(bodyParser.json());
 oauth.use(bodyParser.urlencoded({ extended: false }));
@@ -30,10 +32,13 @@ oauth("/register", (req, res) => {
             password: hashed_password
         })
         .then(user => {
-
+            //here sign the unique user id
+            var token = jwt.sign({id:user._id}, config.secret, {
+                expiresIn: 86400//expires in 24 hours
+            });
+            res.status(200).send({auth: true, token: token});
         })
         .catch(err => console.log(err));//add a server status response number later on
-
 });
 
 oauth("/login", (res, res) => {
