@@ -6,7 +6,7 @@ const bodyParser= require('body-parser');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
 //require the config here
-const config = require('../config');
+const config = require('../config/config');
 
 oauth.use(bodyParser.json());
 oauth.use(bodyParser.urlencoded({ extended: false }));
@@ -21,7 +21,7 @@ oauth.post("/google", (req, res) => {
     res.send(req.body);
 });
 
-oauth("/register", (req, res) => {
+oauth.post("/register", (req, res) => {
     var hashed_password = bcrypt.hashSync(req.body.password, 8);
 
     db.User
