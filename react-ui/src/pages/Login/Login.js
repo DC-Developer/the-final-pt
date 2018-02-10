@@ -60,7 +60,7 @@ class Login extends React.Component {
         //         reject(err);
         //     })
         // })
-        const response = await fetch("/oauth"+type, {
+        const response = await fetch("/oauth/"+type, {
             method: 'POST',
             body: JSON.stringify(client_data)
         })
