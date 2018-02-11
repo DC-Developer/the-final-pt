@@ -27,6 +27,7 @@ class Login extends React.Component {
         this.callApi = this.callApi.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
         this.onChange = this.onChange.bind(this);
+        this.onSuccess = this.onSuccess.bind(this);
     }
     //type has to be specified here, since we're taking the response
     //from google or facebook, we will have to put conditionals with 
@@ -105,11 +106,39 @@ class Login extends React.Component {
             //definitely change this in the future
             var readToken = sessionStorage.getItem('myToken');
 
-            this.setState({ token: JSON.parse(readToken) });
-            console.log('login token: ', this.state.token);
+            this.setState({ token: JSON.parse(readToken), redirect: true });
+            console.log('login token: ', this.state.token + " || redirect: ", this.state.redirect);
 
+            this.onSuccess();
+            // fetch('/verify', {
+            //     method: "GET",
+            //     headers: {
+            //         "Content-Type": "application/x-www-form-urlencoded",
+            //         "x-access-token": ,
+            //         "mode": "cors"
+            //     }
+            // })
+            // .then(res => console.log(res))
+            // .catch(err => console.log(err));
 
         })
+        .catch(err => console.log(err));
+    }
+
+    onSuccess = async () => {
+        //this function will be used to verify the user token
+        var token = sessionStorage.getItem('myToken');
+        console.log('token from onSuccess() : ', token);
+           
+        fetch('/verify', {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/x-www-form-urlencoded",
+                "x-access-token": token,
+                "mode": "cors"
+            }
+        })
+        .then(res => console.log(res))
         .catch(err => console.log(err));
     }
 
@@ -117,6 +146,11 @@ class Login extends React.Component {
         var mainImg = loginImgs[0];
         var icon = loginImgs[1];
 
+        const { redirect } = this.state.redirect;
+
+        if(redirect){
+            return <Redirect to='/verify' />
+        }
         //have a conditional that redirects user to home page if 
         //this.state.redirect is true
 
