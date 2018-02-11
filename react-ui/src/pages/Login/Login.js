@@ -129,14 +129,15 @@ class Login extends React.Component {
         //this function will be used to verify the user token
         var token = sessionStorage.getItem('myToken');
         console.log('token from onSuccess() : ', token);
-           
+
         fetch('/verify', {
             method: "GET",
             headers: {
                 "Content-Type": "application/x-www-form-urlencoded",
                 "x-access-token": token,
-                "mode": "cors"
-            }
+            },
+            mode: 'cors'
+            
         })
         .then(res => console.log(res))
         .catch(err => console.log(err));
@@ -145,7 +146,7 @@ class Login extends React.Component {
     render() {
         var mainImg = loginImgs[0];
         var icon = loginImgs[1];
-
+        //need to edit the redirect
         const { redirect } = this.state.redirect;
 
         if(redirect){
