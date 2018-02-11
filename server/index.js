@@ -33,15 +33,15 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cors());
 app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, x-access-token");
   next();
 });
 
 // Answer API requests.
-// app.get('/api', function (req, res) {
-//   res.set('Content-Type', 'application/json');
-//   res.send('{"message":"Hello from the custom server!"}');
-// });
+app.get('/apiTwo', function (req, res) {
+  res.set('Content-Type', 'application/json');
+  res.send('{"message":"Hello from the custom server!"}');
+});
 app.get('/verify',verifyToken, (req, res) => {
 
   db.User

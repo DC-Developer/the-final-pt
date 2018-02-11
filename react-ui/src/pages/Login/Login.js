@@ -130,17 +130,39 @@ class Login extends React.Component {
         var token = sessionStorage.getItem('myToken');
         console.log('token from onSuccess() : ', token);
 
-        fetch('/verify', {
+        fetch('/apiTwo/verify', {
             method: "GET",
             headers: {
+                "Accept": "application/json",
                 "Content-Type": "application/x-www-form-urlencoded",
-                "x-access-token": token,
-            },
-            mode: 'cors'
-            
+                "x-access-token": token
+            }
         })
         .then(res => console.log(res))
         .catch(err => console.log(err));
+
+
+        //============================================================================
+
+
+        // const response = await fetch('/verify', {
+        //     method: 'GET',
+        //     headers: {
+        //         "x-access-token": token,
+        //         "Accept": "application/json",
+        //         "Content-Type": "application/x-www-form-urlencoded",
+        //         "Cache": "no-cache"
+        //     }
+        // });
+        // const body = await response.json();
+
+        // if (response.status !== 200) throw Error(body.message);
+
+        // console.log("app.js callApi: ", body);
+    
+        // return body;
+
+
     }
 
     render() {
