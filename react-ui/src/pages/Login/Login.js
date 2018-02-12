@@ -109,26 +109,17 @@ class Login extends React.Component {
             this.setState({ token: JSON.parse(readToken), redirect: true });
             console.log('login token: ', this.state.token + " || redirect: ", this.state.redirect);
 
-            this.onSuccess();
-            // fetch('/verify', {
-            //     method: "GET",
-            //     headers: {
-            //         "Content-Type": "application/x-www-form-urlencoded",
-            //         "x-access-token": ,
-            //         "mode": "cors"
-            //     }
-            // })
-            // .then(res => console.log(res))
-            // .catch(err => console.log(err));
-
+            // this.onSuccess();
+            
         })
         .catch(err => console.log(err));
     }
-
+//this function will take the token from the local storage and call the api route for token verification
     onSuccess = async () => {
         //this function will be used to verify the user token
         var token = sessionStorage.getItem('myToken');
         console.log('token from onSuccess() : ', token);
+        //be sure to add the refresh token later
 
         fetch('/apiTwo/verify', {
             method: "GET",
@@ -172,7 +163,7 @@ class Login extends React.Component {
         const { redirect } = this.state.redirect;
 
         if(redirect){
-            return <Redirect to='/verify' />
+            return <Redirect to='/client' />
         }
         //have a conditional that redirects user to home page if 
         //this.state.redirect is true
