@@ -178,6 +178,7 @@ class Login extends React.Component {
                             callback={responseFacebook}
                             icon="fa-facebook"
                             cssClass="Rectangle-Copy"
+                            
                         />
 
                         <GoogleLogin
