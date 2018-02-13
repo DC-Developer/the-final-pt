@@ -115,6 +115,7 @@ class Register extends React.Component {
                         <FacebookLogin
                             appId="175418049620583"
                             // autoLoad={true}
+                            textButton="Register with Facebook"
                             fields="name,email,picture"
                             callback={responseFacebook}
                             icon="fa-facebook"
