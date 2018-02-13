@@ -13,10 +13,11 @@ class App extends Component {
       fetching: true,
       didChildUpdate: false
     };
+
   }
 
   componentDidMount() {
-
+    
     this.callApi()
     .then(res => this.setState({ message: res.message, fetching: false }))
     .catch(err => console.log(err));
@@ -34,18 +35,6 @@ class App extends Component {
     console.log("app.js callApi: ", body);
 
     return body;
-  }
-
-  requireAuth(nextState, replace) {
-    const token = sessionStorage.getItem('myToken');
-    
-    if (!token) {
-      replace('/login');
-    }
-  }
-
-  logout(nextState, replace) {
-    delete window.sessionStorage.myToken;
   }
 
   render() {
@@ -66,7 +55,7 @@ class App extends Component {
 
           <Route path="/login" component={Login} />
           <Route path="/register" component={Register} />
-          <Route path="/client" component={Client} onEnter={requireAuth} />
+          <Route path="/client" component={Client} />
 
         </div>
       </Router>

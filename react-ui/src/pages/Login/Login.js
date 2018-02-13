@@ -45,7 +45,7 @@ class Login extends React.Component {
             this.callApi(type, postData);
         }
 
-        this.setState({ redirect: true });
+        // this.setState({ redirect: true });
 
     }
 
@@ -162,8 +162,10 @@ class Login extends React.Component {
         var icon = loginImgs[1];
         //need to edit the redirect
         const { redirect } = this.state.redirect;
-
-        if(redirect){
+        console.log('redirect from render: ', redirect);
+        console.log("this.state.token: ", this.state.token);
+        
+        if(this.state.token){
             return <Redirect to='/client' />
         }
         //have a conditional that redirects user to home page if 
