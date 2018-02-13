@@ -41,7 +41,7 @@ class App extends Component {
     return (
       <Router>
         <div>
-          <ul className="noStyle">
+          {/* <ul className="noStyle">
             <li>
               <Link to="/login">Login</Link>
             </li>
@@ -51,7 +51,7 @@ class App extends Component {
             <li>
               <Link to="/client">Client Page</Link>
             </li>
-          </ul>
+          </ul> */}
 
           <Route path="/login" component={Login} />
           <Route path="/register" component={Register} />
