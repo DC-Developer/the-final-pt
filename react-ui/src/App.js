@@ -53,7 +53,9 @@ class App extends Component {
             </li>
           </ul> */}
 
-          <Route path="/login" component={Login} />
+{/* add register link in login component && find all links that were associated with /login and replace to "/" */}
+
+          <Route path="/" component={Login} />
           <Route path="/register" component={Register} />
           <Route path="/client" component={Client} />
 

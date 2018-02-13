@@ -188,7 +188,7 @@ class Login extends React.Component {
                             onFailure={responseGoogle}
                             className="Rectangle-Copy-2"
                         />
-
+ </div>
                         <div className="hrDiv">
                             <hr /><p className="hrText">or</p><hr />
                         </div>
@@ -200,7 +200,12 @@ class Login extends React.Component {
                             <input type="password" placeholder="    Password" name="password" className="Rectangle-login"onChange={this.onChange} /><br />
                             <button type="submit" className="Rectangle-Copy-3" >Login</button>
                         </form>
-                    </div>
+                   
+                        <div className="hrDiv">
+                            <hr /><p className="hrText">or</p><hr />
+                        </div>
+
+                        <button className="Rectangle-Copy-4" >Register</button>
   
                 </div>
             </div>
