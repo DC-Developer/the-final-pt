@@ -28,6 +28,7 @@ class Login extends React.Component {
         this.onSubmit = this.onSubmit.bind(this);
         this.onChange = this.onChange.bind(this);
         this.onSuccess = this.onSuccess.bind(this);
+        this.handleClick = this.handleClick.bind(this);
     }
     //type has to be specified here, since we're taking the response
     //from google or facebook, we will have to put conditionals with 
@@ -107,7 +108,7 @@ class Login extends React.Component {
             //definitely change this in the future
             var readToken = sessionStorage.getItem('myToken');
 
-            this.setState({ token: JSON.parse(readToken), redirect: true });
+            this.setState({ token: JSON.parse(readToken) });
             console.log('login token: ', this.state.token + " || redirect: ", this.state.redirect);
 
             // this.onSuccess();
@@ -135,6 +136,17 @@ class Login extends React.Component {
         .catch(err => console.log(err));
 
     }
+//make a function that will handle the click off the register button and redirect 
+//them to the register page
+
+    handleClick(e) {
+        
+        console.log(e);
+
+        this.setState({ redirect: true });
+        console.log(this.state.redirect);
+    }
+
 
     render() {
         var mainImg = loginImgs[0];
@@ -147,8 +159,12 @@ class Login extends React.Component {
         if(this.state.token){
             return <Redirect to='/client' />
         }
-        //have a conditional that redirects user to home page if 
-        //this.state.redirect is true
+
+        if(this.state.redirect){
+            
+            return <Redirect to="/register"/>
+        }
+
 
         const responseGoogle = (response) => {
             console.log(response);
@@ -173,7 +189,8 @@ class Login extends React.Component {
                         <h1>Login</h1>
                         <FacebookLogin
                             appId="175418049620583"
-                            autoLoad={true}
+                            // autoLoad={true}
+                            buttonText="Login with Facebook"
                             fields="name,email,picture"
                             callback={responseFacebook}
                             icon="fa-facebook"
@@ -205,7 +222,7 @@ class Login extends React.Component {
                             <hr /><p className="hrText">or</p><hr />
                         </div>
 
-                        <button className="Rectangle-Copy-4" >Register</button>
+                        <button className="Rectangle-Copy-4" onClick={this.handleClick}>Register</button>
   
                 </div>
             </div>
