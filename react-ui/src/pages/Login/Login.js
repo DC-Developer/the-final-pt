@@ -100,6 +100,7 @@ class Login extends React.Component {
         })
         .then(res => res.json())
         .then(data => {
+            
             //now save the res into the state
             var stringData = JSON.stringify(data.token);
             var cachedToken = sessionStorage.setItem('myToken', stringData);
@@ -132,28 +133,6 @@ class Login extends React.Component {
         })
         .then(res => console.log(res))
         .catch(err => console.log(err));
-
-
-        //============================================================================
-
-
-        // const response = await fetch('/verify', {
-        //     method: 'GET',
-        //     headers: {
-        //         "x-access-token": token,
-        //         "Accept": "application/json",
-        //         "Content-Type": "application/x-www-form-urlencoded",
-        //         "Cache": "no-cache"
-        //     }
-        // });
-        // const body = await response.json();
-
-        // if (response.status !== 200) throw Error(body.message);
-
-        // console.log("app.js callApi: ", body);
-    
-        // return body;
-
 
     }
 
