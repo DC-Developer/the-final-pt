@@ -120,7 +120,8 @@ class Login extends React.Component {
         var token = sessionStorage.getItem('myToken');
         console.log('token from onSuccess() : ', token);
         //be sure to add the refresh token later
-
+        
+        //change the route name
         fetch('/apiTwo/verify', {
             method: "GET",
             headers: {
