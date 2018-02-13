@@ -67,21 +67,7 @@ oauth.post("/login", (req, res) => {
 
 
 });
-oauth.get('/verify',verifyToken, (req, res) => {
 
-    db.User
-      .findById( req.userId, {password: 0})
-      .then(user => {
-        if(!user) return res.status(404).send("No user found.");
-  
-        res.status(200).send(user);
-      })
-      .catch(err => {
-        res.status(500).send("There was a problem finding the user.");
-      })
-  
-  });
-  
 
 
 module.exports = oauth; 

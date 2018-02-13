@@ -2,6 +2,7 @@ import React from 'react';
 import './Register.css';
 import GoogleLogin from 'react-google-login';
 import FacebookLogin from 'react-facebook-login';
+import { Redirect } from 'react-router';
 
 const loginImgs = [
     {
@@ -16,7 +17,9 @@ class Register extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            redirect: false
+            form_values: {},
+            redirect: false,
+            token: null
         }
         this.signup = this.signup.bind(this);
         this.callApi = this.callApi.bind(this);
@@ -46,10 +49,35 @@ class Register extends React.Component {
         this.setState({ redirect: true });
 
     }
+    onSubmit (e) {
+        e.preventDefault();
+//going to need to save the form values so it will be sent in the fetch body to our api
+        fetch('/oauth/register', {
+            method: 'POST',
+            headers: {"Content-Type": "application/json"},
+            body: JSON.stringify(this.state.form_values)
+        })
+        .then(res => res.json())
+        .then(data => {
+            
+            //now save the res into the state
+            var stringData = JSON.stringify(data.token);
+            var cachedToken = sessionStorage.setItem('myToken', stringData);
+            //definitely change this in the future
+            var readToken = sessionStorage.getItem('myToken');
+
+            this.setState({ token: JSON.parse(readToken) });
+            console.log('login token: ', this.state.token + " || redirect: ", this.state.redirect);
+
+            // this.onSuccess();
+            
+        })
+        .catch(err => console.log(err));
+    }
 
     callApi = async (type, client_data) => {
         return new Promise((resolve, reject) => {
-            fetch("/oauth/"+type, {
+            fetch('/oauth/'+type, {
                 method: 'POST',
                 headers: {
                     "Content-Type": "application/json",
@@ -61,6 +89,14 @@ class Register extends React.Component {
             .then(res => {
                 resolve(res);
                 console.log("register.js: ", res);    
+
+                var stringedData = JSON.stringify(res.token);
+                var cachedToken = sessionStorage.setItem('myToken', stringedData);
+                var readToken = sessionStorage.getItem('myToken');
+
+                this.setState({ token: JSON.parse(readToken) })
+                console.log("register token: ", this.state.token + " || redirect: ", this.state.redirect)
+
             })
 
             .catch(err => {
@@ -68,23 +104,6 @@ class Register extends React.Component {
             })
         })    
 
-
-
-
-
-        // const response = await fetch("/oauth/"+type, {
-        //     method: 'POST',
-        //     headers: {"Content-Type": "application/json"},  
-        //     body: JSON.stringify(client_data)
-        // })
-        // const body = await response.json();
-
-        // if (response.status !== 200) throw Error(body.message);
-
-        // console.log("res.js callApi: ", body);
-    
-        // return body;
-        //maybe use custom promise to resolve and reject
     }
     
     
@@ -100,6 +119,10 @@ class Register extends React.Component {
         const responseFacebook = (response) => {
             console.log(response);
              this.signup(response, 'facebook');
+        }
+
+        if(this.state.token){
+            return <Redirect to='/client' />
         }
 
         return (
@@ -133,7 +156,7 @@ class Register extends React.Component {
                             <hr /><p className="hrText">or</p><hr />
                         </div>
 {/* for refactoring: make this form into a component */}
-                        <form action="/oauth/register" className="regForm" method="post">
+                        <form action="/oauth/register" className="regForm">
                             <input type="text" placeholder="    First Name" name="firstName" className="Rectangle-register" /><br />
                             <input type="text" placeholder="    Last Name" name="lastName" className="Rectangle-register" /><br />
                             <input type="text" placeholder="    Email" name="email" className="Rectangle-register" /><br />
