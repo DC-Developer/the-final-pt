@@ -1,6 +1,10 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
+//need to make a relational database, so that only the associated clients for each user
+//shows up on the client side
+
+
 const UserSchema = new Schema({
     firstName: {
         type: String,
