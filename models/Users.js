@@ -23,6 +23,12 @@ const UserSchema = new Schema({
         type: String,
         required: true
     },
+    clients: [
+        {
+          type: Schema.Types.ObjectId,
+          ref: "Clients"
+        }
+      ],
     date: {
         type: Date, default: Date.now
     }
