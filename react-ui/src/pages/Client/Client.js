@@ -5,6 +5,12 @@ import Overview from '../../components/Overview/Overview.js';
 import Clients from '../../components/Clients/Clients.js';
 import MacroB from '../../components/MacroB/MacroB.js';
 
+//now that the relations between clients and users, just need to change how we access the
+//the api and retrieve the data from the db. make when saving the clients to user, you use
+//findOneAndUpdate, pass in an object containing the id of the user, and the second parameter,
+//pass in an object with the push method, pushing an object of the clients
+
+
 const clientPageImgs = [
     {
         src: "https://raw.githubusercontent.com/DC-Developer/the-final-pt/master/react-ui/src/imgs/logo.png"
