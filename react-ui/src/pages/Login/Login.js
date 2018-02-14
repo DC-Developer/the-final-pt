@@ -80,6 +80,8 @@ class Login extends React.Component {
         // return body;
         //maybe use custom promise to resolve and reject
     }
+    //instead of making duplicate on change functions and re-writing the jsx for the 
+    //form, make a form component.
     onChange (e) {
         let form_values = this.state.form_values;
         let name = e.target.name; 
@@ -161,7 +163,7 @@ class Login extends React.Component {
         }
 
         if(this.state.redirect){
-            
+
             return <Redirect to="/register"/>
         }
 

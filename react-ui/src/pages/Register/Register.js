@@ -23,6 +23,8 @@ class Register extends React.Component {
         }
         this.signup = this.signup.bind(this);
         this.callApi = this.callApi.bind(this);
+        this.onChange = this.onChange.bind(this);
+        this.onSubmit = this.onSubmit.bind(this);
     }
     signup(res, type) {
 
@@ -51,7 +53,7 @@ class Register extends React.Component {
     }
     onSubmit (e) {
         e.preventDefault();
-//going to need to save the form values so it will be sent in the fetch body to our api
+
         fetch('/oauth/register', {
             method: 'POST',
             headers: {"Content-Type": "application/json"},
@@ -105,7 +107,17 @@ class Register extends React.Component {
         })    
 
     }
-    
+    onChange(e) {
+        let form_values = this.state.form_values;
+        let name = e.target.name;
+        let value = e.target.value;
+
+        form_values[name] = value;
+
+        this.setState({ form_values });
+        console.log("Register form_values: ", this.state.form_values);
+
+    }
     
     render() {
 
@@ -156,11 +168,11 @@ class Register extends React.Component {
                             <hr /><p className="hrText">or</p><hr />
                         </div>
 {/* for refactoring: make this form into a component */}
-                        <form action="/oauth/register" className="regForm">
-                            <input type="text" placeholder="    First Name" name="firstName" className="Rectangle-register" /><br />
-                            <input type="text" placeholder="    Last Name" name="lastName" className="Rectangle-register" /><br />
-                            <input type="text" placeholder="    Email" name="email" className="Rectangle-register" /><br />
-                            <input type="password" placeholder="    Password" name="password" className="Rectangle-register" /><br />
+                        <form onSubmit={this.onSubmit} className="regForm">
+                            <input type="text" placeholder="    First Name" name="firstName" className="Rectangle-register" onChange={this.onChange} /><br />
+                            <input type="text" placeholder="    Last Name" name="lastName" className="Rectangle-register" onChange={this.onChange} /><br />
+                            <input type="text" placeholder="    Email" name="email" className="Rectangle-register" onChange={this.onChange} /><br />
+                            <input type="password" placeholder="    Password" name="password" className="Rectangle-register" onChange={this.onChange} /><br />
                             <button type="submit" className="Rectangle-Copy-3" >Register</button>
                         </form>
                     </div>
