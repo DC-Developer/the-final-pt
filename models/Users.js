@@ -26,7 +26,7 @@ const UserSchema = new Schema({
     clients: [
         {
           type: Schema.Types.ObjectId,
-          ref: "Clients"
+          ref: "Client"
         }
       ],
     date: {

@@ -18,15 +18,19 @@ const ClientSchema = new Schema({
     },
     height: {
         type: String,
-        require: true
+        required: true
     },
     weight: {
         type: String,
-        require: true
+        required: true
     },
     bodyfat: {
         type: String,
-        require: true
+        required: true
+    },
+    userId: {
+        type: String,
+        required: true
     },
     date: {
         type: Date, default: Date.now

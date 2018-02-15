@@ -26,10 +26,23 @@ class ClientModal extends React.Component {
     onSubmit (e) {
         // e.preventDefault();
         //find the potential fix here.
+
+        //this is probably not the best way to do it, but going to store the 
+        //user id in the formvalues to be saved into the client model, and then retrieve
+        //the user id after saving the client and making a db query to find and update
+        //the user located by the id to push the client into it
+
+        let formValues = this.state.formValues;
+        const user_id = sessionStorage.getItem('myToken');
+        const userId = "userId";
+
+        formValues[userId] = user_id;
+        
+
         fetch('/api/client', {
             method: 'POST',
             headers: {"Content-Type": "application/json"},
-            body: JSON.stringify(this.state.formValues)
+            body: JSON.stringify(formValues)
         })
         .then(res => res.json())
         .catch(err => console.log(err));

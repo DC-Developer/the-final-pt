@@ -5,6 +5,7 @@ const mongoose = require('mongoose');
 const bodyParser= require('body-parser');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
+var config = require('../config/config');
 
 router.use(bodyParser.json());
 router.use(bodyParser.urlencoded({ extended: false }));
@@ -26,10 +27,29 @@ router.get("/all", (req, res) => {
 
 router.post("/client", (req, res) => {
     const client = req.body;
+    const userId = req.body.currentUser;
 //save the client to the database
     db.Client
         .create(client)
-        .then(savedClient => console.log("database: ", savedClient))
+        .then(savedClient => {
+            console.log("database: ", savedClient);
+            //now query db for the specific User and update that user by pushing the client to them
+            var decoded = null;
+
+            jwt.verify(savedClient.userId, config.secret, function(err, decoded){
+                if (err) {
+                    return res.status(500).send({auth: false, message: "Failed to authenticate token."});
+                }
+                // if everything good, save to request for use in other routes
+
+                console.log("decoded id: ", decoded.id);
+                decoded = decoded.id;
+            });
+            db.User.findOneAndUpdate({  }, { $push: { clients: savedClient._id } }, { new: true } );
+          
+           
+        })
+
         .catch(err => res.status(422).json(err));
 
 });

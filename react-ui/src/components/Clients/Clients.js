@@ -67,7 +67,7 @@ class Clients extends React.Component {
         <div>
             <div>
                 <div className="h1">Clients</div>
-                <ClientModal onClick={this.addedClient}/>
+                <ClientModal />
                 {/* <ClientModal onClick={this.addedClient}/> */}
             </div>
             <div>
