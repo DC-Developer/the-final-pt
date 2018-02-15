@@ -36,15 +36,15 @@ router.post("/client", (req, res) => {
             //now query db for the specific User and update that user by pushing the client to them
             var decoded = null;
 
-            jwt.verify(savedClient.userId, config.secret, function(err, decoded){
-                if (err) {
-                    return res.status(500).send({auth: false, message: "Failed to authenticate token."});
-                }
-                // if everything good, save to request for use in other routes
+            // jwt.verify(savedClient.userId, config.secret, function(err, decoded){
+            //     if (err) {
+            //         return res.status(500).send({auth: false, message: "Failed to authenticate token."});
+            //     }
+            //     // if everything good, save to request for use in other routes
 
-                console.log("decoded id: ", decoded.id);
-                decoded = decoded.id;
-            });
+            //     console.log("decoded id: ", decoded.id);
+            //     decoded = decoded.id;
+            // });
             db.User.findOneAndUpdate({  }, { $push: { clients: savedClient._id } }, { new: true } );
           
            
