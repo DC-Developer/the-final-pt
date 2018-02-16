@@ -5,7 +5,9 @@ const mongoose = require('mongoose');
 const bodyParser= require('body-parser');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
-var config = require('../config/config');
+const config = require('../config/config');
+const verifyId = require('./verifyUserId');
+
 
 router.use(bodyParser.json());
 router.use(bodyParser.urlencoded({ extended: false }));
@@ -27,26 +29,30 @@ router.get("/all", (req, res) => {
 
 router.post("/client", (req, res) => {
     const client = req.body;
-    const userId = req.body.currentUser;
+    // const userId = req.body.currentUser;
+
+    console.log('client: ',client);
+
 //save the client to the database
     db.Client
         .create(client)
         .then(savedClient => {
             console.log("database: ", savedClient);
             //now query db for the specific User and update that user by pushing the client to them
-            var decoded = null;
 
-            // jwt.verify(savedClient.userId, config.secret, function(err, decoded){
-            //     if (err) {
-            //         return res.status(500).send({auth: false, message: "Failed to authenticate token."});
-            //     }
-            //     // if everything good, save to request for use in other routes
 
-            //     console.log("decoded id: ", decoded.id);
-            //     decoded = decoded.id;
-            // });
-            return db.User.findOneAndUpdate({ }, { $push: { clients: savedClient._id } }, { new: true } );
+            // console.log("decoded id: ", decoded_userId);
+            // return db.User.findOneAndUpdate({ _id: req.userId }, { $push: { clients: savedClient._id } }, { new: true } );
+            
+            const decoded = jwt.verify(savedClient.userId, config.secret, function(err, decoded) {
+                if (err)
+                return res.status(500).send({auth: false, message: "Failed to authenticate token."});
 
+                return decoded.id;
+            });
+
+            return db.User.findOneAndUpdate({ _id: decoded }, { $push: { clients: savedClient._id } }, { new: true } );
+       
 
         })
 

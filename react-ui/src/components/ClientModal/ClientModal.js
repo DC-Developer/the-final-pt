@@ -33,7 +33,7 @@ class ClientModal extends React.Component {
         //the user located by the id to push the client into it
 
         let formValues = this.state.formValues;
-        const user_id = sessionStorage.getItem('myToken');
+        const user_id = JSON.parse(sessionStorage.getItem('myToken'));
         const userId = "userId";
 
         formValues[userId] = user_id;
