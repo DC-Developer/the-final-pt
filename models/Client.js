@@ -32,6 +32,11 @@ const ClientSchema = new Schema({
         type: String,
         required: true
     },
+    // parent: { 
+    //     type:Schema.ObjectId, 
+    //     ref:"User", 
+    //     childPath:"clients" 
+    // },
     date: {
         type: Date, default: Date.now
     }

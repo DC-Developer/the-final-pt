@@ -45,9 +45,9 @@ router.post("/client", (req, res) => {
             //     console.log("decoded id: ", decoded.id);
             //     decoded = decoded.id;
             // });
-            db.User.findOneAndUpdate({  }, { $push: { clients: savedClient._id } }, { new: true } );
-          
-           
+            return db.User.findOneAndUpdate({ }, { $push: { clients: savedClient._id } }, { new: true } );
+
+
         })
 
         .catch(err => res.status(422).json(err));
