@@ -6,7 +6,7 @@ const bodyParser= require('body-parser');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
 const config = require('../config/config');
-const verifyId = require('./verifyUserId');
+
 
 
 router.use(bodyParser.json());
