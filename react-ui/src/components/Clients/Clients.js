@@ -48,8 +48,12 @@ class Clients extends React.Component {
     // }
 
     //make the api call to the server to get clients
+    //be sure to add query to get request, and then access the params in the server side
     callApi = async () => {
-        const response = await fetch('/api/clients', { method: 'GET' } );
+        //going to need to get the current id and pass it into storage to be retrieved here
+        // const query = sessionStorage.getItem();
+        const id = JSON.parse(sessionStorage.getItem('myToken'));
+        const response = await fetch('/api/clients/' + id, { method: 'GET' } );
         const body = await response.json();
 
         if (response.status !== 200) throw Error(body.message);

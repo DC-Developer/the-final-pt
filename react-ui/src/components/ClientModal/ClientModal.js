@@ -45,6 +45,7 @@ class ClientModal extends React.Component {
             body: JSON.stringify(formValues)
         })
         .then(res => res.json())
+        // .then(userClient => console.log(userClient))
         .catch(err => console.log(err));
     }
     

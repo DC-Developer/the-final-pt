@@ -28,30 +28,40 @@ router.get("/all", (req, res) => {
 });
 
 router.post("/client", (req, res) => {
+
     const client = req.body;
     // const userId = req.body.currentUser;
 
     console.log('client: ',client);
+//take the client with the req.body and decode the userId and then save
+//that into client before querying the database below
 
-//save the client to the database
+const decoded_client_userId = jwt.verify(client.userId, config.secret, function(err, decoded) {
+    if (err) 
+    return res.status(500).send({ auth: false, message: "Failed to authenticate client userId." });
+
+    return decoded.id;
+});
+//now after retrieving the decoded client userId, store it into the client variable
+client.userId = decoded_client_userId;
+
+console.log('client.userId: ', client.userId);
+
+//save the mutated client to the database
     db.Client
         .create(client)
         .then(savedClient => {
             console.log("database: ", savedClient);
-            //now query db for the specific User and update that user by pushing the client to them
-
-
-            // console.log("decoded id: ", decoded_userId);
-            // return db.User.findOneAndUpdate({ _id: req.userId }, { $push: { clients: savedClient._id } }, { new: true } );
             
-            const decoded = jwt.verify(savedClient.userId, config.secret, function(err, decoded) {
-                if (err)
-                return res.status(500).send({auth: false, message: "Failed to authenticate token."});
+            //first initialize a variable which will decode the userId token in savedClient
+            // const decoded = jwt.verify(savedClient.userId, config.secret, function(err, decoded) {
+            //     if (err)
+            //     return res.status(500).send({auth: false, message: "Failed to authenticate token."});
 
-                return decoded.id;
-            });
-
-            return db.User.findOneAndUpdate({ _id: decoded }, { $push: { clients: savedClient._id } }, { new: true } );
+            //     return decoded.id;
+            // });
+            //now query db for the specific User and update that user by pushing the client to them
+            return db.User.findOneAndUpdate({ _id: savedClient.userId }, { $push: { clients: savedClient._id } }, { new: true } );
        
 
         })
@@ -59,13 +69,23 @@ router.post("/client", (req, res) => {
         .catch(err => res.status(422).json(err));
 
 });
-router.get('/clients', (req, res) => {
-    // const dbClients ;
-    //query the database
+router.get('/clients/:id', (req, res) => {
+//first take the id from the params, and then decode the jwt
 
-    db.Client
-        .find({})
-        .then(clients => res.send(clients))
+const id = req.params.id;
+const decoded_id = jwt.verify(id, config.secret, function(err, decoded) {
+        if (err)
+        return res.status(500).send({ auth: false, message: "Failed to verify id token..." });
+        
+        return decoded.id;
+});
+console.log('decoded id: ', decoded_id);
+
+    db.Client 
+        .find({ userId: decoded_id })
+        .then(clients => {
+            res.send(clients);
+        })
         .catch(err => res.status(502).json(err));
 
     // res.send({ clients: dbClients });
