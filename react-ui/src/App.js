@@ -41,19 +41,6 @@ class App extends Component {
     return (
       <Router>
         <div>
-          {/* <ul className="noStyle">
-            <li>
-              <Link to="/login">Login</Link>
-            </li>
-            <li>
-              <Link to="/register">Register</Link>
-            </li>
-            <li>
-              <Link to="/client">Client Page</Link>
-            </li>
-          </ul> */}
-
-{/* add register link in login component && find all links that were associated with /login and replace to "/" */}
 
           <Route path="/" component={Login} />
           <Route path="/register" component={Register} />

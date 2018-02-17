@@ -71,7 +71,10 @@ body {
     font-stretch: normal;
     line-height: normal;
     letter-spacing: 0px;
+    text-decoration: none;
+
 }
+
 
 .userPic {
   width: 35px;

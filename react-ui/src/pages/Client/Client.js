@@ -4,6 +4,7 @@ import './Client.css';
 import Overview from '../../components/Overview/Overview.js';
 import Clients from '../../components/Clients/Clients.js';
 import MacroB from '../../components/MacroB/MacroB.js';
+import { Redirect } from 'react-router';
 
 //now that the relations between clients and users, just need to change how we access the
 //the api and retrieve the data from the db. make when saving the clients to user, you use
@@ -23,12 +24,23 @@ class Client extends React.Component {
     constructor(props){
         super(props)
         this.state = {
-            state: {}
+            redirect: false
         }
+        this.handleClick = this.handleClick.bind(this);
     }
     
+    handleClick(e) {
+        //should also delete the session token
+        this.setState({ redirect: true});
+    }
+
+
     render() {
         var logo = clientPageImgs[0];
+
+        if(this.state.redirect){
+            return <Redirect to="/login" />
+        }
 
         return (
             <Router>
@@ -48,9 +60,8 @@ class Client extends React.Component {
                             </a>
 
                             <div className="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                <a className="dropdown-item" href="#">Action</a>
-                                <a className="dropdown-item" href="#">Another action</a>
-                                <a className="dropdown-item" href="#">Something else here</a>
+                                <a className="dropdown-item" href="#">Settings</a>
+                                <a className="dropdown-item" to="/logout" onClick={this.handleClick}>Logout</a>
                             </div>
 
                             <div className="userPic">
