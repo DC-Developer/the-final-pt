@@ -31,7 +31,7 @@ class MacroB extends React.Component {
                  </div>   
                 
                  <div className="genDiv">
-                    < section>
+                    <section>
                          <div className="macroHeaders">Height</div>
                          <input className="macroHeight" />
                      </section>
@@ -51,9 +51,11 @@ class MacroB extends React.Component {
 
                  </div>
                  {/* need to call the map method on this.state.client and then use the GeneratedMacros component */}
-                 {}
+                 
+                 <GeneratedMacros />
 
              </div>
+            
 
          </div>
      );

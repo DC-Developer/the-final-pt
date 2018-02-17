@@ -1,0 +1,44 @@
+.generated_macros {
+      
+}
+
+.export_button {
+    width: 145px;
+    height: 45px;
+    border-radius: 6px;
+    background-color: #50e2c1;
+    box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.2);
+    font-family: Lato;
+    font-size: 12px;
+    font-weight: 900;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: 0px;
+    color: #ffffff;
+    border: none;
+    margin-left: 578px;
+    margin-top: 20px;
+}
+  
+.export_button:hover {
+    cursor: pointer;
+    background-color: #2da085;
+}
+.macro_info {
+    width: 353px;
+    height: 197px;
+    border-radius: 6px;
+    border: solid 1px #e4e4e8;
+    display: inline-block;
+    margin-top: 60px;
+    margin-right: 21px;
+  }
+  .macro_info2 {
+    width: 353px;
+    height: 197px;
+    border-radius: 6px;
+    border: solid 1px #e4e4e8;
+    display: inline-block;
+    margin-top: 60px;
+  }
