@@ -11,6 +11,9 @@ import MacroB from '../../components/MacroB/MacroB.js';
 //pass in an object with the push method, pushing an object of the clients
 
 
+//create a logout button, which will use Link from react-router and redirect
+//to the login page.it will also delete the user token
+
 const clientPageImgs = [
     {
         src: "https://raw.githubusercontent.com/DC-Developer/the-final-pt/master/react-ui/src/imgs/logo.png"
@@ -37,7 +40,19 @@ class Client extends React.Component {
                         <div className="userDiv">
                         {/* The user name will be dry coded by passing in the props from the parent 
                         container's state */}
-                            <h4>Jane Doe</h4>
+                            {/* <h4>Jane Doe</h4> */}
+                            
+                            
+                            <a  href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                User_Name
+                            </a>
+
+                            <div className="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                <a className="dropdown-item" href="#">Action</a>
+                                <a className="dropdown-item" href="#">Another action</a>
+                                <a className="dropdown-item" href="#">Something else here</a>
+                            </div>
+
                             <div className="userPic">
 
                             </div>

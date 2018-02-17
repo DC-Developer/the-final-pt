@@ -88,8 +88,6 @@ console.log('decoded id: ', decoded_id);
         })
         .catch(err => res.status(502).json(err));
 
-    // res.send({ clients: dbClients });
-    //^ it's really important that you send the response as an object
 
 });
 router.post("/facebook", (req, res) => {

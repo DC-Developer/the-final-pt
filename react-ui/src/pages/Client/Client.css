@@ -42,7 +42,22 @@ body {
     padding-top: 30px;
     margin-right: 43px;
 }
-h4 {
+/* .userNameDropdown {
+    display: inline;
+    font-size: 16px;
+    position: relative;
+    bottom: 10px;
+    margin-right: 10px;
+    color: #444444;
+    font-family: Lato;
+    font-size: 16px;
+    font-weight: 300;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: 0px;
+} */
+#dropdownMenuLink {
     display: inline;
     font-size: 16px;
     position: relative;
@@ -57,6 +72,7 @@ h4 {
     line-height: normal;
     letter-spacing: 0px;
 }
+
 .userPic {
   width: 35px;
   height: 35px;
