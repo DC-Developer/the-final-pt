@@ -4,11 +4,13 @@ import GeneratedMacros from '../GeneratedMacros';
 import $ from 'jquery';
 //this component will be setting the size for the client page
 
+const clients = [];
+
 class MacroB extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            client: {}
+            clients
         }
         this.generateTrainingProtein = this.generateTrainingProtein.bind(this);
         this.generateTrainingCarbs = this.generateTrainingCarbs.bind(this);
@@ -17,6 +19,30 @@ class MacroB extends React.Component {
         this.generateRestProtein = this.generateRestProtein.bind(this);
         this.generateRestCarbs = this.generateRestCarbs.bind(this);
         this.generateRestFats = this.generateRestFats.bind(this);
+
+        this.callApi = this.callApi.bind(this);
+    }
+
+    componentDidMount() {
+        //put the api call here to retrieve the data from the server. then
+        //map through the clients array and making a dropdown element for each
+        //client in the drop down box of the client search bar
+    }
+
+    callApi() {
+        const user_id = sessionStorage.getItem('myToken');
+        const response = await fetch("/api/userclients"+ user_id, {
+            method: "GET"
+        });
+        const body = await response.json();
+
+        console.log("async callApi from MacroB.js: ", body);
+
+        clients = body;
+
+        return clients;
+
+
     }
 
     generateTrainingProtein() {

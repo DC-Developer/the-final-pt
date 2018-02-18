@@ -8,7 +8,7 @@ const GeneratedMacros = (props) => {
 
    return (
    <div className="generated_macros" >
-    {/* left margin is 50, right margin is 54         */}
+    {/* implement drop down menu later */}
         <button className="export_button" >
             EXPORT AS...
         </button>

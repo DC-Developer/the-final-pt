@@ -26,6 +26,14 @@ router.get("/all", (req, res) => {
             console.log(err);
         });
 });
+router.get("/allClients", (req, res) => {
+    db.User
+        .find({})
+        .then(data => {res.send(data)})
+        .catch(err => {
+            console.log(err);
+        });
+});
 
 router.post("/client", (req, res) => {
 
