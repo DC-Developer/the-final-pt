@@ -10,7 +10,13 @@ class MacroB extends React.Component {
         this.state = {
             client: {}
         }
+        this.generateMacros = this.generateMacros.bind(this);
     }
+
+    generateMacros() {
+        return 165;
+    }
+
 
     render(){
 
@@ -52,7 +58,7 @@ class MacroB extends React.Component {
                  </div>
                  {/* need to call the map method on this.state.client and then use the GeneratedMacros component */}
                  
-                 <GeneratedMacros />
+                 <GeneratedMacros generateMacros={this.generateMacros} />
 
              </div>
             
