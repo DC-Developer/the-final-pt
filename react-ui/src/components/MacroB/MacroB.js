@@ -10,11 +10,66 @@ class MacroB extends React.Component {
         this.state = {
             client: {}
         }
-        this.generateMacros = this.generateMacros.bind(this);
+        this.generateTrainingMacros = this.generateTrainingMacros.bind(this);
+        this.generateRestMacros = this.generateRestMacros.bind(this);
     }
 
-    generateMacros() {
-        return 165;
+    generateTrainingMacros() {
+        //here we are going to initialize variables in accordance to the elements they represent.
+        //then we set a series of conditionals that will perform a certain calculation and return
+        //that number.
+
+        var training_protein = document.getElementById('training_protein');
+        var training_carbs = document.getElementById('training_carbs');
+        var training_fats = document.getElementById('training_fats');
+
+
+   
+
+
+        if(training_protein){
+            return 168;
+        }else{
+            return null;
+        }
+
+        if(training_carbs){
+            return 162;
+        }else{
+            return null;
+        }
+
+        if(training_fats){
+            return 162;
+        }else{
+            return null;
+        }
+
+    }
+
+    generateRestMacros() {
+        var rest_protein = document.getElementById('rest_protein');
+        var rest_carbs = document.getElementById('rest_carbs');
+        var rest_fats = document.getElementById('rest_fats');
+
+        if(rest_protein){
+            return 
+        }else{
+            return null;
+        }
+
+        if(rest_carbs){
+
+        }else{
+            return null;
+        }
+
+        if(rest_fats){
+
+        }else{
+            return null;
+        }
+
     }
 
 
@@ -58,7 +113,7 @@ class MacroB extends React.Component {
                  </div>
                  {/* need to call the map method on this.state.client and then use the GeneratedMacros component */}
                  
-                 <GeneratedMacros generateMacros={this.generateMacros} />
+                 <GeneratedMacros generateTrainingMacros={this.generateTrainingMacros} />
 
              </div>
             
