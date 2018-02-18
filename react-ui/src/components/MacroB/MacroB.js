@@ -1,7 +1,7 @@
 import React from 'react';
 import './MacroB.css';
 import GeneratedMacros from '../GeneratedMacros';
-
+import $ from 'jquery';
 //this component will be setting the size for the client page
 
 class MacroB extends React.Component {
@@ -10,66 +10,33 @@ class MacroB extends React.Component {
         this.state = {
             client: {}
         }
-        this.generateTrainingMacros = this.generateTrainingMacros.bind(this);
-        this.generateRestMacros = this.generateRestMacros.bind(this);
+        this.generateTrainingProtein = this.generateTrainingProtein.bind(this);
+        this.generateTrainingCarbs = this.generateTrainingCarbs.bind(this);
+        this.generateTrainingFats = this.generateTrainingFats.bind(this);
+
+        this.generateRestProtein = this.generateRestProtein.bind(this);
+        this.generateRestCarbs = this.generateRestCarbs.bind(this);
+        this.generateRestFats = this.generateRestFats.bind(this);
     }
 
-    generateTrainingMacros() {
-        //here we are going to initialize variables in accordance to the elements they represent.
-        //then we set a series of conditionals that will perform a certain calculation and return
-        //that number.
-
-        var training_protein = document.getElementById('training_protein');
-        var training_carbs = document.getElementById('training_carbs');
-        var training_fats = document.getElementById('training_fats');
-
-
-   
-
-
-        if(training_protein){
-            return 168;
-        }else{
-            return null;
-        }
-
-        if(training_carbs){
-            return 162;
-        }else{
-            return null;
-        }
-
-        if(training_fats){
-            return 162;
-        }else{
-            return null;
-        }
-
+    generateTrainingProtein() {
+        return 168;
+    }
+    generateTrainingCarbs() {
+        return 350;
+    }
+    generateTrainingFats() {
+        return 59;
     }
 
-    generateRestMacros() {
-        var rest_protein = document.getElementById('rest_protein');
-        var rest_carbs = document.getElementById('rest_carbs');
-        var rest_fats = document.getElementById('rest_fats');
-
-        if(rest_protein){
-            return 
-        }else{
-            return null;
-        }
-
-        if(rest_carbs){
-
-        }else{
-            return null;
-        }
-
-        if(rest_fats){
-
-        }else{
-            return null;
-        }
-
+    generateRestProtein() {
+        return 168;
+    }
+    generateRestCarbs() {
+        return 78;
+    }
+    generateRestFats() {
+        return 59;
     }
 
 
@@ -113,7 +80,15 @@ class MacroB extends React.Component {
                  </div>
                  {/* need to call the map method on this.state.client and then use the GeneratedMacros component */}
                  
-                 <GeneratedMacros generateTrainingMacros={this.generateTrainingMacros} />
+                 <GeneratedMacros 
+                    generateTrainingProtein={this.generateTrainingProtein} 
+                    generateTrainingCarbs={this.generateTrainingCarbs} 
+                    generateTrainingFats={this.generateTrainingFats} 
+
+                    generateRestProtein={this.generateRestProtein} 
+                    generateRestCarbs={this.generateRestCarbs} 
+                    generateRestFats={this.generateRestFats} 
+                 />
 
              </div>
             
