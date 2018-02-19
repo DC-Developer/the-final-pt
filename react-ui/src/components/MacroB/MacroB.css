@@ -102,3 +102,7 @@
     display:inline;
     
 }
+select {
+    appearance: none;
+    /* background: url() no-repeat 95% center; */
+}

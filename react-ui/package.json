@@ -11,7 +11,8 @@
     "react-dom": "^15.4.2",
     "react-facebook-login": "4.0.0",
     "react-google-login": "3.0.4",
-    "react-router-dom": "4.2.2"
+    "react-router-dom": "4.2.2",
+    "react-select": "1.2.1"
   },
   "scripts": {
     "start": "react-scripts start",

@@ -3,14 +3,18 @@ import './MacroB.css';
 import GeneratedMacros from '../GeneratedMacros';
 import ClientDropDown from '../ClientDropDown';
 //this component will be setting the size for the client page
+import Select from 'react-select';
+import 'react-select/dist/react-select.css';
 
 var clients = [];
+var options ;
 
 class MacroB extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            clients
+            clients,
+            selected: ''
         }
 
         this.generateTrainingProtein = this.generateTrainingProtein.bind(this);
@@ -22,6 +26,8 @@ class MacroB extends React.Component {
         this.generateRestFats = this.generateRestFats.bind(this);
 
         this.callApi = this.callApi.bind(this);
+        this.handleChange = this.handleChange.bind(this);
+        this.createOptions = this.createOptions.bind(this);
     }
 
     componentDidMount() {
@@ -33,9 +39,20 @@ class MacroB extends React.Component {
             .then(clients => {
                 this.setState({ clients })
                 console.log("MacroB state: ", this.state.clients);
+
             })
             .catch(err => console.log(err));
 
+    }
+    //createOptions is an Object Contructor used to create the options in the imported Select component 
+    createOptions(value, label) {
+        this.value = value;
+        this.label = label;
+    }
+
+    handleChange(e) {
+        
+        this.setState({ selected: e.target.value });
     }
 
     callApi = async () => {
@@ -83,6 +100,7 @@ class MacroB extends React.Component {
     render(){
         console.log("Macrob id token: ", sessionStorage.getItem('myToken'));
         console.log("MacroB clients: ", clients);
+        console.log("selected client: ", this.state.selected);
      return (
          <div>
             <div className="macroTitle">
@@ -98,9 +116,15 @@ class MacroB extends React.Component {
                                                      {/* add designs for the select drop down later */}
                      <input placeholder="Search for a client"/> 
                      {/* this is where we are going to use the map method to render all clients associated with user */}
-                     <select>
-                        
-                     </select>
+                        <select onChange={this.handleChange}>
+                            {this.state.clients.map(client => {
+                                return(
+                                    <option value={client.fullname} key={client._id}>
+                                        {client.fullname}
+                                    </option>
+                                );
+                            })}
+                        </select>
                  </div>   
                 
                  <div className="genDiv">
