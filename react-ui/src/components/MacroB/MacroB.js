@@ -4,7 +4,7 @@ import GeneratedMacros from '../GeneratedMacros';
 import $ from 'jquery';
 //this component will be setting the size for the client page
 
-const clients = [];
+var clients = [];
 
 class MacroB extends React.Component {
     constructor(props) {
@@ -12,6 +12,7 @@ class MacroB extends React.Component {
         this.state = {
             clients
         }
+
         this.generateTrainingProtein = this.generateTrainingProtein.bind(this);
         this.generateTrainingCarbs = this.generateTrainingCarbs.bind(this);
         this.generateTrainingFats = this.generateTrainingFats.bind(this);
@@ -29,7 +30,7 @@ class MacroB extends React.Component {
         //client in the drop down box of the client search bar
     }
 
-    callApi() {
+    callApi = async () => {
         const user_id = sessionStorage.getItem('myToken');
         const response = await fetch("/api/userclients"+ user_id, {
             method: "GET"
@@ -44,6 +45,9 @@ class MacroB extends React.Component {
 
 
     }
+//I could not find a way to target the specific element the function was being sent to
+//so I had to make a function for each specific element. I will try and find a better 
+//solution later and refactor my code when I do.
 
     generateTrainingProtein() {
         return 168;
