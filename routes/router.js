@@ -26,7 +26,7 @@ router.get("/all", (req, res) => {
             console.log(err);
         });
 });
-router.get("/allClients", (req, res) => {
+router.get("/userclients", (req, res) => {
     db.User
         .find({})
         .then(data => {res.send(data)})
@@ -92,7 +92,7 @@ console.log('decoded id: ', decoded_id);
     db.Client 
         .find({ userId: decoded_id })
         .then(clients => {
-            res.send(clients);
+            res.json(clients);
         })
         .catch(err => res.status(502).json(err));
 

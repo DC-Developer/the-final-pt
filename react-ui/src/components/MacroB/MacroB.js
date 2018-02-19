@@ -2,7 +2,6 @@ import React from 'react';
 import './MacroB.css';
 import GeneratedMacros from '../GeneratedMacros';
 import ClientDropDown from '../ClientDropDown';
-import $ from 'jquery';
 //this component will be setting the size for the client page
 
 var clients = [];
@@ -29,15 +28,22 @@ class MacroB extends React.Component {
         //put the api call here to retrieve the data from the server. then
         //map through the clients array and making a dropdown element for each
         //client in the drop down box of the client search bar
+
+        this.callApi()
+            .then(clients => {
+                this.setState({ clients })
+                console.log("MacroB state: ", this.state.clients);
+            })
+            .catch(err => console.log(err));
+
     }
 
     callApi = async () => {
-        const user_id = sessionStorage.getItem('myToken');
-        const response = await fetch("/api/userclients"+ user_id, {
-            method: "GET"
-        });
+        const id = JSON.parse(sessionStorage.getItem('myToken'));
+        const response = await fetch('/api/clients/'+ id, { method: "GET"} );
         const body = await response.json();
 
+        if (response.status !== 200) throw Error(body.message);
         console.log("async callApi from MacroB.js: ", body);
 
         clients = body;
@@ -49,6 +55,9 @@ class MacroB extends React.Component {
 //I could not find a way to target the specific element the function was being sent to
 //so I had to make a function for each specific element. I will try and find a better 
 //solution later and refactor my code when I do.
+
+//these functions will also contain the selected client information that is stored in the state
+//and use that data to perform calculations
 
     generateTrainingProtein() {
         return 168;
@@ -72,7 +81,8 @@ class MacroB extends React.Component {
 
 
     render(){
-
+        console.log("Macrob id token: ", sessionStorage.getItem('myToken'));
+        console.log("MacroB clients: ", clients);
      return (
          <div>
             <div className="macroTitle">
@@ -86,7 +96,11 @@ class MacroB extends React.Component {
 
                  <div className="clientSearchBar">
                                                      {/* add designs for the select drop down later */}
-                     <input placeholder="Search for a client"/> <select></select>
+                     <input placeholder="Search for a client"/> 
+                     {/* this is where we are going to use the map method to render all clients associated with user */}
+                     <select>
+                        
+                     </select>
                  </div>   
                 
                  <div className="genDiv">
@@ -109,8 +123,7 @@ class MacroB extends React.Component {
                  <div className="Line">
 
                  </div>
-                 {/* need to call the map method on this.state.client and then use the GeneratedMacros component */}
-                 
+
                  <GeneratedMacros 
                     generateTrainingProtein={this.generateTrainingProtein} 
                     generateTrainingCarbs={this.generateTrainingCarbs} 
