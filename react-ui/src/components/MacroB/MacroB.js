@@ -1,6 +1,7 @@
 import React from 'react';
 import './MacroB.css';
 import GeneratedMacros from '../GeneratedMacros';
+import ClientDropDown from '../ClientDropDown';
 import $ from 'jquery';
 //this component will be setting the size for the client page
 
