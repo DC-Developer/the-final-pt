@@ -3,6 +3,7 @@ import './MacroB.css';
 import GeneratedMacros from '../GeneratedMacros';
 import ClientDropDown from '../ClientDropDown';
 //this component will be setting the size for the client page
+import $ from 'jquery';
 import Select from 'react-select';
 import 'react-select/dist/react-select.css';
 
@@ -35,6 +36,7 @@ class MacroB extends React.Component {
         //map through the clients array and making a dropdown element for each
         //client in the drop down box of the client search bar
 
+
         this.callApi()
             .then(clients => {
                 this.setState({ clients })
@@ -43,6 +45,7 @@ class MacroB extends React.Component {
             })
             .catch(err => console.log(err));
 
+        
     }
     //createOptions is an Object Contructor used to create the options in the imported Select component 
     createOptions(value, label) {
@@ -53,6 +56,8 @@ class MacroB extends React.Component {
     handleChange(e) {
         
         this.setState({ selected: e.target.value });
+        document.getElementById("macroHeight").value = this.state.selected;
+       
     }
 
     callApi = async () => {
@@ -114,9 +119,10 @@ class MacroB extends React.Component {
 
                  <div className="clientSearchBar">
                                                      {/* add designs for the select drop down later */}
-                     <input placeholder="Search for a client"/> 
+                     {/* <input placeholder="Search for a client"/>  */}
                      {/* this is where we are going to use the map method to render all clients associated with user */}
                         <select onChange={this.handleChange}>
+                            <option selected disabled value="">Choose a Client</option>
                             {this.state.clients.map(client => {
                                 return(
                                     <option value={client.fullname} key={client._id}>
@@ -130,15 +136,15 @@ class MacroB extends React.Component {
                  <div className="genDiv">
                     <section>
                          <div className="macroHeaders">Height</div>
-                         <input className="macroHeight" />
+                         <input className="macroHeight" id="macroHeight"/>
                      </section>
                      <section>
                          <div className="macroHeaders">Weight</div>
-                         <input className="macroWeight" />
+                         <input className="macroWeight" id="macroWeight"/>
                      </section>
                      <section>
                          <div className="macroHeaders">Body Fat</div>
-                         <input className="macroBfat" />
+                         <input className="macroBfat" id="macroFat"/>
                      </section>
                      <button className="generateB">
                          GENERATE BREAKDOWN

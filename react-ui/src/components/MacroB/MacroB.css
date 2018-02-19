@@ -105,4 +105,11 @@
 select {
     appearance: none;
     /* background: url() no-repeat 95% center; */
+    width: 304px;
+    height: 45px;
+    border-radius: 6px;
+    border: solid 1px #e4e4e8;
+}
+#placeholder {
+    margin-left: 10px;
 }
