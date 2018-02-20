@@ -6,11 +6,6 @@ import Clients from '../../components/Clients/Clients.js';
 import MacroB from '../../components/MacroB/MacroB.js';
 import { Redirect } from 'react-router';
 
-//now that the relations between clients and users, just need to change how we access the
-//the api and retrieve the data from the db. make when saving the clients to user, you use
-//findOneAndUpdate, pass in an object containing the id of the user, and the second parameter,
-//pass in an object with the push method, pushing an object of the clients
-
 
 //create a logout button, which will use Link from react-router and redirect
 //to the login page.it will also delete the user token
@@ -50,11 +45,9 @@ class Client extends React.Component {
                             <img src={logo.src} className="logo"/>FIT CLIENT
                         </div>
                         <div className="userDiv">
-                        {/* The user name will be dry coded by passing in the props from the parent 
-                        container's state */}
-                            {/* <h4>Jane Doe</h4> */}
-                            
-                            
+                        {/* we could just access the saved token in the session storage and query the db for the user, get the user info and/or picture */}
+                        
+                                                        
                             <a  href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 User_Name
                             </a>
