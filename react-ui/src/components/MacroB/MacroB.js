@@ -56,8 +56,10 @@ class MacroB extends React.Component {
     handleChange(e) {
         
         this.setState({ selected: e.target.value });
-        document.getElementById("macroHeight").value = this.state.selected;
+        var selected_client = document.querySelector("#selectedClient").value;
+        var target_height = document.getElementById("macroHeight").value = selected_client;
        
+        console.log("selected_client: ", selected_client);
     }
 
     callApi = async () => {
@@ -121,7 +123,7 @@ class MacroB extends React.Component {
                                                      {/* add designs for the select drop down later */}
                      {/* <input placeholder="Search for a client"/>  */}
                      {/* this is where we are going to use the map method to render all clients associated with user */}
-                        <select onChange={this.handleChange}>
+                        <select onChange={this.handleChange} id="selectedClient">
                             <option selected disabled value="">Choose a Client</option>
                             {this.state.clients.map(client => {
                                 return(
