@@ -15,7 +15,8 @@ class MacroB extends React.Component {
         super(props);
         this.state = {
             clients,
-            selected: ''
+            selected: '',
+            generate: false
         }
 
         this.generateTrainingProtein = this.generateTrainingProtein.bind(this);
@@ -28,6 +29,7 @@ class MacroB extends React.Component {
 
         this.callApi = this.callApi.bind(this);
         this.handleChange = this.handleChange.bind(this);
+        this.onClick = this.onClick.bind(this);
         this.createOptions = this.createOptions.bind(this);
     }
 
@@ -54,12 +56,13 @@ class MacroB extends React.Component {
     }
 
     handleChange(e) {
-
+        
         this.setState({ selected: e.target.value });
         var cleaned ;
         var selected_client = document.querySelector("#selectedClient").value;
         var target_height = document.getElementById("macroHeight").value = this.state.clients.map(client => {
             if(client.fullname === selected_client){
+                // console.log("Training protein: ", this.generateTrainingProtein(client.weight));
                 console.log("client_height: ", client.height);
                 return client.height;
             }
@@ -81,6 +84,12 @@ class MacroB extends React.Component {
         console.log("selected_client: ", selected_client);
     }
 
+    onClick() {
+        this.setState({ generate: !this.state.generate });
+        console.log("generate state: ", this.state.generate);
+
+    }
+
     callApi = async () => {
         const id = JSON.parse(sessionStorage.getItem('myToken'));
         const response = await fetch('/api/clients/'+ id, { method: "GET"} );
@@ -100,25 +109,57 @@ class MacroB extends React.Component {
 //solution later and refactor my code when I do.
 
 //these functions will also contain the selected client information that is stored in the state
-//and use that data to perform calculations
+//and use that data to perform calculations. we are going to use this.state.selected for the conditional
+//to filter the this.state.clients
 
     generateTrainingProtein() {
-        return 168;
+        //use ratio of 1.2g of protein per pound of bodyweight
+        
+        let current_client_weight = this.state.clients.map(client => {
+            if(this.state.selected === client.fullname){
+                return client.weight;
+            }
+        });
+
+        return ( current_client_weight* 1.2);
     }
     generateTrainingCarbs() {
-        return 350;
+        
+        // let current_client_weight = this.state.clients.map(client => {
+        //     if(this.state.selected === client.fullname){
+        //         return client.weight;
+        //     }
+        // });
+        let current_client = this.state.clients.filter(client => {
+            return (
+                this.state.selected === client.fullname
+            );
+        });
+        console.log("generatedcarbs: ", current_client[0].weight);
+        return (current_client[0]*1.75);
     }
     generateTrainingFats() {
-        return 59;
+        
+        let current_client_weight = this.state.clients.map(client => {
+            if(this.state.selected === client.fullname){
+                return client.weight;
+            }
+        });
+        return (current_client_weight/3);
     }
 
     generateRestProtein() {
+        //use ratio of 0.8g proten per pound
         return 168;
     }
     generateRestCarbs() {
+
+
         return 78;
     }
     generateRestFats() {
+
+        
         return 59;
     }
 
@@ -167,15 +208,16 @@ class MacroB extends React.Component {
                          <div className="macroHeaders">Body Fat</div>
                          <input className="macroBfat" id="macroFat"/>
                      </section>
-                     <button className="generateB">
+                     <button className="generateB" onClick={this.onClick}>
                          GENERATE BREAKDOWN
                      </button>
                  </div>
                  <div className="Line">
 
                  </div>
-
+          
                  <GeneratedMacros 
+                    generate={this.state.generate}
                     generateTrainingProtein={this.generateTrainingProtein} 
                     generateTrainingCarbs={this.generateTrainingCarbs} 
                     generateTrainingFats={this.generateTrainingFats} 
@@ -183,6 +225,7 @@ class MacroB extends React.Component {
                     generateRestProtein={this.generateRestProtein} 
                     generateRestCarbs={this.generateRestCarbs} 
                     generateRestFats={this.generateRestFats} 
+
                  />
 
              </div>

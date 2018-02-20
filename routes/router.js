@@ -10,7 +10,7 @@ const config = require('../config/config');
 
 
 router.use(bodyParser.json());
-router.use(bodyParser.urlencoded({ extended: false }));
+router.use(bodyParser.urlencoded({ extended: true }));
 
 
 router.get("/hello", (req, res) => {
