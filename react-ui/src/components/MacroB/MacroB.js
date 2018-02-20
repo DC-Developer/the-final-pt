@@ -117,27 +117,24 @@ class MacroB extends React.Component {
         
         let current_client_weight = this.state.clients.map(client => {
             if(this.state.selected === client.fullname){
+                console.log("clientweight: ", client.weight);
                 return client.weight;
             }
         });
 
-        return ( current_client_weight* 1.2);
+        return ( parseInt(current_client_weight)* 1.2);
     }
     generateTrainingCarbs() {
         
-        // let current_client_weight = this.state.clients.map(client => {
-        //     if(this.state.selected === client.fullname){
-        //         return client.weight;
-        //     }
-        // });
-        let current_client = this.state.clients.filter(client => {
-            return (
-                this.state.selected === client.fullname
-            );
+        let current_client_weight = this.state.clients.map(client => {
+            if(this.state.selected === client.fullname){
+                return client.weight;
+            }
         });
-        console.log("generatedcarbs: ", current_client[0].weight);
-        return (current_client[0]*1.75);
+
+        return (parseInt(current_client_weight)*1.75);
     }
+    
     generateTrainingFats() {
         
         let current_client_weight = this.state.clients.map(client => {
@@ -145,7 +142,7 @@ class MacroB extends React.Component {
                 return client.weight;
             }
         });
-        return (current_client_weight/3);
+        return (parseInt(current_client_weight)/3);
     }
 
     generateRestProtein() {
