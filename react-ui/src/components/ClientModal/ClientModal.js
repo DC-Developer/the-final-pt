@@ -45,8 +45,11 @@ class ClientModal extends React.Component {
             body: JSON.stringify(formValues)
         })
         .then(res => res.json())
+        //this is where we are going to potentially retrive the current user id
         // .then(userClient => console.log(userClient))
         .catch(err => console.log(err));
+
+        //perhaps update the state here
     }
     
     render() {
