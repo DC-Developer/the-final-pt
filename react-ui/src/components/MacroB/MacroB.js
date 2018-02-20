@@ -134,7 +134,7 @@ class MacroB extends React.Component {
 
         return (parseInt(current_client_weight)*1.75);
     }
-    
+
     generateTrainingFats() {
         
         let current_client_weight = this.state.clients.map(client => {
@@ -147,17 +147,37 @@ class MacroB extends React.Component {
 
     generateRestProtein() {
         //use ratio of 0.8g proten per pound
-        return 168;
+        
+        let current_client_weight = this.state.clients.map(client => {
+            if(this.state.selected === client.fullname){
+                console.log("clientweight: ", client.weight);
+                return client.weight;
+            }
+        });
+
+        return ( parseInt(current_client_weight)* 1.2);
     }
     generateRestCarbs() {
+        
+        let current_client_weight = this.state.clients.map(client => {
+            if(this.state.selected === client.fullname){
+                console.log("clientweight: ", client.weight);
+                return client.weight;
+            }
+        });
 
-
-        return 78;
+        return ( parseInt(current_client_weight)* .4);
     }
     generateRestFats() {
-
         
-        return 59;
+        let current_client_weight = this.state.clients.map(client => {
+            if(this.state.selected === client.fullname){
+                console.log("clientweight: ", client.weight);
+                return client.weight;
+            }
+        });
+
+        return ( parseInt(current_client_weight)/3);
     }
 
 
