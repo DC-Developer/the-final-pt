@@ -94,6 +94,9 @@
     color: #ffffff;
     border: none;
 }
+.generateB:focus {
+    outline: none;
+}
 .generateB:hover {
     cursor: pointer;
     background-color: #2da085;
@@ -109,7 +112,4 @@ select {
     height: 45px;
     border-radius: 6px;
     border: solid 1px #e4e4e8;
-}
-#placeholder {
-    margin-left: 10px;
 }

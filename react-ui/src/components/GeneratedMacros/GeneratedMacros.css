@@ -25,6 +25,9 @@
     cursor: pointer;
     background-color: #2da085;
 }
+.export_button:focus {
+    outline: none;
+}
 .macro_info {
     width: 353px;
     height: 197px;
