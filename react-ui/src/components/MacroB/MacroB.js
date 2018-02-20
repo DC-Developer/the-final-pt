@@ -54,10 +54,29 @@ class MacroB extends React.Component {
     }
 
     handleChange(e) {
-        
+
         this.setState({ selected: e.target.value });
+        var cleaned ;
         var selected_client = document.querySelector("#selectedClient").value;
-        var target_height = document.getElementById("macroHeight").value = selected_client;
+        var target_height = document.getElementById("macroHeight").value = this.state.clients.map(client => {
+            if(client.fullname === selected_client){
+                console.log("client_height: ", client.height);
+                return client.height;
+            }
+        });
+        var target_weight = document.getElementById("macroWeight").value = this.state.clients.map(client => {
+            if(client.fullname === selected_client){
+                console.log("client_weight: ", client.weight);
+                return client.weight;
+            }
+        });
+        var target_bodyfat = document.getElementById("macroFat").value = this.state.clients.map(client => {
+            if(client.fullname === selected_client){
+                console.log("client_bodyfat: ", client.bodyfat);
+                return client.bodyfat;
+            }
+        })
+        
        
         console.log("selected_client: ", selected_client);
     }
