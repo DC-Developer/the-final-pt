@@ -14,9 +14,9 @@ class MacroB extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            clients,
             selected: '',
-            generate: false
+            generate: false,
+            clients
         }
 
         this.generateTrainingProtein = this.generateTrainingProtein.bind(this);
@@ -58,30 +58,17 @@ class MacroB extends React.Component {
     handleChange(e) {
         
         this.setState({ selected: e.target.value });
-        var cleaned ;
-        var selected_client = document.querySelector("#selectedClient").value;
-        var target_height = document.getElementById("macroHeight").value = this.state.clients.map(client => {
-            if(client.fullname === selected_client){
-                // console.log("Training protein: ", this.generateTrainingProtein(client.weight));
-                console.log("client_height: ", client.height);
-                return client.height;
-            }
-        });
-        var target_weight = document.getElementById("macroWeight").value = this.state.clients.map(client => {
-            if(client.fullname === selected_client){
-                console.log("client_weight: ", client.weight);
-                return client.weight;
-            }
-        });
-        var target_bodyfat = document.getElementById("macroFat").value = this.state.clients.map(client => {
-            if(client.fullname === selected_client){
-                console.log("client_bodyfat: ", client.bodyfat);
-                return client.bodyfat;
-            }
-        })
         
-       
-        console.log("selected_client: ", selected_client);
+        var selected_client = document.querySelector("#selectedClient").value;
+
+        var cleaned_height = this.state.clients.filter(client => client.fullname === selected_client);
+        var target_height = document.getElementById("macroHeight").value = cleaned_height[0].height;
+
+        var cleaned_weight = this.state.clients.filter(client => client.fullname === selected_client);
+        var target_weight = document.getElementById("macroWeight").value = cleaned_weight[0].weight;
+
+        var cleaned_bodyfat = this.state.clients.filter(client => client.fullname === selected_client);
+        var target_bodyfat = document.getElementById("macroFat").value = cleaned_bodyfat[0].bodyfat;
     }
 
     onClick() {
