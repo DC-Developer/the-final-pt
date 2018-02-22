@@ -10,6 +10,7 @@ import { Redirect } from 'react-router';
 //create a logout button, which will use Link from react-router and redirect
 //to the login page.it will also delete the user token
 
+
 const clientPageImgs = [
     {
         src: "https://raw.githubusercontent.com/DC-Developer/the-final-pt/master/react-ui/src/imgs/logo.png"
@@ -19,16 +20,37 @@ class Client extends React.Component {
     constructor(props){
         super(props)
         this.state = {
-            redirect: false
+            redirect: false,
+            current_client: ''
         }
         this.handleClick = this.handleClick.bind(this);
+        this.callApi = this.callApi.bind(this);
     }
     
     handleClick(e) {
         //should also delete the session token
         this.setState({ redirect: true});
     }
+    componentDidMount() {
+        this.callApi()
+            .then(body => this.setState({ current_client: body.firstName + " " + body.lastName }))
+            .catch(err => console.log(err));
 
+    }
+    //this api call's purpose is to get the current user info from the database to get the username to use for
+    //the user logout/settings div.
+
+    callApi = async () => {
+        const user_id = sessionStorage.getItem('myToken');
+        const response = await fetch("/api/user/" + JSON.parse(user_id));
+        const body = await response.json();
+
+        if (response.status !== 200) throw Error(body.message);
+
+        console.log("client first and last name: ", body.firstname);
+        
+        return body;
+    }
 
     render() {
         var logo = clientPageImgs[0];
@@ -49,7 +71,7 @@ class Client extends React.Component {
                         
                                                         
                             <a  href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                User_Name
+                                {this.state.current_client}
                             </a>
 
                             <div className="dropdown-menu" aria-labelledby="dropdownMenuLink">

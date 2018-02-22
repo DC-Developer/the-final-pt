@@ -12,12 +12,6 @@ const moment = require('moment');
 router.use(bodyParser.json());
 router.use(bodyParser.urlencoded({ extended: true }));
 
-
-router.get("/hello", (req, res) => {
-    res.send({ message: "This is the data pipe, you Lazy Piece of Shit!" });
-    
-});
-
 router.get("/all", (req, res) => {
     db.User
         .find({})
@@ -26,6 +20,26 @@ router.get("/all", (req, res) => {
             console.log(err);
         });
 });
+router.get("/user/:id", (req, res) => {
+    var user_id = req.params.id;
+
+    const decoded_id = jwt.verify(user_id, config.secret, function(err, decoded){
+        if (err)
+        return res.status(500).send({ auth: false, message: "Failed to verify id token..." });
+
+        return decoded.id;
+    });
+
+    db.User
+        .findById(decoded_id)
+        .then(dbUser => {
+            res.json(dbUser);
+        })
+        .catch(err => console.log(err));
+
+
+});
+
 router.get("/userclients", (req, res) => {
     db.User
         .find({})
@@ -115,21 +129,5 @@ router.post("/google", (req, res) => {
 });
 
 
-
-
-router.post("/seed", (req, res) => {
-    
-    db.User
-        .create({
-            firstName: "Dion",
-            lastName: "Cavanaugh",
-            email:'dcdeveloper26@gmail.com',
-            password: 'admin',
-            })
-        .then(data => console.log(data))
-        .catch(err => {
-            console.log(err);
-        })
-});
 
 module.exports = router;
