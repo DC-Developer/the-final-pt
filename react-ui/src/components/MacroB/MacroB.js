@@ -9,6 +9,10 @@ import 'react-select/dist/react-select.css';
 
 var clients = [];
 var options ;
+// var macro = document.createElement("p");
+// var text = document.createTextNode("get your shit together");
+
+// var combined = macro.appendChild(text);
 
 class MacroB extends React.Component {
     constructor(props) {
@@ -16,6 +20,7 @@ class MacroB extends React.Component {
         this.state = {
             selected: '',
             generate: false,
+            generate_complete: false,
             clients
         }
 
@@ -31,6 +36,7 @@ class MacroB extends React.Component {
         this.handleChange = this.handleChange.bind(this);
         this.onClick = this.onClick.bind(this);
         this.createOptions = this.createOptions.bind(this);
+
     }
 
     componentDidMount() {
@@ -74,6 +80,8 @@ class MacroB extends React.Component {
     onClick() {
         this.setState({ generate: !this.state.generate });
         console.log("generate state: ", this.state.generate);
+
+    
 
     }
 
@@ -172,6 +180,27 @@ class MacroB extends React.Component {
         console.log("Macrob id token: ", sessionStorage.getItem('myToken'));
         console.log("MacroB clients: ", clients);
         console.log("selected client: ", this.state.selected);
+
+        var partial;
+
+        if(this.state.generate){
+            partial =                 
+                <GeneratedMacros 
+                    generate={this.state.generate}
+                    generateTrainingProtein={this.generateTrainingProtein} 
+                    generateTrainingCarbs={this.generateTrainingCarbs} 
+                    generateTrainingFats={this.generateTrainingFats} 
+
+                    generateRestProtein={this.generateRestProtein} 
+                    generateRestCarbs={this.generateRestCarbs} 
+                    generateRestFats={this.generateRestFats} 
+                />;
+            // this.setState({ generate_complete: !this.state.generate_complete });
+        } else{
+            partial = <div>Not Generated</div>;
+        }
+
+
      return (
          <div>
             <div className="macroTitle">
@@ -217,10 +246,10 @@ class MacroB extends React.Component {
                      </button>
                  </div>
                  <div className="Line">
-
+                            
                  </div>
-          
-                 <GeneratedMacros 
+                {partial}
+                 {/* <GeneratedMacros 
                     generate={this.state.generate}
                     generateTrainingProtein={this.generateTrainingProtein} 
                     generateTrainingCarbs={this.generateTrainingCarbs} 
@@ -230,7 +259,7 @@ class MacroB extends React.Component {
                     generateRestCarbs={this.generateRestCarbs} 
                     generateRestFats={this.generateRestFats} 
 
-                 />
+                 /> */}
 
              </div>
             

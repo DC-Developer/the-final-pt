@@ -57,6 +57,9 @@ body {
     line-height: normal;
     letter-spacing: 0px;
 } */
+.dropdown-item:hover {
+    cursor: pointer;
+}
 #dropdownMenuLink {
     display: inline;
     font-size: 16px;
