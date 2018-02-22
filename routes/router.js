@@ -6,7 +6,7 @@ const bodyParser= require('body-parser');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
 const config = require('../config/config');
-
+const moment = require('moment');
 
 
 router.use(bodyParser.json());
@@ -61,13 +61,12 @@ console.log('client.userId: ', client.userId);
         .then(savedClient => {
             console.log("database: ", savedClient);
             
-            //first initialize a variable which will decode the userId token in savedClient
-            // const decoded = jwt.verify(savedClient.userId, config.secret, function(err, decoded) {
-            //     if (err)
-            //     return res.status(500).send({auth: false, message: "Failed to authenticate token."});
+            formattedDate = savedClient.date.getMonth()+1 + "-" + savedClient.date.getDate() +"-"+ savedClient.date.getFullYear();
+            console.log("formatedDate: ", formattedDate);
 
-            //     return decoded.id;
-            // });
+            db.Client.findOneAndUpdate({ _id: savedClient._id }, { $set: { formatted_date:  formattedDate } }, { new: true } ).then(savedClient => console.log("savedclient new date: ", savedClient.formatted_date));
+
+
             //now query db for the specific User and update that user by pushing the client to them
             return db.User.findOneAndUpdate({ _id: savedClient.userId }, { $push: { clients: savedClient._id } }, { new: true } );
        
@@ -92,6 +91,9 @@ console.log('decoded id: ', decoded_id);
     db.Client 
         .find({ userId: decoded_id })
         .then(clients => {
+
+            
+
             res.json(clients);
         })
         .catch(err => res.status(502).json(err));

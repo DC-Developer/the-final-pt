@@ -32,6 +32,10 @@ const ClientSchema = new Schema({
         type: String,
         required: true
     },
+    formatted_date: {
+        type: String,
+        required: false
+    },
     date: {
         type: Date, default: Date.now
     }

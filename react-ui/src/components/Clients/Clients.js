@@ -52,8 +52,10 @@ class Clients extends React.Component {
     callApi = async () => {
         //going to need to get the current id and pass it into storage to be retrieved here
         // const query = sessionStorage.getItem();
-        const id = JSON.parse(sessionStorage.getItem('myToken'));
-        const response = await fetch('/api/clients/' + id, { method: 'GET' } );
+        const id = sessionStorage.getItem('myToken');
+        //probably had to parse the token string because in the router.js, urlencoded is set to true, so
+        //the parameters are expected to be in an object instead and you need to parse a string to json
+        const response = await fetch('/api/clients/' + JSON.parse(id), { method: 'GET' } );
         const body = await response.json();
 
         if (response.status !== 200) throw Error(body.message);
@@ -88,7 +90,7 @@ class Clients extends React.Component {
             <div className="clientList" id="clientDiv">
             {/* dynamically render the client divs with the map function, this is activate based
             off the search bar using jquery */}
-                {this.state.clients.map(client => (<ClientDiv fullname={client.fullname} key={client._id}/>))}
+                {this.state.clients.map(client => (<ClientDiv fullname={client.fullname} date={client.formatted_date} key={client._id}/>))}
             </div>
             {/* potentially feature:
                 display modal showing client details upon clicking the client's name  */}

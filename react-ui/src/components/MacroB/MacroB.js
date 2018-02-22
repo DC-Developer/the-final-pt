@@ -195,7 +195,7 @@ class MacroB extends React.Component {
                     generateRestCarbs={this.generateRestCarbs} 
                     generateRestFats={this.generateRestFats} 
                 />;
-            // this.setState({ generate_complete: !this.state.generate_complete });
+
         } else{
             partial = <div>Not Generated</div>;
         }
