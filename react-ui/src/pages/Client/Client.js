@@ -29,7 +29,7 @@ class Client extends React.Component {
     
     handleClick(e) {
         //should also delete the session token
-        this.setState({ redirect: true});
+        this.setState({ redirect: !this.state.redirect});
     }
     componentDidMount() {
         this.callApi()
@@ -54,7 +54,7 @@ class Client extends React.Component {
 
     render() {
         var logo = clientPageImgs[0];
-
+        //the redirect or logout functionality is buggy and needs to be fixed
         if(this.state.redirect){
             return <Redirect to="/login" />
         }
@@ -67,9 +67,7 @@ class Client extends React.Component {
                             <img src={logo.src} className="logo"/>FIT CLIENT
                         </div>
                         <div className="userDiv">
-                        {/* we could just access the saved token in the session storage and query the db for the user, get the user info and/or picture */}
-                        
-                                                        
+                                             
                             <a  href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 {this.state.current_client}
                             </a>
