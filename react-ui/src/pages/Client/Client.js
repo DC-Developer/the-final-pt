@@ -20,6 +20,9 @@ const clientPageImgs = [
     },
     {
         src: "https://raw.githubusercontent.com/DC-Developer/the-final-pt/master/layouts%20%2B%20imgs/imgs/sliders.png"
+    },
+    {
+        src: "https://raw.githubusercontent.com/DC-Developer/the-final-pt/master/layouts%20%2B%20imgs/imgs/chart.png"
     }
 ];
 class Client extends React.Component {
@@ -62,6 +65,7 @@ class Client extends React.Component {
         var logo = clientPageImgs[0];
         var clients = clientPageImgs[1];
         var macro = clientPageImgs[2];
+        var overview = clientPageImgs[3];
         //the redirect or logout functionality is buggy and needs to be fixed
         if(this.state.redirect){
             return <Redirect to="/login" />
@@ -92,7 +96,7 @@ class Client extends React.Component {
                     </div>
                     <div className="grid">
                         <div className="sidebar">
-                            <Link to="/client/overview"><img src={clients.src} className="clients-pic" /><p>Overview</p></Link>
+                            <Link to="/client/overview"><img src={overview.src} className="clients-pic" /><p>Overview</p></Link>
                             <Link to="/client/clients"><img src={clients.src} className="clients-pic-2" /><p>Clients</p></Link>
                             <Link to="/client/macrobreakdown"><img src={macro.src} className="clients-pic-3" /><p className="clients-p-3">Macro Breakdown</p></Link>
                         </div>
