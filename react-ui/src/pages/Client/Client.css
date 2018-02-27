@@ -77,8 +77,14 @@ body {
     text-decoration: none;
 
 }
-
-
+.clients-pic {
+    display: inline-block;
+    float: left;
+    margin-right: 15px;
+    margin-top: 3px;
+    height: 17px;
+    width: 17px;
+}
 .userPic {
   width: 35px;
   height: 35px;
@@ -105,8 +111,9 @@ body {
     font-stretch: normal;
     line-height: normal;
     letter-spacing: 0px;
-    margin-left: 83px;
+    margin-right: 83px;
     margin-bottom: 50px;
+    display: inline-block;
 }
 .sidebar p:hover {
     color: #50e2c1;

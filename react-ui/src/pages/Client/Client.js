@@ -14,6 +14,9 @@ import { Redirect } from 'react-router';
 const clientPageImgs = [
     {
         src: "https://raw.githubusercontent.com/DC-Developer/the-final-pt/master/react-ui/src/imgs/logo.png"
+    },
+    {
+        src: "https://raw.githubusercontent.com/DC-Developer/the-final-pt/master/layouts%20%2B%20imgs/imgs/clients.png"
     }
 ];
 class Client extends React.Component {
@@ -54,6 +57,7 @@ class Client extends React.Component {
 
     render() {
         var logo = clientPageImgs[0];
+        var clients = clientPageImgs[1];
         //the redirect or logout functionality is buggy and needs to be fixed
         if(this.state.redirect){
             return <Redirect to="/login" />
@@ -85,8 +89,8 @@ class Client extends React.Component {
                     <div className="grid">
                         <div className="sidebar">
                             <Link to="/client/overview"><p>Overview</p></Link>
-                            <Link to="/client/clients"><p>Clients</p></Link>
-                            <Link to="/client/macrobreakdown"><p>Macro Breakdown</p></Link>
+                            <Link to="/client/clients"><img src={clients.src} className="clients-pic" /><p>Clients</p></Link>
+                            <Link to="/client/macrobreakdown"><img src={macro.src} className="clients-pic" /><p>Macro Breakdown</p></Link>
                         </div>
 
                         <div className="childElement">
