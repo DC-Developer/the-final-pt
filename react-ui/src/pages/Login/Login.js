@@ -3,7 +3,7 @@ import './Login.css';
 import {GoogleLogin, GoogleLogout} from 'react-google-login';
 import FacebookLogin from 'react-facebook-login';
 import { Redirect } from 'react-router';
-
+//take off console logs of any user information
 //dry up the code by making a seperate file to store our img files in an array of objects
 const loginImgs = [
     {
@@ -138,7 +138,7 @@ class Login extends React.Component {
         .catch(err => console.log(err));
 
     }
-//make a function that will handle the click off the register button and redirect 
+//make a function that will handle the click of the register button and redirect 
 //them to the register page
 
     handleClick(e) {
