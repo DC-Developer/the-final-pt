@@ -194,7 +194,7 @@ class MacroB extends React.Component {
                 />;
 
         } else{
-            partial = <div>Not Generated</div>;
+            partial = <div></div>;
         }
 
 
