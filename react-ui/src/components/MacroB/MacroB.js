@@ -110,69 +110,42 @@ class MacroB extends React.Component {
     generateTrainingProtein() {
         //use ratio of 1.2g of protein per pound of bodyweight
         
-        let current_client_weight = this.state.clients.map(client => {
-            if(this.state.selected === client.fullname){
-                console.log("clientweight: ", client.weight);
-                return client.weight;
-            }
-        });
+        let current_client = this.state.clients.filter(client => client.fullname === this.state.selected);
 
-        return ( parseInt(current_client_weight)* 1.2);
+        return ( parseInt(current_client[0].weight)* 1.2);
     }
     generateTrainingCarbs() {
         
-        let current_client_weight = this.state.clients.map(client => {
-            if(this.state.selected === client.fullname){
-                return client.weight;
-            }
-        });
+        let current_client = this.state.clients.filter(client => client.fullname === this.state.selected);
 
-        return (parseInt(current_client_weight)*1.75);
+        return (parseInt(current_client[0].weight)*1.75);
     }
 
     generateTrainingFats() {
         
-        let current_client_weight = this.state.clients.map(client => {
-            if(this.state.selected === client.fullname){
-                return client.weight;
-            }
-        });
-        return (parseInt(current_client_weight)/3);
+        let current_client = this.state.clients.filter(client => client.fullname === this.state.selected);
+        
+        return (parseInt(current_client[0].weight)/3);
     }
 
     generateRestProtein() {
         //use ratio of 0.8g proten per pound
         
-        let current_client_weight = this.state.clients.map(client => {
-            if(this.state.selected === client.fullname){
-                console.log("clientweight: ", client.weight);
-                return client.weight;
-            }
-        });
+        let current_client = this.state.clients.filter(client => client.fullname === this.state.selected);
 
-        return ( parseInt(current_client_weight)* 1.2);
+        return ( parseInt(current_client[0].weight)* 1.2);
     }
     generateRestCarbs() {
         
-        let current_client_weight = this.state.clients.map(client => {
-            if(this.state.selected === client.fullname){
-                console.log("clientweight: ", client.weight);
-                return client.weight;
-            }
-        });
+        let current_client = this.state.clients.filter(client => client.fullname === this.state.selected);
 
-        return ( parseInt(current_client_weight)* .4);
+        return ( parseInt(current_client[0].weight)* .4);
     }
     generateRestFats() {
         
-        let current_client_weight = this.state.clients.map(client => {
-            if(this.state.selected === client.fullname){
-                console.log("clientweight: ", client.weight);
-                return client.weight;
-            }
-        });
+        let current_client = this.state.clients.filter(client => client.fullname === this.state.selected);
 
-        return ( parseInt(current_client_weight)/3);
+        return ( parseInt(current_client[0].weight)/3);
     }
 
 

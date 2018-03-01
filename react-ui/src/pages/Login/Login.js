@@ -90,7 +90,6 @@ class Login extends React.Component {
         form_values[name] = value;
 
         this.setState({ form_values })
-        console.log("login-form_values: ", this.state.form_values);
     }
    //this will be used in a different page 
     onSubmit (e) {
