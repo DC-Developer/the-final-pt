@@ -21,10 +21,12 @@ body {
     width: 1140px;
     height: 1024px;
     background-color: #fbfbfc;
+  /* position div center of screen */
     position: absolute;
     top: 50%;
     left: 50%;
     margin: -512px 0 0 -570px;
+  /*      ----------------      */
 }
 .header {
     padding-bottom: 30px;

@@ -112,20 +112,32 @@ class MacroB extends React.Component {
         
         let current_client = this.state.clients.filter(client => client.fullname === this.state.selected);
 
-        return ( parseInt(current_client[0].weight)* 1.2);
+        let parsed_weight = parseInt(current_client[0].weight)* 1.2;
+
+        let rounded_weight = Math.round(parsed_weight, 1);
+
+        return ( rounded_weight );
     }
     generateTrainingCarbs() {
         
         let current_client = this.state.clients.filter(client => client.fullname === this.state.selected);
 
-        return (parseInt(current_client[0].weight)*1.75);
+        let parsed_weight = parseInt(current_client[0].weight)*1.75;
+
+        let rounded_weight = Math.round(parsed_weight, 1);
+
+        return ( rounded_weight );
     }
 
     generateTrainingFats() {
         
         let current_client = this.state.clients.filter(client => client.fullname === this.state.selected);
         
-        return (parseInt(current_client[0].weight)/3);
+        let parsed_weight = parseInt(current_client[0].weight)/3;
+
+        let rounded_weight = Math.round(parsed_weight, 1);
+
+        return ( rounded_weight );
     }
 
     generateRestProtein() {
@@ -133,19 +145,31 @@ class MacroB extends React.Component {
         
         let current_client = this.state.clients.filter(client => client.fullname === this.state.selected);
 
-        return ( parseInt(current_client[0].weight)* 1.2);
+        let parsed_weight = parseInt(current_client[0].weight)* 1.2;
+
+        let rounded_weight = Math.floor(parsed_weight, 1);
+
+        return ( rounded_weight );
     }
     generateRestCarbs() {
         
         let current_client = this.state.clients.filter(client => client.fullname === this.state.selected);
+        
+        let parsed_weight = parseInt(current_client[0].weight)* .4;
 
-        return ( parseInt(current_client[0].weight)* .4);
+        let rounded_weight = Math.floor(parsed_weight, 1);
+
+        return ( rounded_weight );
     }
     generateRestFats() {
         
         let current_client = this.state.clients.filter(client => client.fullname === this.state.selected);
 
-        return ( parseInt(current_client[0].weight)/3);
+        let parsed_weight = parseInt(current_client[0].weight)* .3;
+
+        let rounded_weight = Math.floor(parsed_weight, 1);
+
+        return ( rounded_weight );
     }
 
 
