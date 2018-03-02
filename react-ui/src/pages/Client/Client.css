@@ -19,7 +19,7 @@ body {
 }
 .parentElement{
     width: 1140px;
-    height: 600px;
+    height: 1000px;
     background-color: #fbfbfc;
   /* position div center of screen */
     position: absolute;
