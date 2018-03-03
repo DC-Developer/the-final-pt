@@ -7,7 +7,8 @@ class EditModal extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            clients
+            clients,
+            formValues: {}
         }
         this.handleChange = this.handleChange.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
@@ -23,6 +24,13 @@ class EditModal extends React.Component {
 
     }
     handleChange(e) {
+        let name = e.target.name;
+        let value = e.target.value;
+        let formValues = this.state.formValues;
+
+        formValues[name] = value;
+        this.setState({ formValues });
+        console.log("formValues: ", this.state.formValues);
 
     }
     onSubmit(e) {
@@ -43,14 +51,14 @@ class EditModal extends React.Component {
         };
         return (
             <div className="wrapper">
-                {/* <div className="edit-link">
-                    <a style={style} role="button" data-toggle="modal" data-target="#editModal" >
+                <div className="edit-link">
+                    <a role="button" data-toggle="modal" data-target="#editModal" onClick={this.onClick} >
                         Edit
                     </a>
-                </div> */}
-                <a style={style} role="button" data-toggle="modal" data-target="#editModal" onClick={this.onClick}>
+                </div>
+                {/* <a style={style} role="button" data-toggle="modal" data-target="#editModal" onClick={this.onClick}>
                         Edit
-                </a>
+                </a> */}
 
 
             <div className="modal fade" id="editModal" tabIndex="-1" role="dialog" aria-labelledby="editModalLabel" aria-hidden="true">
@@ -70,7 +78,7 @@ class EditModal extends React.Component {
                                         Profile Picture <input type="file" />
                                         {/* <input className="profileImg"><img/></input> */}
                                 </form>
-                                    <form className="col-sm-7" onSubmit={this.onSubmit}>
+                                    <form className="col-sm-7">
                                         <div className="pInfo">Personal Info</div>
                                         
                                         <div>Full Name:</div>
