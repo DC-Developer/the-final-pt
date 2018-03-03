@@ -88,9 +88,9 @@ class Clients extends React.Component {
                 <div className="c1" >Name</div> <div className="c2" >Date Added</div> <div className="c3" >Actions</div>
             </div>
             <div className="clientList" id="clientDiv">
-            {/* dynamically render the client divs with the map function, this is activate based
+            {/* dynamically render the client divs with the map function, this is activated based
             off the search bar using jquery */}
-                {this.state.clients.map(client => (<ClientDiv fullname={client.fullname} date={client.formatted_date} key={client._id}/>))}
+                {this.state.clients.map(client => (<ClientDiv clientData={client} fullname={client.fullname} date={client.formatted_date} key={client._id}/>))}
             </div>
             {/* potentially feature:
                 display modal showing client details upon clicking the client's name  */}

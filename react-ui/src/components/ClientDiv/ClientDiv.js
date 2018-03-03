@@ -10,7 +10,7 @@ const ClientDiv = (props) => {
             <div className="clientName">{props.fullname}</div> <div className="clientDate">{props.date}</div> <a style={style}>Edit</a>
         </div> */}
         <div className="client">
-            <div className="clientName">{props.fullname}</div> <div className="clientDate">{props.date}</div> <EditModal />
+            <div className="clientName">{props.fullname}</div> <div className="clientDate">{props.date}</div> <EditModal clientData={props.clientData} id={props.key}/>
         </div>
     </div>
     );
