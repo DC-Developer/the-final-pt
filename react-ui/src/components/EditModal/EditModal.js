@@ -2,6 +2,7 @@ import React from 'react';
 import './EditModal.css';
 
 var clients = [];
+var client_id = null;
 
 class EditModal extends React.Component {
     constructor(props) {
@@ -35,8 +36,12 @@ class EditModal extends React.Component {
     }
     onSubmit(e) {
 
+        e.preventDefault();
+        this.callApi();
+
     }
     onClick() {
+        client_id = this.props.clientData._id;
         var client_name = document.getElementById("client_name").value = this.props.clientData.fullname;
         var client_email = document.getElementById("client_email").value = this.props.clientData.email;
         var client_phone = document.getElementById("client_phone").value = this.props.clientData.phone;
@@ -44,6 +49,23 @@ class EditModal extends React.Component {
         var client_weight = document.getElementById("client_weight").value = this.props.clientData.weight;
         var client_bodyfat = document.getElementById("client_bodyfat").value = this.props.clientData.bodyfat;
     }
+    //add update route 
+    callApi = async () => {
+        console.log("client id: ", client_id);
+        const response = await fetch("/api/clients/" + client_id, {
+            method: 'PUT',
+            headers: {"Content-Type": "application/json"},
+            body: JSON.stringify(this.state.formValues)
+        });
+        const body = await response.json();
+        if (response.status !== 200) throw Error(body.message);
+
+        console.log("app.js callApi: ", body);
+
+        return body;
+
+    }
+
 
     render() {
         var style = {
@@ -51,15 +73,12 @@ class EditModal extends React.Component {
         };
         return (
             <div className="wrapper">
+
                 <div className="edit-link">
                     <a role="button" data-toggle="modal" data-target="#editModal" onClick={this.onClick} >
                         Edit
                     </a>
                 </div>
-                {/* <a style={style} role="button" data-toggle="modal" data-target="#editModal" onClick={this.onClick}>
-                        Edit
-                </a> */}
-
 
             <div className="modal fade" id="editModal" tabIndex="-1" role="dialog" aria-labelledby="editModalLabel" aria-hidden="true">
                 <div className="modal-dialog" role="document">
@@ -85,32 +104,32 @@ class EditModal extends React.Component {
                                         <input className="Rectangle-Copy-Modal" name="fullname" type="text" id="client_name" placeholder={this.props.clientData.fullname} onChange={this.handleChange} />
   
                                         <div>Email</div>
-                                        <input className="Rectangle-Copy-Modal" name="email" type="text" id="client_email" placeholder={this.props.clientData.email}/>
+                                        <input className="Rectangle-Copy-Modal" name="email" type="text" id="client_email" placeholder={this.props.clientData.email} onChange={this.handleChange}/>
 
                                         <div>Phone</div>
-                                        <input className="Rectangle-Copy-Modal" name="phone" type="text" id="client_phone" placeholder={this.props.clientData.phone}/>
+                                        <input className="Rectangle-Copy-Modal" name="phone" type="text" id="client_phone" placeholder={this.props.clientData.phone} onChange={this.handleChange}/>
 
                                         <div className="heightDiv">
                                             <div className="botHeaders">Height</div>
-                                            <input className="Rectangle-Copy-Height" name="height" type="text" id="client_height" placeholder={this.props.clientData.height} />
+                                            <input className="Rectangle-Copy-Height" name="height" type="text" id="client_height" placeholder={this.props.clientData.height} onChange={this.handleChange}/>
                                         
                                         </div>
 
                                         <div className="weightDiv">
                                             <div className="botHeaders">Weight</div>
-                                            <input className="Rectangle-Copy-Weight" name="weight" type="text" id="client_weight" placeholder={this.props.clientData.weight} />
+                                            <input className="Rectangle-Copy-Weight" name="weight" type="text" id="client_weight" placeholder={this.props.clientData.weight} onChange={this.handleChange}/>
                                         
                                         </div>
 
                                         <div className="bfatDiv">
                                             <div className="botHeaders">Body Fat</div>
-                                            <input className="Rectangle-Copy-Bodyfat" name="bodyfat" type="text" id="client_bodyfat" placeholder={this.props.clientData.bodyfat} />
+                                            <input className="Rectangle-Copy-Bodyfat" name="bodyfat" type="text" id="client_bodyfat" placeholder={this.props.clientData.bodyfat} onChange={this.handleChange}/>
                                         
                                         </div>  
 
                                         <div className="modal-footer">
                                             <button type="button" className="btn btn-secondary" data-dismiss="modal">CANCEL</button>
-                                            <button type="submit" value="Submit" className="btn btn-primary" >SAVE CHANGES</button>
+                                            <button type="submit" value="Submit" className="btn btn-primary">SAVE CHANGES</button>
                                         </div>
                                     </form>  
                                 </div>

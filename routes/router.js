@@ -106,7 +106,6 @@ console.log('decoded id: ', decoded_id);
         .find({ userId: decoded_id })
         .then(clients => {
 
-            
 
             res.json(clients);
         })
@@ -114,6 +113,23 @@ console.log('decoded id: ', decoded_id);
 
 
 });
+//finish update route
+router.put('/clients/:id', (req, res) => {
+
+    var client_id = req.params.id;
+    var clientData = req.body;
+    console.log('client id received from server: ', client_id);
+    console.log("clientData from server: ", clientData);
+
+    db.Client
+        .findByIdAndUpdate( client_id , { $set: clientData }, { new: true })
+        .then(client => {
+            console.log("db client: ", client);
+        })
+        .catch(err => res.status(502).json(err));
+
+});
+
 router.post("/facebook", (req, res) => {
     console.log("facebook from router: ", req.body);
     res.send(req.body);
