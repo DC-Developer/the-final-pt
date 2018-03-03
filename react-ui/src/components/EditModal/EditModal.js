@@ -78,11 +78,11 @@ class EditModal extends React.Component {
                                         Profile Picture <input type="file" />
                                         {/* <input className="profileImg"><img/></input> */}
                                 </form>
-                                    <form className="col-sm-7">
+                                    <form className="col-sm-7" onSubmit={this.onSubmit}>
                                         <div className="pInfo">Personal Info</div>
                                         
                                         <div>Full Name:</div>
-                                        <input className="Rectangle-Copy-Modal" name="fullname" type="text" id="client_name" placeholder={this.props.clientData.fullname} />
+                                        <input className="Rectangle-Copy-Modal" name="fullname" type="text" id="client_name" placeholder={this.props.clientData.fullname} onChange={this.handleChange} />
   
                                         <div>Email</div>
                                         <input className="Rectangle-Copy-Modal" name="email" type="text" id="client_email" placeholder={this.props.clientData.email}/>
