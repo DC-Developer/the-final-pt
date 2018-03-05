@@ -10,6 +10,14 @@ const Overview = (props) => {
                 <div>
                     <div className="h1">Overview</div>
                 </div>
+                <div className="overview-container">
+                    <div className="overview-div" id="clients">
+
+                    </div>
+                    <div className="overview-div">
+
+                    </div>
+                </div>
 
 
 
