@@ -10,6 +10,24 @@
     border: solid 1px #e4e4e8;
     display: inline-block;
   }
+.overview-div-container {
+    margin-left: 14px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+.overview-div-header {
+    font-family: Lato;
+    font-size: 23px;
+    font-weight: 300;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: 0.1px;
+    color: #444444;
+}
+#overview {
+    margin-bottom: 38px;
+}
 #clients {
     margin-right: 17px;
 }
