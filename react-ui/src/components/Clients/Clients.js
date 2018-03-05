@@ -88,8 +88,7 @@ class Clients extends React.Component {
                 <div className="c1" >Name</div> <div className="c2" >Date Added</div> <div className="c3" >Actions</div>
             </div>
             <div className="clientList" id="clientDiv">
-            {/* dynamically render the client divs with the map function, this is activated based
-            off the search bar using jquery */}
+                {/* add pagination that will limit the amount of divs displayed and pass over to the next page */}
                 {this.state.clients.map(client => (<ClientDiv clientData={client} fullname={client.fullname} date={client.formatted_date} key={client._id}/>))}
             </div>
             {/* potentially feature:
