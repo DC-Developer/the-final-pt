@@ -1,5 +1,6 @@
 import React from 'react';
 import './ClientModal.css';
+import $ from 'jquery';
 
 class ClientModal extends React.Component {
     constructor(props) {
@@ -24,7 +25,7 @@ class ClientModal extends React.Component {
     }
 
     onSubmit (e) {
-        // e.preventDefault();
+        e.preventDefault();
         //find the potential fix here.
 
         //this is probably not the best way to do it, but going to store the 
@@ -46,10 +47,11 @@ class ClientModal extends React.Component {
         })
         .then(res => res.json())
         //this is where we are going to potentially retrive the current user id
-        // .then(userClient => console.log(userClient))
         .catch(err => console.log(err));
 
         //perhaps update the state here
+        $("#exampleModal .close").click();
+
     }
     
     render() {

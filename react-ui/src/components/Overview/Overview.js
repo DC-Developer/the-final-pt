@@ -14,7 +14,7 @@ const Overview = (props) => {
                     <div className="overview-div" id="clients">
                         <div className="overview-div-container">
                             <div className="overview-div-header">Recently added clients</div>
-
+                                         {/* map through the state of recently added clients and create divs here */}
                                          {/* test data */}
                             <div id="view-all">View All</div>
                         </div>
