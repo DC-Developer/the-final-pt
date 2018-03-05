@@ -51,6 +51,7 @@ class ClientModal extends React.Component {
 
         //perhaps update the state here
         $("#exampleModal .close").click();
+        this.props.addClient();
 
     }
     

@@ -12,10 +12,11 @@ class Clients extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            clients
+            clients,
+            added_client: false
         }
         this.callApi = this.callApi.bind(this);
-        // this.addedClient = this.addedClient.bind(this);
+        this.addClient = this.addClient.bind(this);
     }
 
     componentDidMount() {
@@ -66,6 +67,16 @@ class Clients extends React.Component {
 
         return clients;
     }
+    addClient() {
+        this.setState({ added_client: !this.state.added_client });
+        console.log("added client state from clients.js: ", this.state.added_client);
+
+        this.callApi()
+        .then(clients => this.setState({ clients }))
+        .catch(err => console.log(err));
+
+    }
+
 
     render(){ 
         console.log('state from Clients.js render: ', this.state.clients);
@@ -73,7 +84,7 @@ class Clients extends React.Component {
         <div>
             <div>
                 <div className="h1">Clients</div>
-                <ClientModal />
+                <ClientModal addClient={this.addClient} />
                 {/* <ClientModal onClick={this.addedClient}/> */}
             </div>
             <div>
