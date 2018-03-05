@@ -16,6 +16,7 @@ const Overview = (props) => {
                             <div className="overview-div-header">Recently added clients</div>
 
                                          {/* test data */}
+                            <div id="view-all">View All</div>
                         </div>
                     </div>
                     <div className="overview-div">
@@ -23,6 +24,7 @@ const Overview = (props) => {
                             <div className="overview-div-header">Upcoming appointments</div>
 
                                         {/* test data */}
+                            <div id="view-all">View All</div>
                         </div>
                     </div>
                 </div>
