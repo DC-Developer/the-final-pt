@@ -78,8 +78,10 @@ console.log('client.userId: ', client.userId);
             formattedDate = savedClient.date.getMonth()+1 + "-" + savedClient.date.getDate() +"-"+ savedClient.date.getFullYear();
             console.log("formatedDate: ", formattedDate);
 
-            db.Client.findOneAndUpdate({ _id: savedClient._id }, { $set: { formatted_date:  formattedDate } }, { new: true } ).then(savedClient => console.log("savedclient new date: ", savedClient.formatted_date));
-
+            //perhaps nast the db.User query inside of client query to ensure the date gets saved first and the 
+            //div renders the date
+            db.Client.findOneAndUpdate({ _id: savedClient._id }, { $set: { formatted_date:  formattedDate } }, { new: true } )
+                .then(savedClient => console.log("savedclient new date: ", savedClient.formatted_date));
 
             //now query db for the specific User and update that user by pushing the client to them
             return db.User.findOneAndUpdate({ _id: savedClient.userId }, { $push: { clients: savedClient._id } }, { new: true } );

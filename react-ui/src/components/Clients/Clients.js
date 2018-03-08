@@ -2,6 +2,8 @@ import React from 'react';
 import './Clients.css';
 import ClientModal from '../ClientModal';
 import ClientDiv from '../ClientDiv';
+import $ from 'jquery';
+
 
 var clients = [];
 //this component will need to store data from the api into its state and then call the state and loop through
@@ -17,6 +19,7 @@ class Clients extends React.Component {
         }
         this.callApi = this.callApi.bind(this);
         this.addClient = this.addClient.bind(this);
+        this.fade = this.fade.bind(this);
     }
 
     componentDidMount() {
@@ -28,6 +31,8 @@ class Clients extends React.Component {
             //method and dynamically add the client divs unto the page
 
         console.log('component did mount Clients.js state: ', this.state.clients);
+
+
     }
     // shouldComponentUpdate(nextState) {
     //     if(nextState !== this.state){
@@ -67,13 +72,27 @@ class Clients extends React.Component {
 
         return clients;
     }
+    fade() {
+
+        $(".client-added-div").fadeOut().empty();
+    }
     addClient() {
         this.setState({ added_client: !this.state.added_client });
         console.log("added client state from clients.js: ", this.state.added_client);
 
         this.callApi()
-        .then(clients => this.setState({ clients }))
-        .catch(err => console.log(err));
+            .then(clients => {
+                var client_added_div = $("<div>").addClass("client-added-div");
+                client_added_div.text("Client added!");
+                
+                $(document.body).append(client_added_div);
+                //call the setTimeout function and then pass in user defined function here
+                setTimeout(this.fade, 3000);
+
+                this.setState({ clients })
+            })
+            //add the logic to display the div on success
+            .catch(err => console.log(err));
 
     }
 
