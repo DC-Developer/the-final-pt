@@ -20,6 +20,7 @@ class Clients extends React.Component {
         this.callApi = this.callApi.bind(this);
         this.addClient = this.addClient.bind(this);
         this.fade = this.fade.bind(this);
+        this.removeInterstitial = this.removeInterstitial.bind(this);
     }
 
     componentDidMount() {
@@ -66,14 +67,19 @@ class Clients extends React.Component {
         $(".client-added-div").fadeOut().empty();
         
     }
+    removeInterstitial() {
+        $(".container").remove();
+        //appending the client_added_div here so it won't interfere with the interstitial
+        var client_added_div = $("<div>").addClass("client-added-div");
+        client_added_div.text("Client added!");
+        $(document.body).append(client_added_div);
+    }
     addClient() {
         
         this.callApi()
             .then(clients => {
-                var client_added_div = $("<div>").addClass("client-added-div");
-                client_added_div.text("Client added!");
-                $(".container").remove();
-                $(document.body).append(client_added_div);
+                //remove the interstitial after atleaset one second
+                setTimeout(this.removeInterstitial, 1000);
                 //call the setTimeout function and then pass in user defined function here
                 setTimeout(this.fade, 3000);
                 console.log('state from Clients.js addClient: ', this.state.clients);
