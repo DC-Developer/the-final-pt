@@ -55,40 +55,30 @@ router.post("/client", (req, res) => {
     // const userId = req.body.currentUser;
 
     console.log('client: ',client);
-//take the client with the req.body and decode the userId and then save
-//that into client before querying the database below
+    //take the client with the req.body and decode the userId and then save
+    //that into client before querying the database below
 
-const decoded_client_userId = jwt.verify(client.userId, config.secret, function(err, decoded) {
-    if (err) 
-    return res.status(500).send({ auth: false, message: "Failed to authenticate client userId." });
+    const decoded_client_userId = jwt.verify(client.userId, config.secret, function(err, decoded) {
+        if (err) 
+        return res.status(500).send({ auth: false, message: "Failed to authenticate client userId." });
 
-    return decoded.id;
-});
-//now after retrieving the decoded client userId, store it into the client variable
-client.userId = decoded_client_userId;
+        return decoded.id;
+    });
+    //now after retrieving the decoded client userId, store it into the client variable
+    client.userId = decoded_client_userId;
 
-console.log('client.userId: ', client.userId);
+    console.log('client.userId: ', client.userId);
 
-//save the mutated client to the database
+    //save the mutated client to the database
     db.Client
         .create(client)
         .then(savedClient => {
             console.log("database: ", savedClient);
-            
-            formattedDate = savedClient.date.getMonth()+1 + "-" + savedClient.date.getDate() +"-"+ savedClient.date.getFullYear();
-            console.log("formatedDate: ", formattedDate);
-
-            //perhaps nast the db.User query inside of client query to ensure the date gets saved first and the 
-            //div renders the date
-            db.Client.findOneAndUpdate({ _id: savedClient._id }, { $set: { formatted_date:  formattedDate } }, { new: true } )
-                .then(savedClient => console.log("savedclient new date: ", savedClient.formatted_date));
-
+              
             //now query db for the specific User and update that user by pushing the client to them
             return db.User.findOneAndUpdate({ _id: savedClient.userId }, { $push: { clients: savedClient._id } }, { new: true } );
-       
 
         })
-
         .catch(err => res.status(422).json(err));
 
 });
@@ -108,6 +98,9 @@ console.log('decoded id: ', decoded_id);
         .find({ userId: decoded_id })
         .then(clients => {
 
+            for(let i=0; i<clients.length; i++){
+                clients[i].formatted_date = clients[i].date.getMonth()+1 + "-" + clients[i].date.getDate() +"-"+ clients[i].date.getFullYear();
+            }
 
             res.json(clients);
         })

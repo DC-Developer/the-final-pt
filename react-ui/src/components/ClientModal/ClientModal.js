@@ -46,13 +46,11 @@ class ClientModal extends React.Component {
             body: JSON.stringify(formValues)
         })
         .then(res => res.json())
-        //this is where we are going to potentially retrive the current user id
         .catch(err => console.log(err));
-
-        //perhaps update the state here
-        $("#exampleModal .close").click();
+        
         this.props.addClient();
-
+        $("#modalForm").find('input[type="text"]').val("");
+        $("#exampleModal .close").click();
     }
     
     render() {
@@ -80,7 +78,7 @@ class ClientModal extends React.Component {
                                         Profile Picture <input type="file" />
                                         {/* <input className="profileImg"><img/></input> */}
                                 </form>
-                                    <form className="col-sm-7" onSubmit={this.onSubmit}>
+                                    <form id="modalForm"className="col-sm-7" onSubmit={this.onSubmit}>
                                         <div className="pInfo">Personal Info</div>
                                         
                                         <div>Full Name</div>

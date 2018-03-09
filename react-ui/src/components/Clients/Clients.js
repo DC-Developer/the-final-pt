@@ -42,17 +42,6 @@ class Clients extends React.Component {
     //     }
     // }
 
-    // addedClient() {
-    //     //making another api call after the modal is submitted, this will update this page to show the newly
-    //     //added divs in realtime. 
-    //     this.callApi()
-    //     .then(clients => this.setState({ clients }))
-    //     .catch(err => console.log(err));
-        
-    //     console.log('addedClient state: ', this.state.clients);
-
-    // }
-
     //make the api call to the server to get clients
     //be sure to add query to get request, and then access the params in the server side
     callApi = async () => {
@@ -75,10 +64,11 @@ class Clients extends React.Component {
     fade() {
 
         $(".client-added-div").fadeOut().empty();
+        
     }
     addClient() {
-        this.setState({ added_client: !this.state.added_client });
-        console.log("added client state from clients.js: ", this.state.added_client);
+        // this.setState({ added_client: !this.state.added_client });
+        // console.log("added client state from clients.js: ", this.state.added_client);
 
         this.callApi()
             .then(clients => {
@@ -88,14 +78,15 @@ class Clients extends React.Component {
                 $(document.body).append(client_added_div);
                 //call the setTimeout function and then pass in user defined function here
                 setTimeout(this.fade, 3000);
-
+                console.log('state from Clients.js addClient: ', this.state.clients);
+                console.log('api response as clients: ', clients);
                 this.setState({ clients })
+                console.log('state from Clients.js addClient after: ', this.state.clients);
             })
             //add the logic to display the div on success
             .catch(err => console.log(err));
 
     }
-
 
     render(){ 
         console.log('state from Clients.js render: ', this.state.clients);

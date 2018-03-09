@@ -309,11 +309,11 @@
 /* for loader on adding clients */
 
 .container {
-    height: 400px;
+    height: 100%;
     background: rgba(0, 0, 0, .8);
     position: relative;
     top: 100px;
-    width: 50%;
+    width: 100%;
     margin: 0 auto;
     border-radius: 4px;
     position: relative;
