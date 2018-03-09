@@ -27,7 +27,17 @@ class ClientModal extends React.Component {
     onSubmit (e) {
         e.preventDefault();
         //find the potential fix here.
-
+        var interstitial = (
+            '<div class="container">' 
+                +'<div class="loader">' 
+                    +'<svg class="spinner" width="50px" height="50px" viewbox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">' 
+                        +'<circle class="circle" fill="none" stroke-width="6" stroke-linecap="round" cx="33" cy="33" r="30">'
+                        +'</circle>'
+                    +'</svg>'
+                +'</div>' 
+            +'</div>'
+        );
+        $(document.body).append(interstitial);
         //this is probably not the best way to do it, but going to store the 
         //user id in the formvalues to be saved into the client model, and then retrieve
         //the user id after saving the client and making a db query to find and update

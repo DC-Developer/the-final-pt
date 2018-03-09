@@ -310,20 +310,21 @@
 
 .container {
     height: 100%;
-    background: rgba(0, 0, 0, .8);
-    position: relative;
+    background: rgba(0, 0, 0, 0);
+    /* position: relative; */
     top: 100px;
-    width: 100%;
-    margin: 0 auto;
+    width: 827px;
+    /* margin: 0 auto; */
+    margin-left: 340px;
     border-radius: 4px;
-    position: relative;
+    /* position: relative; */
     color: #fff;
     padding: 100px;
     box-sizing: border-box;
     
-    position: relative;
-    top: 50%;
-    transform: translateY(-50%);
+    /* position: relative; */
+    /* top: 50%; */
+    transform: translateY(220%);
   }
   
   .loader {
@@ -414,9 +415,9 @@
   
   svg:nth-child(1) {
     stroke: #66cc00;
-    position: relative;
+    /* position: relative;
     left: 15px;
-    top: 15px;
+    top: 15px; */
   }
 
 

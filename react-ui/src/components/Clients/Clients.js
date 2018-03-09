@@ -67,14 +67,12 @@ class Clients extends React.Component {
         
     }
     addClient() {
-        // this.setState({ added_client: !this.state.added_client });
-        // console.log("added client state from clients.js: ", this.state.added_client);
-
+        
         this.callApi()
             .then(clients => {
                 var client_added_div = $("<div>").addClass("client-added-div");
                 client_added_div.text("Client added!");
-                
+                $(".container").remove();
                 $(document.body).append(client_added_div);
                 //call the setTimeout function and then pass in user defined function here
                 setTimeout(this.fade, 3000);
@@ -91,7 +89,7 @@ class Clients extends React.Component {
     render(){ 
         console.log('state from Clients.js render: ', this.state.clients);
     return (
-        <div>
+        <div id="clientsContainer">
             <div>
                 <div className="h1">Clients</div>
                 <ClientModal addClient={this.addClient} />
