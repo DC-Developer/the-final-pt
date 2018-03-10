@@ -1,0 +1,21 @@
+.edit-link {
+    margin-right: 20px;
+    font-size: 12px;
+    font-weight: 900;
+    color: #50e2c1;
+    font-style: normal;
+    font-family: Lato;
+    display: inline-block;
+    float: right;
+}
+.edit-link:hover{
+    cursor: pointer;
+}
+#proPic {
+    display: inline-block;
+    color: #444444;
+}
+.edit-overview-wrapper {
+    display: inline-block;
+    width: 50%;
+}

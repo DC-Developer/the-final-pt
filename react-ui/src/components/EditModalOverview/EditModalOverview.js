@@ -1,10 +1,10 @@
 import React from 'react';
-import './EditModal.css';
+import './EditModalOverview.css';
 
 var clients = [];
 var client_id = null;
 
-class EditModal extends React.Component {
+class EditModalOverview extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -72,7 +72,7 @@ class EditModal extends React.Component {
             color: "#50e2c1"
         };
         return (
-            <div className="wrapper">
+            <div className="edit-overview-wrapper">
 
                 <div className="edit-link">
                     <a role="button" data-toggle="modal" data-target="#editModal" onClick={this.onClick} >
@@ -80,21 +80,21 @@ class EditModal extends React.Component {
                     </a>
                 </div>
 
-                <div className="modal fade" id="editModal" tabIndex="-1" role="dialog" aria-labelledby="editModalLabel" aria-hidden="true">
-                    <div className="modal-dialog" role="document">
-                        <div className="modal-content">
-                            <div className="modal-header">
-                                <h5 className="modal-title" id="exampleModalLabel">Edit client</h5>
-                                    <button type="button" className="close" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
-                </div>
+            <div className="modal fade" id="editModal" tabIndex="-1" role="dialog" aria-labelledby="editModalLabel" aria-hidden="true">
+                <div className="modal-dialog" role="document">
+                    <div className="modal-content">
+                        <div className="modal-header">
+                            <h5 className="modal-title" id="exampleModalLabel">Edit client</h5>
+                                <button type="button" className="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                        </div>
 
                         <div className="modal-body">
                             <div className="container-fluid">
                                 <div className="row">
                                 <form className="col-sm-5">
-                                        Profile Picture <input type="file" />
+                                <div id="proPic">Profile Picture</div> <input type="file" />
                                         {/* <input className="profileImg"><img/></input> */}
                                 </form>
                                     <form className="col-sm-7" onSubmit={this.onSubmit}>
@@ -143,4 +143,4 @@ class EditModal extends React.Component {
     }
 }
 
-export default EditModal;
+export default EditModalOverview;
