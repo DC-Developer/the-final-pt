@@ -74,7 +74,7 @@ class EditModalOverview extends React.Component {
         return (
             <div className="edit-overview-wrapper">
 
-                <div className="edit-link">
+                <div className="edit-link-overview">
                     <a role="button" data-toggle="modal" data-target="#editModal" onClick={this.onClick} >
                         Edit
                     </a>

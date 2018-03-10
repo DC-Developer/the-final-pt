@@ -1,4 +1,4 @@
-.edit-link {
+.edit-link-overview {
     margin-right: 20px;
     font-size: 12px;
     font-weight: 900;
@@ -8,7 +8,7 @@
     display: inline-block;
     float: right;
 }
-.edit-link:hover{
+.edit-link-overview:hover{
     cursor: pointer;
 }
 #proPic {
