@@ -23,6 +23,9 @@ const clientPageImgs = [
     },
     {
         src: "https://raw.githubusercontent.com/DC-Developer/the-final-pt/master/layouts%20%2B%20imgs/imgs/chart.png"
+    },
+    {
+        src: ""
     }
 ];
 class Client extends React.Component {
@@ -90,7 +93,7 @@ class Client extends React.Component {
                             </div>
 
                             <div className="userPic">
-
+                                <img ></img>
                             </div>
                         </div>
                     </div>
