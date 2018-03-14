@@ -310,22 +310,17 @@
 /* for loader on adding clients */
 
 .container {
-    height: 100%;
-    background: rgba(0, 0, 0, 0);
-    /* position: relative; */
-    top: 100px;
+    height: 833px;
+    background: rgba(255, 255, 255, 0.7);
+    position: relative;
+    top: -917px;
+    left: 114px;
     width: 827px;
-    /* margin: 0 auto; */
-    margin-left: 340px;
+    margin: 0 auto;
     border-radius: 4px;
-    /* position: relative; */
     color: #fff;
     padding: 100px;
     box-sizing: border-box;
-    
-    /* position: relative; */
-    /* top: 50%; */
-    transform: translateY(220%);
   }
   
   .loader {

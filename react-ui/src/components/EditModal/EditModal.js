@@ -1,5 +1,6 @@
 import React from 'react';
 import './EditModal.css';
+import $ from 'jquery';
 
 var clients = [];
 var client_id = null;
@@ -14,6 +15,8 @@ class EditModal extends React.Component {
         this.handleChange = this.handleChange.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
         this.onClick = this.onClick.bind(this);
+        this.fade = this.fade.bind(this);
+        this.removeInterstitial = this.removeInterstitial.bind(this);
     }
 
     componentDidMount() {
@@ -37,8 +40,30 @@ class EditModal extends React.Component {
     onSubmit(e) {
 
         e.preventDefault();
-        this.callApi();
 
+        var interstitial = (
+            '<div class="container">' 
+                +'<div class="loader">' 
+                    +'<svg class="spinner" width="50px" height="50px" viewbox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">' 
+                        +'<circle class="circle" fill="none" stroke-width="6" stroke-linecap="round" cx="33" cy="33" r="30">'
+                        +'</circle>'
+                    +'</svg>'
+                +'</div>' 
+            +'</div>'
+        );
+        $("#editModal").hide();
+        $("#root").append(interstitial);
+
+        this.callApi()
+            .then(res => res.json())
+            .catch(err => console.log(err));
+        
+            setTimeout(this.removeInterstitial, 2000);
+
+            //call the setTimeout function and then pass in user defined function here
+            
+            setTimeout(this.fade, 3000);
+            $("#editModal .close").click();
     }
     onClick() {
         client_id = this.props.clientData._id;
@@ -65,7 +90,18 @@ class EditModal extends React.Component {
         return body;
 
     }
+    fade() {
 
+        $(".client-added-div").fadeOut().empty();
+        
+    }
+    removeInterstitial() {
+        $(".container").remove();
+        //appending the client_added_div here so it won't interfere with the interstitial
+        var client_added_div = $("<div>").addClass("client-added-div");
+        client_added_div.text("Client added!");
+        $(document.body).prepend(client_added_div);
+    }
 
     render() {
         var style = {

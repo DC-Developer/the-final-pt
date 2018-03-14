@@ -72,16 +72,20 @@ class Clients extends React.Component {
         //appending the client_added_div here so it won't interfere with the interstitial
         var client_added_div = $("<div>").addClass("client-added-div");
         client_added_div.text("Client added!");
-        $(document.body).append(client_added_div);
+        $(document.body).prepend(client_added_div);
     }
     addClient() {
         
         this.callApi()
             .then(clients => {
                 //remove the interstitial after atleaset one second
-                setTimeout(this.removeInterstitial, 1000);
+
+                setTimeout(this.removeInterstitial, 2000);
+
                 //call the setTimeout function and then pass in user defined function here
+                
                 setTimeout(this.fade, 3000);
+
                 console.log('state from Clients.js addClient: ', this.state.clients);
                 console.log('api response as clients: ', clients);
                 this.setState({ clients })

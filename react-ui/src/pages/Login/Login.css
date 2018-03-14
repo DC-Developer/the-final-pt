@@ -12,10 +12,7 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: none;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    margin: -343.5px 0 0 -570px;
+    margin: 0 auto;
   }
   .col-nested-grid {
     display: grid;
