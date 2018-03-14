@@ -1,6 +1,7 @@
 import React from 'react';
-import {BrowserRouter as Router, Route, Link} from 'react-router-dom';
+import {BrowserRouter as Router, Route, Link, Switch} from 'react-router-dom';
 import './Client.css';
+import Login from '../Login/Login.js';
 import Overview from '../../components/Overview/Overview.js';
 import Clients from '../../components/Clients/Clients.js';
 import MacroB from '../../components/MacroB/MacroB.js';
@@ -41,7 +42,8 @@ class Client extends React.Component {
     
     handleClick(e) {
         //should also delete the session token
-        this.setState({ redirect: !this.state.redirect});
+        this.setState({ redirect: true});
+
     }
     componentDidMount() {
         this.callApi()
@@ -76,7 +78,6 @@ class Client extends React.Component {
         }
 
         return (
-            <Router>
                 <div className="parentElement">
                     <div className="header">
                         <div className="logoDiv">
@@ -90,7 +91,8 @@ class Client extends React.Component {
 
                             <div className="dropdown-menu" aria-labelledby="dropdownMenuLink">
                                 <a className="dropdown-item" href="#">Settings</a>
-                                <a className="dropdown-item" to="/logout" onClick={this.handleClick}>Logout</a>
+                                <Link className="dropdown-item" to="/login" >Logout</Link>
+                               
                             </div>
 
                             <div className="userPic">
@@ -106,14 +108,15 @@ class Client extends React.Component {
                         </div>
 
                         <div className="childElement">
-                            <Route path="/client/overview" component={Overview} />
-                            <Route path="/client/clients" component={Clients} />
-                            <Route path="/client/macrobreakdown" component={MacroB} />
+                            <Switch>
+                                <Route path="/client/overview" component={Overview} />
+                                <Route path="/client/clients" component={Clients} />
+                                <Route path="/client/macrobreakdown" component={MacroB} />
+                            </Switch>
                         </div>
                     </div>
                   
                 </div>
-            </Router>
         );
     }
 }
