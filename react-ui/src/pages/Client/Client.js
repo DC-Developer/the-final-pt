@@ -11,13 +11,13 @@ import { Redirect } from 'react-router';
 //create a logout button, which will use Link from react-router and redirect
 //to the login page.it will also delete the user token
 
-
+//this will be taken out and stored in a seperate file to export into Client.js
 const clientPageImgs = [
     {
         src: "https://raw.githubusercontent.com/DC-Developer/the-final-pt/master/react-ui/src/imgs/logo.png"
     },
     {
-        src: "https://raw.githubusercontent.com/DC-Developer/the-final-pt/master/layouts%20%2B%20imgs/imgs/clients.png"
+        src: "https://raw.githubusercontent.com/DC-Developer/the-final-pt/master/layouts%20%2B%20imgs/imgs/clientsN.png"
     },
     {
         src: "https://raw.githubusercontent.com/DC-Developer/the-final-pt/master/layouts%20%2B%20imgs/imgs/sliders.png"
@@ -27,6 +27,17 @@ const clientPageImgs = [
     },
     {
         src: "https://raw.githubusercontent.com/DC-Developer/the-final-pt/master/layouts%20%2B%20imgs/imgs/avatar-1.png"
+    }
+];
+const icons = [
+    {
+        src: "https://raw.githubusercontent.com/DC-Developer/the-final-pt/master/layouts%20%2B%20imgs/imgs/overviewH.png"
+    },
+    {
+        src: "https://raw.githubusercontent.com/DC-Developer/the-final-pt/master/layouts%20%2B%20imgs/imgs/clients.png"
+    },
+    {
+        src: "https://raw.githubusercontent.com/DC-Developer/the-final-pt/master/layouts%20%2B%20imgs/imgs/slidersH.png"
     }
 ];
 class Client extends React.Component {
