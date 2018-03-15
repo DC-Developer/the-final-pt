@@ -158,7 +158,7 @@ class Login extends React.Component {
         console.log("this.state.token: ", this.state.token);
         
         if(this.state.token){
-            return <Redirect to='/client' />
+            return <Redirect to='/client/clients' />
         }
 
         if(this.state.redirect){

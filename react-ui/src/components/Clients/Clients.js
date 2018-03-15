@@ -21,6 +21,7 @@ class Clients extends React.Component {
         this.addClient = this.addClient.bind(this);
         this.fade = this.fade.bind(this);
         this.removeInterstitial = this.removeInterstitial.bind(this);
+        this.saveClient = this.saveClient.bind(this);
     }
 
     componentDidMount() {
@@ -61,6 +62,11 @@ class Clients extends React.Component {
         clients = body;
 
         return clients;
+    }
+    saveClient() {
+        this.callApi()
+            .then(clients => this.setState({ clients }))
+            .catch(err => console.log(err));
     }
     fade() {
 
@@ -118,7 +124,7 @@ class Clients extends React.Component {
             </div>
             <div className="clientList" id="clientDiv">
                 {/* add pagination that will limit the amount of divs displayed and pass over to the next page */}
-                {this.state.clients.map(client => (<ClientDiv clientData={client} fullname={client.fullname} date={client.formatted_date} key={client._id}/>))}
+                {this.state.clients.map(client => (<ClientDiv clientData={client} fullname={client.fullname} date={client.formatted_date} saveClient={this.saveClient}key={client._id}/>))}
             </div>
             {/* potentially feature:
                 display modal showing client details upon clicking the client's name  */}

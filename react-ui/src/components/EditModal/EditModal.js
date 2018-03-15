@@ -58,11 +58,12 @@ class EditModal extends React.Component {
             .then(res => res.json())
             .catch(err => console.log(err));
         
-            setTimeout(this.removeInterstitial, 2000);
+            setTimeout(this.removeInterstitial, 1500);
 
             //call the setTimeout function and then pass in user defined function here
             
             setTimeout(this.fade, 3000);
+            this.props.saveClient();
             $("#editModal .close").click();
     }
     onClick() {
@@ -99,7 +100,7 @@ class EditModal extends React.Component {
         $(".container").remove();
         //appending the client_added_div here so it won't interfere with the interstitial
         var client_added_div = $("<div>").addClass("client-added-div");
-        client_added_div.text("Client added!");
+        client_added_div.text("Saved Changes!");
         $(document.body).prepend(client_added_div);
     }
 

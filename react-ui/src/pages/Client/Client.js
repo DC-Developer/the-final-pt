@@ -94,7 +94,7 @@ class Client extends React.Component {
 
     }
     onHoverBreakdown() {
-        this.setState({ breakdown: "https://raw.githubusercontent.com/DC-Developer/the-final-pt/master/layouts%20%2B%20imgs/imgs/sliders.png" });
+        this.setState({ breakdown: "https://raw.githubusercontent.com/DC-Developer/the-final-pt/master/layouts%20%2B%20imgs/imgs/slidersH.png" });
 
     }
     onLeaveOverview() {
@@ -106,7 +106,7 @@ class Client extends React.Component {
 
     }
     onLeaveBreakdown() {
-        this.setState({ breakdown: "https://raw.githubusercontent.com/DC-Developer/the-final-pt/master/layouts%20%2B%20imgs/imgs/slidersH.png" });
+        this.setState({ breakdown: "https://raw.githubusercontent.com/DC-Developer/the-final-pt/master/layouts%20%2B%20imgs/imgs/sliders.png" });
 
     }
     render() {
