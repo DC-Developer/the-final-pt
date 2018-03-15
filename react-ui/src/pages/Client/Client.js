@@ -6,7 +6,7 @@ import Overview from '../../components/Overview/Overview.js';
 import Clients from '../../components/Clients/Clients.js';
 import MacroB from '../../components/MacroB/MacroB.js';
 import { Redirect } from 'react-router';
-
+import $ from 'jquery';
 
 //create a logout button, which will use Link from react-router and redirect
 //to the login page.it will also delete the user token
@@ -23,7 +23,7 @@ const clientPageImgs = [
         src: "https://raw.githubusercontent.com/DC-Developer/the-final-pt/master/layouts%20%2B%20imgs/imgs/sliders.png"
     },
     {
-        src: "https://raw.githubusercontent.com/DC-Developer/the-final-pt/master/layouts%20%2B%20imgs/imgs/chart.png"
+        src: "https://raw.githubusercontent.com/DC-Developer/the-final-pt/master/layouts%20%2B%20imgs/imgs/overview.png"
     },
     {
         src: "https://raw.githubusercontent.com/DC-Developer/the-final-pt/master/layouts%20%2B%20imgs/imgs/avatar-1.png"
@@ -45,10 +45,19 @@ class Client extends React.Component {
         super(props)
         this.state = {
             redirect: false,
-            current_client: ''
+            current_client: '',
+            overview: "https://raw.githubusercontent.com/DC-Developer/the-final-pt/master/layouts%20%2B%20imgs/imgs/overview.png",
+            clients: "https://raw.githubusercontent.com/DC-Developer/the-final-pt/master/layouts%20%2B%20imgs/imgs/clientsN.png",
+            breakdown: "https://raw.githubusercontent.com/DC-Developer/the-final-pt/master/layouts%20%2B%20imgs/imgs/sliders.png"
         }
         this.handleClick = this.handleClick.bind(this);
         this.callApi = this.callApi.bind(this);
+        this.onHoverOverview = this.onHoverOverview.bind(this);
+        this.onLeaveOverview = this.onLeaveOverview.bind(this);
+        this.onHoverClients = this.onHoverClients.bind(this);
+        this.onLeaveClients = this.onLeaveClients.bind(this);
+        this.onHoverBreakdown = this.onHoverBreakdown.bind(this);
+        this.onLeaveBreakdown = this.onLeaveBreakdown.bind(this);
     }
     
     handleClick(e) {
@@ -76,7 +85,30 @@ class Client extends React.Component {
         
         return body;
     }
+    onHoverOverview() {
+        this.setState({ overview: "https://raw.githubusercontent.com/DC-Developer/the-final-pt/master/layouts%20%2B%20imgs/imgs/overviewH.png" });
 
+    }
+    onHoverClients() {
+        this.setState({ clients: "https://raw.githubusercontent.com/DC-Developer/the-final-pt/master/layouts%20%2B%20imgs/imgs/clients.png" });
+
+    }
+    onHoverBreakdown() {
+        this.setState({ breakdown: "https://raw.githubusercontent.com/DC-Developer/the-final-pt/master/layouts%20%2B%20imgs/imgs/sliders.png" });
+
+    }
+    onLeaveOverview() {
+        this.setState({ overview: "https://raw.githubusercontent.com/DC-Developer/the-final-pt/master/layouts%20%2B%20imgs/imgs/overview.png" });
+
+    }
+    onLeaveClients() {
+        this.setState({ clients: "https://raw.githubusercontent.com/DC-Developer/the-final-pt/master/layouts%20%2B%20imgs/imgs/clientsN.png" });
+
+    }
+    onLeaveBreakdown() {
+        this.setState({ breakdown: "https://raw.githubusercontent.com/DC-Developer/the-final-pt/master/layouts%20%2B%20imgs/imgs/slidersH.png" });
+
+    }
     render() {
         var logo = clientPageImgs[0];
         var clients = clientPageImgs[1];
@@ -113,9 +145,9 @@ class Client extends React.Component {
                     </div>
                     <div className="grid">
                         <div className="sidebar">
-                            <Link to="/client/overview"><img src={overview.src} className="clients-pic" /><p>Overview</p></Link>
-                            <Link to="/client/clients"><img src={clients.src} className="clients-pic-2" /><p>Clients</p></Link>
-                            <Link to="/client/macrobreakdown"><img src={macro.src} className="clients-pic-3" /><p className="clients-p-3">Macro Breakdown</p></Link>
+                            <Link to="/client/overview"><img src={this.state.overview} className="clients-pic" onMouseEnter={this.onHoverOverview} onMouseLeave={this.onLeaveOverview}/><p>Overview</p></Link>
+                            <Link to="/client/clients"><img src={this.state.clients} className="clients-pic-2" onMouseEnter={this.onHoverClients} onMouseLeave={this.onLeaveClients}/><p>Clients</p></Link>
+                            <Link to="/client/macrobreakdown"><img src={this.state.breakdown} className="clients-pic-3" onMouseEnter={this.onHoverBreakdown} onMouseLeave={this.onLeaveBreakdown}/><p className="clients-p-3">Macro Breakdown</p></Link>
                         </div>
 
                         <div className="childElement">
