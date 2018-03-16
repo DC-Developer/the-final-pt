@@ -1,5 +1,6 @@
 import React from 'react';
 import './EditModalOverview.css';
+import $ from 'jquery';
 
 var clients = [];
 var client_id = null;
@@ -37,7 +38,30 @@ class EditModalOverview extends React.Component {
     onSubmit(e) {
 
         e.preventDefault();
-        this.callApi();
+        var interstitial = (
+            '<div class="container">' 
+                +'<div class="loader">' 
+                    +'<svg class="spinner" width="50px" height="50px" viewbox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">' 
+                        +'<circle class="circle" fill="none" stroke-width="6" stroke-linecap="round" cx="33" cy="33" r="30">'
+                        +'</circle>'
+                    +'</svg>'
+                +'</div>' 
+            +'</div>'
+        );
+        $("#editModal").hide();
+        $("#root").append(interstitial);
+
+        this.callApi()
+            .then(res => res.json())
+            .catch(err => console.log(err));
+    
+        setTimeout(this.removeInterstitial, 1500);
+
+        //call the setTimeout function and then pass in user defined function here
+        
+        setTimeout(this.fade, 3000);
+        this.props.saveClient();
+        $("#editModal .close").click();
 
     }
     onClick() {
@@ -65,7 +89,18 @@ class EditModalOverview extends React.Component {
         return body;
 
     }
+    fade() {
 
+        $(".client-added-div").fadeOut().empty();
+        
+    }
+    removeInterstitial() {
+        $(".container").remove();
+        //appending the client_added_div here so it won't interfere with the interstitial
+        var client_added_div = $("<div>").addClass("client-added-div");
+        client_added_div.text("Saved Changes!");
+        $(document.body).prepend(client_added_div);
+    }
 
     render() {
         var style = {

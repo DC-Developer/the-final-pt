@@ -13,6 +13,7 @@ class Overview extends React.Component {
             clients
         };
         this.callApi = this.callApi.bind(this);
+        this.saveClient = this.saveClient.bind(this);
     }
     componentDidMount() {
         this.callApi()
@@ -32,7 +33,11 @@ class Overview extends React.Component {
         clients = body;
         return clients;
     }
-
+    saveClient() {
+        this.callApi()
+        .then(clients => this.setState({ clients }))
+        .catch(err => console.log(err));
+    }
     render() {
         return (
             <div>
@@ -47,7 +52,7 @@ class Overview extends React.Component {
                                             {/* map through the state of recently added clients and create divs here */}
                                             {/* test data */}
 
-                                    {this.state.clients.map(client => <div><div className="client-div" id={client._id}>{client.fullname}</div><EditModalOverview clientData={client} id={client._id}/></div>)}
+                                    {this.state.clients.map(client => <div><div className="client-div" id={client._id}>{client.fullname}</div><EditModalOverview clientData={client} saveClient={this.saveClient} id={client._id}/></div>)}
                                 
                                 <a id="view-all" href="/client/clients">View All</a>
                             </div>
@@ -61,8 +66,6 @@ class Overview extends React.Component {
                             </div>
                         </div>
                     </div>
-
-
 
             </div>
         );
