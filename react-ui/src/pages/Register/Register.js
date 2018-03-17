@@ -139,7 +139,7 @@ class Register extends React.Component {
 
         return (
             <div className="Register-Alt">
-                <img src={mainImg.src} />
+                <img src={mainImg.src} className="login-img"/>
 
                 <div className="col-nested-grid">
                     <div className="loginLogoDiv">
