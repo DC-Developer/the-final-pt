@@ -113,8 +113,7 @@
     height: 45px;
     border-radius: 6px;
     border: solid 1px #e5e5e9;
-    margin-left: 130px;
-    margin-top: 10px;
+    margin: 0 auto;
     font-weight: 500;
     color: #ffffff;
     font-family: 'Lato', sans-serif;
@@ -126,8 +125,7 @@
     height: 45px;
     border-radius: 6px;
     border: solid 1px #e5e5e9;
-    margin-left: 130px;
-    margin-top: 10px;
+    margin: 0 auto;
     font-weight: 500;
     color: #ffffff;
     font-family: 'Lato', sans-serif;
@@ -140,7 +138,6 @@
     background-color: #50e2c1;
     text-align: center;
     color:#ffffff;   
-    margin-left: 130px;
     margin-top: 10px;
     font-weight: 500;
     border: none;
@@ -163,8 +160,7 @@
   .hrDiv{
     color: #cccccc;
     display: table;
-    margin-left: 100px;
-    margin-top: 10px;
+    margin: 0 auto;
   }
   hr {
       width: 130px;

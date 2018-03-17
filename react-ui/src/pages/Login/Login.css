@@ -6,8 +6,6 @@
     background-color: #50e2c1;
   }
   .Login-Alt {
-    width: 1140px;
-    height: 687px;
     background-color: #fbfbfc;
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -99,7 +97,6 @@
     height: 45px;
     border-radius: 6px;
     border: solid 1px #e5e5e9;
-    margin-left: 130px;
     margin-top: 10px;
     font-weight: bolder;
     color: #d9d9d9;
@@ -111,8 +108,8 @@
     height: 45px;
     border-radius: 6px;
     border: solid 1px #e5e5e9;
-    margin-left: 130px;
-    margin-top: 10px;
+    margin: 0 auto;
+    display: block;
     font-weight: 500;
     color: #ffffff;
     font-family: 'Lato', sans-serif;
@@ -128,8 +125,8 @@
     height: 45px;
     border-radius: 6px;
     border: solid 1px #e5e5e9;
-    margin-left: 130px;
-    margin-top: 10px;
+    margin: 0 auto;
+    display: block;
     font-weight: 500;
     color: #ffffff;
     font-family: 'Lato', sans-serif;
@@ -147,8 +144,7 @@
     border-radius: 6px;
     background-color: #50e2c1;
     text-align: center;
-    color:#ffffff;   
-    margin-left: 130px;
+    color: #ffffff;
     margin-top: 10px;
     font-weight: 500;
     border: none;
@@ -165,8 +161,7 @@
     background-color: #2da085;
     text-align: center;
     color:#ffffff;   
-    margin-left: 130px;
-    margin-top: 10px;
+    margin: 0 auto;
     font-weight: 500;
     border: none;
     font-family: 'Lato', sans-serif;
@@ -180,13 +175,12 @@
       color: #444444;
   }
   .regLog {
-
+    margin: 0 auto;
   }
   .hrDiv{
     color: #cccccc;
     display: table;
-    margin-left: 100px;
-    margin-top: 10px;
+    margin: 0 auto;
   }
   hr {
       width: 130px;
@@ -200,4 +194,11 @@
     display: table-cell;
     vertical-align: middle;
     font-weight: 600;
+  }
+  .oauth-container {
+    margin-top: 24px;
+  }
+  .login-img {
+    height: -webkit-fill-available;
+    width: -webkit-fill-available;
   }

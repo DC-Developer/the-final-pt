@@ -12,6 +12,10 @@ import $ from 'jquery';
 //to the login page.it will also delete the user token
 
 //this will be taken out and stored in a seperate file to export into Client.js
+
+
+// height: -webkit-fill-available; This is will auto fill avalaible space in the broswer window
+
 const clientPageImgs = [
     {
         src: "https://raw.githubusercontent.com/DC-Developer/the-final-pt/master/react-ui/src/imgs/logo.png"

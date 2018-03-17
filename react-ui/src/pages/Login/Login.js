@@ -180,7 +180,7 @@ class Login extends React.Component {
 
         return (
             <div className="Login-Alt">
-                <img src={mainImg.src} />
+                <img src={mainImg.src} className="login-img"/>
 
                 <div className="col-nested-grid">
                     <div className="loginLogoDiv">
@@ -188,24 +188,27 @@ class Login extends React.Component {
                     </div>
                     <div className="oauth2">
                         <h1>Login</h1>
-                        <FacebookLogin
-                            appId="175418049620583"
-                            // autoLoad={true}
-                            buttonText="Login with Facebook"
-                            fields="name,email,picture"
-                            callback={responseFacebook}
-                            icon="fa-facebook"
-                            cssClass="Rectangle-Copy"
-                            
-                        />
+                        <div className="oauth-container">
+                            <FacebookLogin
+                                appId="175418049620583"
+                                // autoLoad={true}
+                                buttonText="Login with Facebook"
+                                fields="name,email,picture"
+                                callback={responseFacebook}
+                                icon="fa-facebook"
+                                cssClass="Rectangle-Copy"
+                                
+                            />
 
-                        <GoogleLogin
-                            clientId="559169765800-3o3ge3ehthqa344cb0feq38a5occr13d.apps.googleusercontent.com"
-                            buttonText="Login with Google"
-                            onSuccess={responseGoogle}
-                            onFailure={responseGoogle}
-                            className="Rectangle-Copy-2"
-                        />
+                            <GoogleLogin
+                                clientId="559169765800-3o3ge3ehthqa344cb0feq38a5occr13d.apps.googleusercontent.com"
+                                buttonText="Login with Google"
+                                onSuccess={responseGoogle}
+                                onFailure={responseGoogle}
+                                className="Rectangle-Copy-2"
+                            />
+                        </div>
+
  </div>
                         <div className="hrDiv">
                             <hr /><p className="hrText">or</p><hr />
