@@ -156,7 +156,7 @@ class Login extends React.Component {
         const { redirect } = this.state.redirect;
         console.log('redirect from render: ', redirect);
         console.log("this.state.token: ", this.state.token);
-        
+        //this is potentially where it's messing up at
         if(this.state.token){
             return <Redirect to='/client/clients' />
         }

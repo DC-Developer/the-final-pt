@@ -39,15 +39,11 @@ class App extends Component {
 
   render() {
     return (
-      <Router>
         <div>
-
-          <Route path="/" component={Login} />
+          <Route exact path="/" component={Login} />
           <Route path="/register" component={Register} />
           <Route path="/client" component={Client} />
-
         </div>
-      </Router>
     );
   }
 }

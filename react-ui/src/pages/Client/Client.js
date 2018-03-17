@@ -117,7 +117,7 @@ class Client extends React.Component {
         var default_pic = clientPageImgs[4];
         //the redirect or logout functionality is buggy and needs to be fixed
         if(this.state.redirect){
-            return <Redirect to="/login" />
+            return <Redirect to="/" />
         }
 
         return (
@@ -134,7 +134,7 @@ class Client extends React.Component {
 
                             <div className="dropdown-menu" aria-labelledby="dropdownMenuLink">
                                 <a className="dropdown-item" href="#">Settings</a>
-                                <Link className="dropdown-item" to="/login" >Logout</Link>
+                                <Link className="dropdown-item" to="/" >Logout</Link>
                                
                             </div>
 
