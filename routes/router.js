@@ -68,7 +68,7 @@ router.post("/client", (req, res) => {
     client.userId = decoded_client_userId;
 
     console.log('client.userId: ', client.userId);
-
+    console.log(client);
     //save the mutated client to the database
     db.Client
         .create(client)

@@ -25,6 +25,8 @@ class ClientModal extends React.Component {
     }
 
     onSubmit (e) {
+        //target the input div for the picture and get the value, create an addtional
+        //formvalue below and store the name and value in the formvalues. 
         e.preventDefault();
         //find the potential fix here.
         var interstitial = (
@@ -49,7 +51,8 @@ class ClientModal extends React.Component {
         const userId = "userId";
 
         formValues[userId] = user_id;
-        
+
+        console.log("add client formvalues: ", this.state.formValues);
 
         fetch('/api/client', {
             method: 'POST',
@@ -61,9 +64,10 @@ class ClientModal extends React.Component {
         
         this.props.addClient();
         $("#modalForm").find('input[type="text"]').val("");
+        $("#modalForm").find('input[type="file"]').val("");
         $("#exampleModal .close").click();
     }
-    
+
     render() {
         return (
             <div className="wrapper">
@@ -85,44 +89,52 @@ class ClientModal extends React.Component {
                         <div className="modal-body">
                             <div className="container-fluid">
                                 <div className="row">
-                                <form className="col-sm-5">
-                                        Profile Picture <input type="file" />
-                                        {/* <input className="profileImg"><img/></input> */}
-                                </form>
-                                    <form id="modalForm"className="col-sm-7" onSubmit={this.onSubmit}>
-                                        <div className="pInfo">Personal Info</div>
-                                        
-                                        <div>Full Name</div>
-                                        <input className="Rectangle-Copy-Modal" name="fullname" type="text" value={this.state.fullname} onChange={this.onChange} />
-  
-                                        <div>Email</div>
-                                        <input className="Rectangle-Copy-Modal" name="email" type="text" value={this.state.email} onChange={this.onChange} />
-
-                                        <div>Phone</div>
-                                        <input className="Rectangle-Copy-Modal" name="phone" type="text" value={this.state.phone} onChange={this.onChange} />
-
-                                        <div className="heightDiv">
-                                            <div className="botHeaders">Height</div>
-                                            <input className="Rectangle-Copy-Height" name="height" type="text" value={this.state.height} onChange={this.onChange} />
-                                        
+                                    <form id="modalForm"className="row" onSubmit={this.onSubmit}>
+                                        <div className="col-sm-5">
+                                            <div>Profile Picture <input name="picture" type="file" id="client_pic" value={this.state.picture} onChange={this.onChange}/></div>
+                                            <div>
+                                                <div className="picture-box">
+                                                    
+                                                </div>
+                                            </div>
+                                            {/* <input className="profileImg"><img/></input> */}
                                         </div>
+                                              
+                                        <div className="col-sm-7">
+                                            <div className="pInfo">Personal Info</div>
+                                            
+                                            <div>Full Name</div>
+                                            <input className="Rectangle-Copy-Modal" name="fullname" type="text" value={this.state.fullname} onChange={this.onChange} />
+    
+                                            <div>Email</div>
+                                            <input className="Rectangle-Copy-Modal" name="email" type="text" value={this.state.email} onChange={this.onChange} />
 
-                                        <div className="weightDiv">
-                                            <div className="botHeaders">Weight</div>
-                                            <input className="Rectangle-Copy-Weight" name="weight" type="text" value={this.state.weight} onChange={this.onChange} />
-                                        
-                                        </div>
+                                            <div>Phone</div>
+                                            <input className="Rectangle-Copy-Modal" name="phone" type="text" value={this.state.phone} onChange={this.onChange} />
 
-                                        <div className="bfatDiv">
-                                            <div className="botHeaders">Body Fat</div>
-                                            <input className="Rectangle-Copy-Bodyfat" name="bodyfat" type="text" value={this.state.bodyfat} onChange={this.onChange} />
-                                        
-                                        </div>  
+                                            <div className="heightDiv">
+                                                <div className="botHeaders">Height</div>
+                                                <input className="Rectangle-Copy-Height" name="height" type="text" value={this.state.height} onChange={this.onChange} />
+                                            
+                                            </div>
 
-                                        <div className="modal-footer">
-                                            <button type="button" className="btn btn-secondary" data-dismiss="modal">CANCEL</button>
-                                            <button type="submit" value="Submit" className="btn btn-primary" onClick={this.props.onClick}>ADD CLIENT</button>
-                                            {/* <button type="submit" value="Submit" className="btn btn-primary" onClick={this.props.onClick}>ADD CLIENT</button> */}
+                                            <div className="weightDiv">
+                                                <div className="botHeaders">Weight</div>
+                                                <input className="Rectangle-Copy-Weight" name="weight" type="text" value={this.state.weight} onChange={this.onChange} />
+                                            
+                                            </div>
+
+                                            <div className="bfatDiv">
+                                                <div className="botHeaders">Body Fat</div>
+                                                <input className="Rectangle-Copy-Bodyfat" name="bodyfat" type="text" value={this.state.bodyfat} onChange={this.onChange} />
+                                            
+                                            </div>  
+
+                                            <div className="modal-footer">
+                                                <button type="button" className="btn btn-secondary" data-dismiss="modal">CANCEL</button>
+                                                <button type="submit" value="Submit" className="btn btn-primary" onClick={this.props.onClick}>ADD CLIENT</button>
+                                                {/* <button type="submit" value="Submit" className="btn btn-primary" onClick={this.props.onClick}>ADD CLIENT</button> */}
+                                            </div>
                                         </div>
                                     </form>  
                                 </div>

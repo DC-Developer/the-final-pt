@@ -32,13 +32,12 @@ const ClientSchema = new Schema({
         type: String,
         required: true
     },
-    formatted_date: {
+    picture: {
         type: String,
         required: false
     },
-    picture: {
-        data: Buffer, 
-        contentType: String,
+    formatted_date: {
+        type: String,
         required: false
     },
     date: {
