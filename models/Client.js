@@ -36,6 +36,11 @@ const ClientSchema = new Schema({
         type: String,
         required: false
     },
+    picture: {
+        data: Buffer, 
+        contentType: String,
+        required: false
+    },
     date: {
         type: Date, default: Date.now
     }

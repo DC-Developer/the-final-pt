@@ -19,6 +19,7 @@ class EditModal extends React.Component {
         this.removeInterstitial = this.removeInterstitial.bind(this);
         this.deleteClient = this.deleteClient.bind(this);
         this.deleteApiCall = this.deleteApiCall.bind(this);
+        this.uploadPic = this.uploadPic.bind(this);
     }
 
     componentDidMount() {
@@ -76,6 +77,8 @@ class EditModal extends React.Component {
         var client_weight = document.getElementById("client_weight").value = this.props.clientData.weight;
         var client_bodyfat = document.getElementById("client_bodyfat").value = this.props.clientData.bodyfat;
         var client_delete = document.getElementById("deleteButton").value = client_id;
+        var client_upload_picture = document.getElementById("uploadPicture").value = client_id;
+        // var client_pictureInput_value = document.getElementById("client_pic").value;
     }
     //add update route 
     callApi = async () => {
@@ -133,7 +136,7 @@ class EditModal extends React.Component {
         this.deleteApiCall()
             .then(res => res.json())
             .catch(err => console.log(err));
-            
+
         setTimeout(this.removeInterstitial, 1500);
 
         //call the setTimeout function and then pass in user defined function here
@@ -141,7 +144,51 @@ class EditModal extends React.Component {
         setTimeout(this.fade, 3000);
         this.props.saveClient();
     }
+    // picApiCall = async () => {
+    //     const response = await fetch("/api/clients/"+ client_id, {
+    //         method: "PUT",
+    //         headers: {"Content-Type": "application/json"}, 
+    //         body: JSON.stringify({id : client_id, picture: client_pictureInput_value})
+    //     });
+    //    const body = await response.json();
+    //    if (response.status !== 200) throw Error(body.message);
+    //    return body;
+    // }
+    uploadPic() {
+        var client_id = document.getElementById("uploadPicture").value;
+        var client_pictureInput_value = document.getElementById("client_pic").value;
+        console.log("client id: ", client_id);
+        console.log("picture input value: ", client_pictureInput_value);
+        $("#editModal .close").click();
+        
+        var interstitial = (
+            '<div class="container">' 
+                +'<div class="loader">' 
+                    +'<svg class="spinner" width="50px" height="50px" viewbox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">' 
+                        +'<circle class="circle" fill="none" stroke-width="6" stroke-linecap="round" cx="33" cy="33" r="30">'
+                        +'</circle>'
+                    +'</svg>'
+                +'</div>' 
+            +'</div>'
+        );
+        $("#root").append(interstitial);
 
+        fetch("/api/clients/"+ client_id, {
+            method: "PUT",
+            headers: {"Content-Type": "application/json"}, 
+            body: JSON.stringify({id : client_id, picture: client_pictureInput_value})
+        })
+            .then(client => client.json())
+            .catch(err => console.log(err));
+
+        setTimeout(this.removeInterstitial, 1500);
+
+        //call the setTimeout function and then pass in user defined function here
+                
+        setTimeout(this.fade, 3000);
+        this.props.saveClient();
+       
+    }
     render() {
         var style = {
             color: "#50e2c1"
@@ -168,10 +215,18 @@ class EditModal extends React.Component {
                         <div className="modal-body">
                             <div className="container-fluid">
                                 <div className="row">
-                                <form className="col-sm-5">
-                                        Profile Picture <input type="file" />
+                                <div className="col-sm-5">
+                                        <div>Profile Picture <input name="picture" type="file" id="client_pic"/></div>
+                                        <div>
+                                            <button id="uploadPicture" onClick={this.uploadPic}>Upload</button>
+                                        </div>
+                                        <div>
+                                            <div className="picture-box">
+                                                
+                                            </div>
+                                        </div>
                                         {/* <input className="profileImg"><img/></input> */}
-                                </form>
+                                </div>
                                     <form className="col-sm-7" onSubmit={this.onSubmit}>
                                         <div className="pInfo">Personal Info</div>
                                         
@@ -183,6 +238,8 @@ class EditModal extends React.Component {
 
                                         <div>Phone</div>
                                         <input className="Rectangle-Copy-Modal" name="phone" type="text" id="client_phone" placeholder={this.props.clientData.phone} onChange={this.handleChange}/>
+                                        
+                                        <div className="fInfo">Fitness Info</div>
 
                                         <div className="heightDiv">
                                             <div className="botHeaders">Height</div>
