@@ -17,6 +17,8 @@ class EditModal extends React.Component {
         this.onClick = this.onClick.bind(this);
         this.fade = this.fade.bind(this);
         this.removeInterstitial = this.removeInterstitial.bind(this);
+        this.deleteClient = this.deleteClient.bind(this);
+        this.deleteApiCall = this.deleteApiCall.bind(this);
     }
 
     componentDidMount() {
@@ -40,7 +42,6 @@ class EditModal extends React.Component {
     onSubmit(e) {
 
         e.preventDefault();
-
         var interstitial = (
             '<div class="container">' 
                 +'<div class="loader">' 
@@ -74,6 +75,7 @@ class EditModal extends React.Component {
         var client_height = document.getElementById("client_height").value = this.props.clientData.height;
         var client_weight = document.getElementById("client_weight").value = this.props.clientData.weight;
         var client_bodyfat = document.getElementById("client_bodyfat").value = this.props.clientData.bodyfat;
+        var client_delete = document.getElementById("deleteButton").value = client_id;
     }
     //add update route 
     callApi = async () => {
@@ -91,6 +93,16 @@ class EditModal extends React.Component {
         return body;
 
     }
+    deleteApiCall = async () => {
+        const response = await fetch("/api/client/" + client_id, { 
+            method: "DELETE", 
+            headers: {"Content-Type": "application/json"}, 
+            body: JSON.stringify({id : client_id})
+        });
+        const body = await response.json();
+        if (response.status !== 200) throw Error(body.message);
+        return body;
+    }
     fade() {
 
         $(".client-added-div").fadeOut().empty();
@@ -102,6 +114,32 @@ class EditModal extends React.Component {
         var client_added_div = $("<div>").addClass("client-added-div");
         client_added_div.text("Saved Changes!");
         $(document.body).prepend(client_added_div);
+    }
+    deleteClient() {
+        var client_id = document.getElementById("deleteButton").value;
+        console.log("delete ", client_id);
+        var interstitial = (
+            '<div class="container">' 
+                +'<div class="loader">' 
+                    +'<svg class="spinner" width="50px" height="50px" viewbox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">' 
+                        +'<circle class="circle" fill="none" stroke-width="6" stroke-linecap="round" cx="33" cy="33" r="30">'
+                        +'</circle>'
+                    +'</svg>'
+                +'</div>' 
+            +'</div>'
+        );
+        $("#root").append(interstitial);
+
+        this.deleteApiCall()
+            .then(res => res.json())
+            .catch(err => console.log(err));
+            
+        setTimeout(this.removeInterstitial, 1500);
+
+        //call the setTimeout function and then pass in user defined function here
+            
+        setTimeout(this.fade, 3000);
+        this.props.saveClient();
     }
 
     render() {
@@ -166,6 +204,8 @@ class EditModal extends React.Component {
 
                                         <div className="modal-footer">
                                             <button type="button" className="btn btn-secondary" data-dismiss="modal">CANCEL</button>
+                                            {/* make the delete button a modal that will prompt the user if they're sure  */}
+                                            <button type="button" className="btn btn-secondary" id="deleteButton" data-dismiss="modal" value={this.props.clientData._id} onClick={this.deleteClient}>DELETE</button>
                                             <button type="submit" value="Submit" className="btn btn-primary">SAVE CHANGES</button>
                                         </div>
                                     </form>  

@@ -139,7 +139,14 @@ router.post("/google", (req, res) => {
     //remember to save response from google to db
 });
 router.delete("/client/:id", (req, res) => {
-    
+    console.log("client id to be deleted: ", req.body.id);
+    var id = req.body.id;
+
+    db.Client
+        .findByIdAndRemove(id)
+        .then(client => console.log("db client deleted: ", client))
+        .catch(err => res.status(502).json(err));
+
 })
 
 
