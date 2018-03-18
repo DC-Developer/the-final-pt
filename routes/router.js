@@ -138,7 +138,9 @@ router.post("/google", (req, res) => {
 
     //remember to save response from google to db
 });
-
+router.delete("/client/:id", (req, res) => {
+    
+})
 
 
 module.exports = router;

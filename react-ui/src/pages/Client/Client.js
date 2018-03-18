@@ -15,6 +15,14 @@ import $ from 'jquery';
 
 
 // height: -webkit-fill-available; This is will auto fill avalaible space in the broswer window
+//remove this from .Login-Alt: 
+    /* width: 1140px; */
+    /* height: 687px; */
+
+//Add this to login img:
+    // width: -webkit-fill-available;
+    // height: -webkit-fill-available;
+
 
 const clientPageImgs = [
     {
@@ -149,9 +157,9 @@ class Client extends React.Component {
                     </div>
                     <div className="grid">
                         <div className="sidebar">
-                            <Link to="/client/overview"><img src={this.state.overview} className="clients-pic" onMouseEnter={this.onHoverOverview} onMouseLeave={this.onLeaveOverview}/><p>Overview</p></Link>
-                            <Link to="/client/clients"><img src={this.state.clients} className="clients-pic-2" onMouseEnter={this.onHoverClients} onMouseLeave={this.onLeaveClients}/><p>Clients</p></Link>
-                            <Link to="/client/macrobreakdown"><img src={this.state.breakdown} className="clients-pic-3" onMouseEnter={this.onHoverBreakdown} onMouseLeave={this.onLeaveBreakdown}/><p className="clients-p-3">Macro Breakdown</p></Link>
+                            <Link to="/client/overview"><div className="sidebar-div"><div className="nested-sidebar"><img src={this.state.overview} className="clients-pic" onMouseEnter={this.onHoverOverview} onMouseLeave={this.onLeaveOverview}/><p>Overview</p></div></div></Link>
+                            <Link to="/client/clients"><div className="sidebar-div"><div className="nested-sidebar"><img src={this.state.clients} className="clients-pic-2" onMouseEnter={this.onHoverClients} onMouseLeave={this.onLeaveClients}/><p>Clients</p></div></div></Link>
+                            <Link to="/client/macrobreakdown"><div className="sidebar-div"><div className="nested-sidebar"><img src={this.state.breakdown} className="clients-pic-3" onMouseEnter={this.onHoverBreakdown} onMouseLeave={this.onLeaveBreakdown}/><p className="clients-p-3">Macro Breakdown</p></div></div></Link>
                         </div>
 
                         <div className="childElement">
