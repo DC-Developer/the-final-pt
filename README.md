@@ -5,11 +5,18 @@
  
 ![example](https://raw.githubusercontent.com/DC-Developer/the-final-pt/master/react-ui/src/imgs/gifs/logout.gif)
   
-  
-![example]()
+           CRUD Functionality
+![example](https://raw.githubusercontent.com/DC-Developer/the-final-pt/master/react-ui/src/imgs/gifs/AddClient.gif)
    
-   
-![example]()
-    
-    
-![example]()
+![example](https://raw.githubusercontent.com/DC-Developer/the-final-pt/master/react-ui/src/imgs/gifs/delete.gif)
+ 
+![example](https://raw.githubusercontent.com/DC-Developer/the-final-pt/master/react-ui/src/imgs/gifs/editOverview.gif)
+           
+           App Features:
+           
+           Macro Breakdown
+![example](https://raw.githubusercontent.com/DC-Developer/the-final-pt/master/react-ui/src/imgs/gifs/macrobreakdown.gif)
+
+           Macro Breakdown export function -- Coming soon
+           
+           Client Scheduling -- Coming soon
