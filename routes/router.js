@@ -37,7 +37,6 @@ router.get("/user/:id", (req, res) => {
         })
         .catch(err => console.log(err));
 
-
 });
 
 router.get("/userclients", (req, res) => {
@@ -52,7 +51,6 @@ router.get("/userclients", (req, res) => {
 router.post("/client", (req, res) => {
 
     const client = req.body;
-    // const userId = req.body.currentUser;
 
     console.log('client: ',client);
     //take the client with the req.body and decode the userId and then save
@@ -106,9 +104,8 @@ console.log('decoded id: ', decoded_id);
         })
         .catch(err => res.status(502).json(err));
 
-
 });
-//finish update route
+
 router.put('/clients/:id', (req, res) => {
 
     var client_id = req.params.id;

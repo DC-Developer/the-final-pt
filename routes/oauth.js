@@ -5,7 +5,6 @@ const mongoose = require('mongoose');
 const bodyParser= require('body-parser');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
-//require the config here
 const config = require('../config/config');
 const verifyToken = require('./verifyToken');
 
