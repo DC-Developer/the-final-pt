@@ -1,12 +1,11 @@
 const express = require('express');
-oauth = express();
+oauth = express().Router();
 const db = require("../models");
 const mongoose = require('mongoose');
 const bodyParser= require('body-parser');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
 const config = require('../config/config');
-const verifyToken = require('./verifyToken');
 
 oauth.use(bodyParser.json());
 oauth.use(bodyParser.urlencoded({ extended: false }));
