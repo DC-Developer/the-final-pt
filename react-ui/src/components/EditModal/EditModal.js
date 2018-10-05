@@ -1,6 +1,7 @@
 import React from 'react';
 import './EditModal.css';
 import $ from 'jquery';
+//replace jquery with vanilla js
 
 var clients = [];
 var client_id = null;
@@ -21,7 +22,7 @@ class EditModal extends React.Component {
         this.deleteApiCall = this.deleteApiCall.bind(this);
         this.uploadPic = this.uploadPic.bind(this);
     }
-
+    
     componentDidMount() {
         console.log("this props client.fullname: ", this.props.clientData.fullname);
         clients = this.props.clientData;
@@ -30,6 +31,7 @@ class EditModal extends React.Component {
         // client_name.value = this.props.key;
 
     }
+    
     handleChange(e) {
         let name = e.target.name;
         let value = e.target.value;
@@ -37,9 +39,8 @@ class EditModal extends React.Component {
 
         formValues[name] = value;
         this.setState({ formValues });
-        console.log("formValues: ", this.state.formValues);
-
     }
+    
     onSubmit(e) {
 
         e.preventDefault();
@@ -61,13 +62,13 @@ class EditModal extends React.Component {
             .catch(err => console.log(err));
         
             setTimeout(this.removeInterstitial, 1500);
-
-            //call the setTimeout function and then pass in user defined function here
-            
             setTimeout(this.fade, 3000);
+        
             this.props.saveClient();
+        
             $("#editModal .close").click();
     }
+    
     onClick() {
         client_id = this.props.clientData._id;
         var client_name = document.getElementById("client_name").value = this.props.clientData.fullname;
@@ -80,47 +81,45 @@ class EditModal extends React.Component {
         var client_upload_picture = document.getElementById("uploadPicture").value = client_id;
         // var client_pictureInput_value = document.getElementById("client_pic").value;
     }
-    //add update route 
+
     callApi = async () => {
-        console.log("client id: ", client_id);
         const response = await fetch("/api/clients/" + client_id, {
             method: 'PUT',
             headers: {"Content-Type": "application/json"},
             body: JSON.stringify(this.state.formValues)
         });
+        
         const body = await response.json();
         if (response.status !== 200) throw Error(body.message);
 
-        console.log("app.js callApi: ", body);
-
         return body;
-
     }
+    
     deleteApiCall = async () => {
         const response = await fetch("/api/client/" + client_id, { 
             method: "DELETE", 
             headers: {"Content-Type": "application/json"}, 
             body: JSON.stringify({id : client_id})
-        });
+        });     
         const body = await response.json();
+        
         if (response.status !== 200) throw Error(body.message);
         return body;
     }
+    
     fade() {
-
-        $(".client-added-div").fadeOut().empty();
-        
+        $(".client-added-div").fadeOut().empty();  
     }
+
     removeInterstitial() {
         $(".container").remove();
-        //appending the client_added_div here so it won't interfere with the interstitial
         var client_added_div = $("<div>").addClass("client-added-div");
         client_added_div.text("Saved Changes!");
         $(document.body).prepend(client_added_div);
     }
+
     deleteClient() {
         var client_id = document.getElementById("deleteButton").value;
-        console.log("delete ", client_id);
         var interstitial = (
             '<div class="container">' 
                 +'<div class="loader">' 
@@ -131,34 +130,23 @@ class EditModal extends React.Component {
                 +'</div>' 
             +'</div>'
         );
+        
         $("#root").append(interstitial);
 
         this.deleteApiCall()
             .then(res => res.json())
             .catch(err => console.log(err));
 
-        setTimeout(this.removeInterstitial, 1500);
-
-        //call the setTimeout function and then pass in user defined function here
-            
+        setTimeout(this.removeInterstitial, 1500);          
         setTimeout(this.fade, 3000);
+        
         this.props.saveClient();
     }
-    // picApiCall = async () => {
-    //     const response = await fetch("/api/clients/"+ client_id, {
-    //         method: "PUT",
-    //         headers: {"Content-Type": "application/json"}, 
-    //         body: JSON.stringify({id : client_id, picture: client_pictureInput_value})
-    //     });
-    //    const body = await response.json();
-    //    if (response.status !== 200) throw Error(body.message);
-    //    return body;
-    // }
+
     uploadPic() {
         var client_id = document.getElementById("uploadPicture").value;
         var client_pictureInput_value = document.getElementById("client_pic").value;
-        console.log("client id: ", client_id);
-        console.log("picture input value: ", client_pictureInput_value);
+
         $("#editModal .close").click();
         
         var interstitial = (
@@ -171,6 +159,7 @@ class EditModal extends React.Component {
                 +'</div>' 
             +'</div>'
         );
+        
         $("#root").append(interstitial);
 
         fetch("/api/clients/"+ client_id, {
@@ -181,18 +170,15 @@ class EditModal extends React.Component {
             .then(client => client.json())
             .catch(err => console.log(err));
 
-        setTimeout(this.removeInterstitial, 1500);
-
-        //call the setTimeout function and then pass in user defined function here
-                
+        setTimeout(this.removeInterstitial, 1500);             
         setTimeout(this.fade, 3000);
-        this.props.saveClient();
-       
+        this.props.saveClient();    
     }
     render() {
         var style = {
             color: "#50e2c1"
         };
+        
         return (
             <div className="wrapper">
 
